@@ -140,7 +140,7 @@ def build_feed(key: str) -> dict:
 def main():
     for key in APPROVED.keys():
         out = build_feed(key)
-        path = f"data/{key}.json"
+        path = f"docs/data/{key}.json"
         with open(path, "w", encoding="utf-8") as f:
             json.dump(out, f, ensure_ascii=False, indent=2)
         print(f"Wrote {path} ({len(out['items'])} items)")
