@@ -1,6 +1,6 @@
 const brands = [
-  { key: "vodafone", name: "Vodafone", file: "../data/vodafone.json" },
-  { key: "virginmediao2", name: "Virgin Media O2", file: "../data/virginmediao2.json" },
+  { key: "vodafone", name: "Vodafone", file: "./data/vodafone.json" },
+  { key: "virginmediao2", name: "Virgin Media O2", file: "./data/virginmediao2.json" },
 ];
 
 function el(tag, attrs = {}, children = []) {
