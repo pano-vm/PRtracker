@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Press Release Tracker</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="header">
+      <h1>Press Release Tracker</h1>
+      <p class="sub">Official sources only. Latest plus last 20 per brand.</p>
+
+      <div class="actions">
+        <a class="btn" href="https://github.com/YOUR_ORG/YOUR_REPO/actions/workflows/refresh.yml" target="_blank" rel="noreferrer">
+          Update now (Run workflow)
+        </a>
+        <span id="lastUpdated" class="muted"></span>
+      </div>
+    </header>
+
+    <section id="brands" class="grid"></section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
