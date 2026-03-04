@@ -1,7 +1,12 @@
 {
   "status": "ok",
-  "generated_at": "2026-03-03T07:44:04.851707Z",
+  "generated_at": "2026-03-04T07:39:24.489782Z",
   "items": [
+    {
+      "title": "Vodafone to offer iPhone 17e and iPad Air",
+      "url": "https://www.vodafone.co.uk/newscentre/press-release/vodafone-to-offer-iphone-17e-and-ipad-air/",
+      "publish_datetime": "2026-03-03T10:06:56Z"
+    },
     {
       "title": "Pre-order the Samsung Galaxy S26 series on Vodafone now",
       "url": "https://www.vodafone.co.uk/newscentre/press-release/pre-order-samsung-galaxy-s26-series/",
@@ -96,11 +101,6 @@
       "title": "Optos keeps an eye on the future with Vodafone SD-WAN",
       "url": "https://www.vodafone.co.uk/newscentre/press-release/sd-wan-helps-optos-keep-an-eye-on-the-future/",
       "publish_datetime": "2025-12-10T09:33:29Z"
-    },
-    {
-      "title": "Brits demand digital equality: Internet access deemed human right",
-      "url": "https://www.vodafone.co.uk/newscentre/press-release/brits-demand-digital-equality/",
-      "publish_datetime": "2025-12-09T09:40:33Z"
     }
   ]
 }
