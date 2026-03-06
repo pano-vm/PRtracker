@@ -1,7 +1,12 @@
 {
   "status": "ok",
-  "generated_at": "2026-03-05T07:43:53.842727Z",
+  "generated_at": "2026-03-06T07:40:23.825083Z",
   "items": [
+    {
+      "title": "Get the new Google Pixel 10a on Vodafone now from £7 a month",
+      "url": "https://www.vodafone.co.uk/newscentre/press-release/get-google-pixel-10a/",
+      "publish_datetime": "2026-03-05T08:55:40Z"
+    },
     {
       "title": "Vodafone to offer iPhone 17e and iPad Air",
       "url": "https://www.vodafone.co.uk/newscentre/press-release/vodafone-to-offer-iphone-17e-and-ipad-air/",
@@ -96,11 +101,6 @@
       "title": "Who's Home: Peace of mind, powered by Vodafone",
       "url": "https://www.vodafone.co.uk/newscentre/press-release/whos-home-peace-of-mind-powered-by-vodafone/",
       "publish_datetime": "2025-12-16T06:01:25Z"
-    },
-    {
-      "title": "Optos keeps an eye on the future with Vodafone SD-WAN",
-      "url": "https://www.vodafone.co.uk/newscentre/press-release/sd-wan-helps-optos-keep-an-eye-on-the-future/",
-      "publish_datetime": "2025-12-10T09:33:29Z"
     }
   ]
 }
