@@ -1,7 +1,12 @@
 {
   "status": "ok",
-  "generated_at": "2026-03-06T07:40:32.670105Z",
+  "generated_at": "2026-03-07T07:30:49.073337Z",
   "items": [
+    {
+      "title": "AI helps Virgin Media O2 detect and flag 1 billion suspected scam and spam calls to customers - Virgin Media O2",
+      "url": "https://news.virginmediao2.co.uk/ai-helps-virgin-media-o2-detect-and-flag-1-billion-suspected-scam-and-spam-calls-to-customers/",
+      "publish_datetime": "2026-03-06T10:00:06Z"
+    },
     {
       "title": "iPhone 17e arrives at O2 with a saving of up to £228 - Virgin Media O2",
       "url": "https://news.virginmediao2.co.uk/iphone-17e-arrives-at-o2-with-a-saving-of-up-to-228/",
@@ -95,11 +100,6 @@
     {
       "title": "https://news.virginmediao2.co.uk/favicon-96x96.png",
       "url": "https://news.virginmediao2.co.uk/favicon-96x96.png",
-      "publish_datetime": null
-    },
-    {
-      "title": "https://news.virginmediao2.co.uk/favicon.svg",
-      "url": "https://news.virginmediao2.co.uk/favicon.svg",
       "publish_datetime": null
     }
   ]
