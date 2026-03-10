@@ -1,1 +1,108 @@
-{ "status": "ok", "generated_at": null, "items": [] }
+{
+  "status": "ok",
+  "brand": "Three",
+  "group": "Telecoms",
+  "generated_at": "2026-03-10T16:57:15.378233Z",
+  "items": [
+    {
+      "title": "Mum’s The Word: Three reveals 29 is age we call our mums most",
+      "url": "https://www.threemediacentre.co.uk/content/mums-the-word-29-age-we-call-mums-most/",
+      "publish_datetime": "2026-03-10T08:58:05Z"
+    },
+    {
+      "title": "Personalised phone plans and more perks from Three UK",
+      "url": "https://www.threemediacentre.co.uk/content/personalised-phone-plans-perks/",
+      "publish_datetime": "2026-03-05T09:21:32Z"
+    },
+    {
+      "title": "Three UK to offer iPhone 17e and iPad Air",
+      "url": "https://www.threemediacentre.co.uk/content/three-to-offer-iphone-17e-ipad-air/",
+      "publish_datetime": "2026-03-05T09:21:15Z"
+    },
+    {
+      "title": "Three UK to offer the new Samsung S26 range",
+      "url": "https://www.threemediacentre.co.uk/content/three-uk-to-offer-new-samsung-s26-range/",
+      "publish_datetime": "2026-02-25T18:01:06Z"
+    },
+    {
+      "title": "Improved mobile connectivity could unlock 49,000 new businesses",
+      "url": "https://www.threemediacentre.co.uk/content/improved-mobile-connectivity-could-unlock-49000-new-businesses-and-add-6-6bn-annually-to-the-uk-economy/",
+      "publish_datetime": "2026-02-19T12:43:50Z"
+    },
+    {
+      "title": "Three UK to offer the new Google Pixel 10a",
+      "url": "https://www.threemediacentre.co.uk/content/three-uk-to-offer-the-new-google-pixel-10a/",
+      "publish_datetime": "2026-02-18T15:39:59Z"
+    },
+    {
+      "title": "Celebrate Valentine’s Day and Lunar New Year with Three UK",
+      "url": "https://www.threemediacentre.co.uk/content/celebrate-valentines-day-lunar-new-year/",
+      "publish_datetime": "2026-02-12T16:16:11Z"
+    },
+    {
+      "title": "Three UK Offers Pre-Sale Tickets to ZAYN - Three Media Centre",
+      "url": "https://www.threemediacentre.co.uk/content/three-uk-offers-pre-sale-tickets-to-zayn/",
+      "publish_datetime": "2026-02-05T20:01:02Z"
+    },
+    {
+      "title": "Closer… to pre-sale tickets with Ne-Yo and Akon - Three Media Centre",
+      "url": "https://www.threemediacentre.co.uk/content/closer-to-pre-sale-tickets-with-ne-yo-and-akon/",
+      "publish_datetime": "2026-01-27T15:51:33Z"
+    },
+    {
+      "title": "Stamford Bridge gets improved mobile coverage and capacity",
+      "url": "https://www.threemediacentre.co.uk/content/mocn-stamford-bridge/",
+      "publish_datetime": "2026-01-26T09:07:52Z"
+    },
+    {
+      "title": "The Share Index: The nation's habits revealed as almost half admit to sharing a toothbrush - Three Media Centre",
+      "url": "https://www.threemediacentre.co.uk/content/the-share-index-the-nations-habits-revealed-as-almost-half-admit-to-sharing-a-toothbrush/",
+      "publish_datetime": "2026-01-21T08:11:53Z"
+    },
+    {
+      "title": "Brew Monday: Three UK and Samaritans call for 'Tea Leave' wellbeing breaks",
+      "url": "https://www.threemediacentre.co.uk/content/samaritans-tea-leave-brew-monday/",
+      "publish_datetime": "2026-01-19T15:30:11Z"
+    },
+    {
+      "title": "VodafoneThree signs three-year extension to partnership with Get Connected - Three Media Centre",
+      "url": "https://www.threemediacentre.co.uk/content/vodafonethree-signs-three-year-extension-to-partnership-with-get-connected/",
+      "publish_datetime": "2026-01-08T09:30:44Z"
+    },
+    {
+      "title": "Three UK Kickstarts 2026 With Great New Year Deals - Three Media Centre",
+      "url": "https://www.threemediacentre.co.uk/content/three-uk-kickstarts-2026-with-great-new-year-deals/",
+      "publish_datetime": "2026-01-08T09:03:08Z"
+    },
+    {
+      "title": "MP John Grady visits Three UK Discovery at local primary school to champion digital skills for young people - Three Media Centre",
+      "url": "https://www.threemediacentre.co.uk/content/mp-john-grady-visits-three-uk-discovery-at-local-primary-school-to-champion-digital-skills-for-young-people/",
+      "publish_datetime": "2025-12-19T09:15:05Z"
+    },
+    {
+      "title": "Three UK Reveals Last Minute Deals This Festive Period - Three Media Centre",
+      "url": "https://www.threemediacentre.co.uk/content/three-uk-reveals-last-minute-deals-this-festive-period/",
+      "publish_datetime": "2025-12-18T11:40:57Z"
+    },
+    {
+      "title": "Who Really Runs Christmas? Three UK rewards the Chief Christmas Officers - Three Media Centre",
+      "url": "https://www.threemediacentre.co.uk/content/who-really-runs-christmas-three-uk-rewards-the-chief-christmas-officers/",
+      "publish_datetime": "2025-12-02T10:00:24Z"
+    },
+    {
+      "title": "MORE Deals Added To Three UK’s Ultimate Black Friday Sale - Three Media Centre",
+      "url": "https://www.threemediacentre.co.uk/content/more-deals-added-to-three-uks-ultimate-black-friday-sale/",
+      "publish_datetime": "2025-11-28T09:30:18Z"
+    },
+    {
+      "title": "Three UK offers early ticket access to Peter Kay’s Final Arena Shows - Three Media Centre",
+      "url": "https://www.threemediacentre.co.uk/content/three-uk-offers-early-ticket-access-to-peter-kays-final-arena-shows/",
+      "publish_datetime": "2025-11-27T09:00:40Z"
+    },
+    {
+      "title": "Three UK’s Ultimate Black Friday Sale Is Live - Three Media Centre",
+      "url": "https://www.threemediacentre.co.uk/content/three-uks-ultimate-black-friday-sale-is-live/",
+      "publish_datetime": "2025-11-14T11:37:59Z"
+    }
+  ]
+}

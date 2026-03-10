@@ -1,1 +1,108 @@
-{ "status": "ok", "generated_at": null, "items": [] }
+{
+  "status": "ok",
+  "brand": "BT",
+  "group": "Telecoms",
+  "generated_at": "2026-03-10T16:57:58.449130Z",
+  "items": [
+    {
+      "title": "BT Group partners with Gavin & Stacey star to put digital training ‘on track’ - as over 65s call for social places to learn online skills",
+      "url": "https://newsroom.bt.com/bt-group-partners-with-gavin--stacey-star-to-put-digital-training-on-track---as-over-65s-call-for-social-places-to-learn-online-skills/",
+      "publish_datetime": "2026-03-05T19:00:00Z"
+    },
+    {
+      "title": "BT Group and Ericsson strengthen partnership to unlock smarter, more reliable 5G services for UK businesses",
+      "url": "https://newsroom.bt.com/bt-group-and-ericsson-strengthen-partnership-to-unlock-smarter-more-reliable-5g-services-for-uk-businesses/",
+      "publish_datetime": "2026-03-02T08:00:00Z"
+    },
+    {
+      "title": "BT launches new Sovereign Voice product for UK businesses",
+      "url": "https://newsroom.bt.com/bt-launches-new-sovereign-voice-product-for-uk-businesses/",
+      "publish_datetime": "2026-02-27T08:00:05Z"
+    },
+    {
+      "title": "Chancellor welcomes BT’s investment into the UK’s best networks",
+      "url": "https://newsroom.bt.com/chancellor-welcomes-bts-investment-into-the-uks-best-networks/",
+      "publish_datetime": "2026-02-12T15:11:17Z"
+    },
+    {
+      "title": "Upskilling Business for an AI future",
+      "url": "https://newsroom.bt.com/upskilling-business-for-an-ai-future/",
+      "publish_datetime": "2026-02-11T13:00:05Z"
+    },
+    {
+      "title": "BT Group announces leadership succession within Openreach and BT International",
+      "url": "https://newsroom.bt.com/bt-group-announces-leadership-succession-across-openreach-and-bt-international/",
+      "publish_datetime": "2026-02-10T07:00:00Z"
+    },
+    {
+      "title": "Archive | BT plc",
+      "url": "https://newsroom.bt.com/?h=1",
+      "publish_datetime": null
+    },
+    {
+      "title": "BT Group Newsroom",
+      "url": "https://newsroom.bt.com/",
+      "publish_datetime": null
+    },
+    {
+      "title": "<![CDATA[BT Group Newsroom ]]>",
+      "url": "https://newsroom.bt.com/feed/en",
+      "publish_datetime": null
+    },
+    {
+      "title": "Latest Blogs",
+      "url": "https://newsroom.bt.com/blogs/",
+      "publish_datetime": null
+    },
+    {
+      "title": "Media image library",
+      "url": "https://newsroom.bt.com/image-library/",
+      "publish_datetime": null
+    },
+    {
+      "title": "Articles tagged with 'Corporate' | BT plc",
+      "url": "https://newsroom.bt.com/?h=1&t=Corporate",
+      "publish_datetime": null
+    },
+    {
+      "title": "Articles tagged with 'Digital Impact' & 'Sustainability' & 'Responsible business' | BT plc",
+      "url": "https://newsroom.bt.com/?h=1&t=Digital+Impact%2CSustainability%2CResponsible+business",
+      "publish_datetime": null
+    },
+    {
+      "title": "Articles tagged with 'People' | BT plc",
+      "url": "https://newsroom.bt.com/?h=1&t=People",
+      "publish_datetime": null
+    },
+    {
+      "title": "Articles tagged with 'Consumer' | BT plc",
+      "url": "https://newsroom.bt.com/?h=1&t=Consumer",
+      "publish_datetime": null
+    },
+    {
+      "title": "Articles tagged with 'Plusnet' | BT plc",
+      "url": "https://newsroom.bt.com/?h=1&t=Plusnet",
+      "publish_datetime": null
+    },
+    {
+      "title": "Articles tagged with 'Business' & 'Global' & 'Enterprise' | BT plc",
+      "url": "https://newsroom.bt.com/?h=1&t=Business%2CGlobal%2CEnterprise",
+      "publish_datetime": null
+    },
+    {
+      "title": "Articles tagged with 'Digital & Networks' & 'Technology' | BT plc",
+      "url": "https://newsroom.bt.com/?h=1&t=Digital+%26+Networks%2CTechnology",
+      "publish_datetime": null
+    },
+    {
+      "title": "Articles tagged with 'Scotland' | BT plc",
+      "url": "https://newsroom.bt.com/?h=1&t=Scotland",
+      "publish_datetime": null
+    },
+    {
+      "title": "Articles tagged with 'Wales' | BT plc",
+      "url": "https://newsroom.bt.com/?h=1&t=Wales",
+      "publish_datetime": null
+    }
+  ]
+}

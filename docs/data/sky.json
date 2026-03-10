@@ -1,1 +1,83 @@
-{ "status": "ok", "generated_at": null, "items": [] }
+{
+  "status": "ok",
+  "brand": "Sky",
+  "group": "Telecoms",
+  "generated_at": "2026-03-10T16:58:07.878414Z",
+  "items": [
+    {
+      "title": "https://www.skygroup.sky/_next/static/css/b16c487220656f86.css",
+      "url": "https://www.skygroup.sky/_next/static/css/b16c487220656f86.css",
+      "publish_datetime": null
+    },
+    {
+      "title": "https://www.skygroup.sky/_next/static/chunks/webpack-4ef407cb41d4909b.js",
+      "url": "https://www.skygroup.sky/_next/static/chunks/webpack-4ef407cb41d4909b.js",
+      "publish_datetime": null
+    },
+    {
+      "title": "Believe in Better",
+      "url": "https://www.skygroup.sky/",
+      "publish_datetime": null
+    },
+    {
+      "title": "About",
+      "url": "https://www.skygroup.sky/about",
+      "publish_datetime": null
+    },
+    {
+      "title": "What we do",
+      "url": "https://www.skygroup.sky/what-we-do/",
+      "publish_datetime": null
+    },
+    {
+      "title": "Impact",
+      "url": "https://www.skygroup.sky/impact/",
+      "publish_datetime": null
+    },
+    {
+      "title": "Press",
+      "url": "https://www.skygroup.sky/press",
+      "publish_datetime": null
+    },
+    {
+      "title": "Careers",
+      "url": "https://www.skygroup.sky/careers",
+      "publish_datetime": null
+    },
+    {
+      "title": "Press",
+      "url": "https://www.skygroup.sky/press#screeners",
+      "publish_datetime": null
+    },
+    {
+      "title": "Assets | Press",
+      "url": "https://www.skygroup.sky/press/assets#tv-imagery",
+      "publish_datetime": null
+    },
+    {
+      "title": "Social media | Press",
+      "url": "https://www.skygroup.sky/press/social-media",
+      "publish_datetime": null
+    },
+    {
+      "title": "Our governance | About",
+      "url": "https://www.skygroup.sky/about/our-governance/",
+      "publish_datetime": null
+    },
+    {
+      "title": "Our governance | About",
+      "url": "https://www.skygroup.sky/about/our-governance#modern-slavery",
+      "publish_datetime": null
+    },
+    {
+      "title": "Accessibility",
+      "url": "https://www.skygroup.sky/accessibility",
+      "publish_datetime": null
+    },
+    {
+      "title": "Sitemap",
+      "url": "https://www.skygroup.sky/sitemap",
+      "publish_datetime": null
+    }
+  ]
+}

@@ -1,1 +1,108 @@
-{ "status": "ok", "generated_at": null, "items": [] }
+{
+  "status": "ok",
+  "brand": "uSwitch",
+  "group": "Affiliates",
+  "generated_at": "2026-03-10T16:58:55.785031Z",
+  "items": [
+    {
+      "title": "Energy price cap February 2026: how much is it and how does it work? - Uswitch",
+      "url": "https://www.uswitch.com/gas-electricity/guides/price-cap/",
+      "publish_datetime": "2024-09-30T14:23:12Z"
+    },
+    {
+      "title": "Average gas and electricity bills in the UK - Uswitch",
+      "url": "https://www.uswitch.com/gas-electricity/guides/average-gas-and-electricity-bills-in-the-uk/",
+      "publish_datetime": "2024-09-25T09:50:14Z"
+    },
+    {
+      "title": "What are smart meters and should you get one? - Uswitch",
+      "url": "https://www.uswitch.com/gas-electricity/guides/smart-meters-explained/",
+      "publish_datetime": "2024-09-25T09:26:48Z"
+    },
+    {
+      "title": "Who is my gas or electricity supplier? - Uswitch",
+      "url": "https://www.uswitch.com/gas-electricity/guides/who-supplies-my-electricity-and-gas/",
+      "publish_datetime": "2024-09-25T08:58:10Z"
+    },
+    {
+      "title": "How to switch energy supplier for a cheaper deal - Uswitch",
+      "url": "https://www.uswitch.com/gas-electricity/guides/how-to-switch-gas-and-electricity/",
+      "publish_datetime": "2024-09-24T16:27:52Z"
+    },
+    {
+      "title": "https://www.uswitch.com/s3/uswitch-assets-eu/fonts/founders-grotesk/founders-grotesk-bold.woff2",
+      "url": "https://www.uswitch.com/s3/uswitch-assets-eu/fonts/founders-grotesk/founders-grotesk-bold.woff2",
+      "publish_datetime": null
+    },
+    {
+      "title": "https://www.uswitch.com/s3/uswitch-includes-production/img/favicon-48x48.ico",
+      "url": "https://www.uswitch.com/s3/uswitch-includes-production/img/favicon-48x48.ico",
+      "publish_datetime": null
+    },
+    {
+      "title": "https://www.uswitch.com/s3/uswitch-includes-production/img/favicon-light-48x48.ico",
+      "url": "https://www.uswitch.com/s3/uswitch-includes-production/img/favicon-light-48x48.ico",
+      "publish_datetime": null
+    },
+    {
+      "title": "https://www.uswitch.com/s3/uswitch-includes-production/img/apple-touch-icon-be43205660.png",
+      "url": "https://www.uswitch.com/s3/uswitch-includes-production/img/apple-touch-icon-be43205660.png",
+      "publish_datetime": null
+    },
+    {
+      "title": "https://www.uswitch.com/s3/uswitch-includes-production/img/pinned-tab-e307ea053e.svg",
+      "url": "https://www.uswitch.com/s3/uswitch-includes-production/img/pinned-tab-e307ea053e.svg",
+      "publish_datetime": null
+    },
+    {
+      "title": "https://www.uswitch.com/s3/uswitch-includes-production/includes/astro/assets/preflight.css?version=1",
+      "url": "https://www.uswitch.com/s3/uswitch-includes-production/includes/astro/assets/preflight.css?version=1",
+      "publish_datetime": null
+    },
+    {
+      "title": "https://www.uswitch.com/s3/uswitch-includes-production/includes/astro/_astro/cookie.fiojhKbp.css",
+      "url": "https://www.uswitch.com/s3/uswitch-includes-production/includes/astro/_astro/cookie.fiojhKbp.css",
+      "publish_datetime": null
+    },
+    {
+      "title": "https://www.uswitch.com/s3/uswitch-includes-production/includes/astro/_astro/cookie.iRb2gmIT.css",
+      "url": "https://www.uswitch.com/s3/uswitch-includes-production/includes/astro/_astro/cookie.iRb2gmIT.css",
+      "publish_datetime": null
+    },
+    {
+      "title": "https://www.uswitch.com/s3/uswitch-includes-production/includes/astro/_astro/footer.DDlLuUUo.css",
+      "url": "https://www.uswitch.com/s3/uswitch-includes-production/includes/astro/_astro/footer.DDlLuUUo.css",
+      "publish_datetime": null
+    },
+    {
+      "title": "https://www.uswitch.com/s3/uswitch-includes-production/includes/astro/_astro/header.Cv9qBRcJ.css",
+      "url": "https://www.uswitch.com/s3/uswitch-includes-production/includes/astro/_astro/header.Cv9qBRcJ.css",
+      "publish_datetime": null
+    },
+    {
+      "title": "Broadband press releases - Uswitch",
+      "url": "https://www.uswitch.com/media-centre/category/broadband/",
+      "publish_datetime": null
+    },
+    {
+      "title": "https://www.uswitch.com/s3/uswitch-assets-eu/builder/q-B2tLmpaK.js",
+      "url": "https://www.uswitch.com/s3/uswitch-assets-eu/builder/q-B2tLmpaK.js",
+      "publish_datetime": null
+    },
+    {
+      "title": "https://www.uswitch.com/s3/uswitch-assets-eu/builder/style-BZh3gLRg.css",
+      "url": "https://www.uswitch.com/s3/uswitch-assets-eu/builder/style-BZh3gLRg.css",
+      "publish_datetime": null
+    },
+    {
+      "title": "https://www.uswitch.com/s3/uswitch-assets-eu/builder/q-Ct1IMQoX.js",
+      "url": "https://www.uswitch.com/s3/uswitch-assets-eu/builder/q-Ct1IMQoX.js",
+      "publish_datetime": null
+    },
+    {
+      "title": "https://www.uswitch.com/s3/uswitch-assets-eu/builder/bundle-graph-CFM1jQ5i.json",
+      "url": "https://www.uswitch.com/s3/uswitch-assets-eu/builder/bundle-graph-CFM1jQ5i.json",
+      "publish_datetime": null
+    }
+  ]
+}

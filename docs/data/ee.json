@@ -1,1 +1,108 @@
-{ "status": "ok", "generated_at": null, "items": [] }
+{
+  "status": "ok",
+  "brand": "EE",
+  "group": "Telecoms",
+  "generated_at": "2026-03-10T16:56:21.509321Z",
+  "items": [
+    {
+      "title": "iPhone 17e and iPad Air Coming to EE’s Award-winning 5G+ Network",
+      "url": "https://newsroom.ee.co.uk/iphone-17e-and-ipad-air-coming-to-ees-award-winning-5g-network/",
+      "publish_datetime": "2026-03-03T17:24:31Z"
+    },
+    {
+      "title": "SAMSUNG GALAXY S26 SERIES AVAILABLE TO PRE-ORDER ON EE’S AWARD-WINNING 5G+ NETWORK, FEATURING NEXT-GEN AI AND WORLDS FASTEST MOBILE PROCESSOR",
+      "url": "https://newsroom.ee.co.uk/samsung-galaxy-s26-series-available-to-pre-order-on-ees-award-winning-5g-network-featuring-next-gen-ai-and-worlds-fastest-mobile-processor/",
+      "publish_datetime": "2026-02-26T12:47:24Z"
+    },
+    {
+      "title": "BRITISH PUBLIC NAMES ROBERT ARAMAYO WINNER OF THE EE RISING STAR AWARD AT THE 2026 EE BAFTA FILM AWARDS",
+      "url": "https://newsroom.ee.co.uk/british-public-names-robert-aramayo-winner-of-the-ee-rising-star-award-at-the-2026-ee-bafta-film-awards/",
+      "publish_datetime": "2026-02-23T13:54:40Z"
+    },
+    {
+      "title": "JAMIE LAING AND SOPHIE HABBOO HOST HOLOGRAPHIC EXPERIENCE LIVE FROM THE EE STAGE AT THE EE BAFTA FILM AWARDS: THE BEST RED CARPET AND BACKSTAGE MOMENTS",
+      "url": "https://newsroom.ee.co.uk/jamie-laing-and-sophie-habboo-host-holographic-experience-live-from-the-ee-stage-at-the-ee-bafta-film-awards-the-best-red-carpet-and-backstage-moments/",
+      "publish_datetime": "2026-02-23T13:50:02Z"
+    },
+    {
+      "title": "EE NAMES BATH THE UK’s CINEPHILE CAPITAL AHEAD OF THE EE BAFTA FILM AWARDS",
+      "url": "https://newsroom.ee.co.uk/ee-names-bath-the-uks-cinephile-capital-ahead-of-the-ee-bafta-film-awards/",
+      "publish_datetime": "2026-02-18T12:25:53Z"
+    },
+    {
+      "title": "EE RISING STAR NOMINEES & A-LIST TALENT GATHERED AT THE GLAMOUR EE RISING STAR PARTY AHEAD OF THE 2026 EE BAFTA FILM AWARDS",
+      "url": "https://newsroom.ee.co.uk/ee-rising-star-nominees--a-list-talent-gathered-at-the-glamour-ee-rising-star-party-ahead-of-the-2026-ee-bafta-film-awards/",
+      "publish_datetime": "2026-02-12T15:28:06Z"
+    },
+    {
+      "title": "EE NAMED THE UK’S NUMBER ONE NETWORK IN TWO LANDMARK STUDIES – OFFICIAL RESULTS REVEALED",
+      "url": "https://newsroom.ee.co.uk/ee-named-the-uks-number-one-network-in-three-landmark-studies--official-results-revealed/",
+      "publish_datetime": "2026-02-04T08:00:00Z"
+    },
+    {
+      "title": "EE LAUNCHES FIRST EXPERIENCE STORE OF 2026 IN LAKESIDE WITH FORMER ENGLAND LIONESS RACHEL YANKEY OBE",
+      "url": "https://newsroom.ee.co.uk/ee-launches-first-experience-store-of-2026-in-lakeside-with-former-england-lioness-rachel-yankey-obe/",
+      "publish_datetime": "2026-01-29T11:34:49Z"
+    },
+    {
+      "title": "FROM NOT-SPOT TO HOTSPOT: EE DELIVERS UK FIRST FOR THE PEOPLE OF PENMACHNO",
+      "url": "https://newsroom.ee.co.uk/ee-delivers-uk-first-for-the-people-of-penmachno/",
+      "publish_datetime": "2026-01-27T06:00:00Z"
+    },
+    {
+      "title": "EE LAUNCHES REFURBISHED SMARTPHONE PLAN RANGE, GIVING NEW WAVE OF TECH THRIFTERS A SMARTER, MORE SUSTAINABLE WAY TO UPGRADE TO A NEW PHONE",
+      "url": "https://newsroom.ee.co.uk/ee-launches-refurbished-smartphone-plan-range-giving-new-wave-of-tech-thrifters-a-smarter-more-sustainable-way-to-upgrade-to-a-new-phone/",
+      "publish_datetime": "2026-01-22T09:03:29Z"
+    },
+    {
+      "title": "NOMINEES ANNOUNCED FOR THE EE RISING STAR AWARD AHEAD OF THE 2026 EE BAFTA FILM AWARDS",
+      "url": "https://newsroom.ee.co.uk/nominees-announced-for-the-ee-rising-star-award-ahead-of-the-2026-ee-bafta-film-awards/",
+      "publish_datetime": "2026-01-14T15:07:41Z"
+    },
+    {
+      "title": "EE SETS BENCHMARK FOR UK TECH PROTECTION WITH THE LAUNCH OF MULTI TECH COVER",
+      "url": "https://newsroom.ee.co.uk/ee-sets-benchmark-for-uk-tech-protection-with-the-launch-of-multi-tech-cover/",
+      "publish_datetime": "2026-01-13T09:00:00Z"
+    },
+    {
+      "title": "EE recruits Grime Gran and Debrett’s to help the nation fight back against Christmas scammers",
+      "url": "https://newsroom.ee.co.uk/ee-recruits-grime-gran-and-debretts-to-help-the-nation-fight-back-against-christmas-scammers/",
+      "publish_datetime": "2025-12-18T09:00:00Z"
+    },
+    {
+      "title": "EE SETS NEW STANDARD FOR IN-HOME CONNECTIVITY, AS THE UK’S FIRST MAJOR BROADBAND PROVIDER TO OFFER WIFI 7 ACROSS ALL FULL FIBRE PLANS",
+      "url": "https://newsroom.ee.co.uk/ee-sets-new-standard-for-in-home-connectivity-as-the-uks-first-major-broadband-provider-to-offer-wifi-7-across-all-full-fibre-plans/",
+      "publish_datetime": "2025-12-12T08:00:00Z"
+    },
+    {
+      "title": "THE GREAT CHRISTMAS SHUFFLE: LORRAINE KELLY AND DAUGHTER ROSIE SMITH JUGGLE HOSTING AND GUESTING DUTIES WITH THE HELP OF EE",
+      "url": "https://newsroom.ee.co.uk/the-great-christmas-shuffle-lorraine-kelly-and-daughter-rosie-smith-juggle-hosting-and-guesting-duties-with-the-help-of-ee/",
+      "publish_datetime": "2025-12-03T09:20:56Z"
+    },
+    {
+      "title": "EE BRINGS 5G+ CONNECTIVITY TO MILLIONS MORE CUSTOMERS AHEAD OF THE FESTIVE SEASON",
+      "url": "https://newsroom.ee.co.uk/ee-brings-5g-connectivity-to-millions-more-customers-ahead-of-the-festive-season/",
+      "publish_datetime": "2025-11-24T08:30:00Z"
+    },
+    {
+      "title": "EE, OFFICIAL PARTNER OF CALL OF DUTY®: BLACK OPS 7, UNVEILS NEW RANGE OF GAMING BUNDLES AND BONUS IN-GAME ITEMS",
+      "url": "https://newsroom.ee.co.uk/ee-official-partner-of-call-of-duty-black-ops-7-unveils-new-range-of-gaming-bundles-and-bonus-in-game-items/",
+      "publish_datetime": "2025-11-14T08:59:24Z"
+    },
+    {
+      "title": "EE celebrates connection in first ever Christmas campaign, Hosting & Guesting",
+      "url": "https://newsroom.ee.co.uk/ee-celebrates-connection-in-first-ever-christmas-campaign-hosting--guesting/",
+      "publish_datetime": "2025-11-12T09:51:16Z"
+    },
+    {
+      "title": "JOE ALWYN, SHEILA ATIM AND BENEDICT WONG JOIN THE BAFTA EE RISING STAR AWARD JURY PANEL TO DECIDE THE 2026 NOMINEES",
+      "url": "https://newsroom.ee.co.uk/joe-alwyn-sheila-atim-and-benedict-wong-join-the-bafta-ee-rising-star-award-jury-panel-to-decide-the-2026-nominees/",
+      "publish_datetime": "2025-11-11T12:33:41Z"
+    },
+    {
+      "title": "BT GROUP AND STARLINK PAVE THE WAY FOR HIGH-SPEED HOME BROADBAND IN THE UK'S HARDEST TO REACH PLACES",
+      "url": "https://newsroom.ee.co.uk/bt-group-and-starlink-pave-the-way-for-high-speed-home-broadband-in-the-uks-hardest-to-reach-places/",
+      "publish_datetime": "2025-11-06T06:54:55Z"
+    }
+  ]
+}

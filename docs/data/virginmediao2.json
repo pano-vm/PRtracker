@@ -1,7 +1,14 @@
 {
   "status": "ok",
-  "generated_at": "2026-03-10T07:42:47.953026Z",
+  "brand": "Virgin Media O2",
+  "group": "Telecoms",
+  "generated_at": "2026-03-10T16:55:38.657216Z",
   "items": [
+    {
+      "title": "O2 and Ontix deploy small cells to boost capacity in Bath - Virgin Media O2",
+      "url": "https://news.virginmediao2.co.uk/o2-and-ontix-deploy-small-cells-to-boost-capacity-in-bath/",
+      "publish_datetime": "2026-03-10T09:17:20Z"
+    },
     {
       "title": "AI helps Virgin Media O2 detect and flag 1 billion suspected scam and spam calls to customers - Virgin Media O2",
       "url": "https://news.virginmediao2.co.uk/ai-helps-virgin-media-o2-detect-and-flag-1-billion-suspected-scam-and-spam-calls-to-customers/",
@@ -31,11 +38,6 @@
       "title": "March giveaways on Priority from O2: Win a Mega Tech Bundle, get discounted beauty treatments, free tastecard memberships, Greggs sausage rolls and more - Virgin Media O2",
       "url": "https://news.virginmediao2.co.uk/march-giveaways-on-priority-from-o2-win-a-mega-tech-bundle-get-discounted-beauty-treatments-free-tastecard-memberships-greggs-sausage-rolls-and-more/",
       "publish_datetime": "2026-03-02T09:37:16Z"
-    },
-    {
-      "title": "O2 doubles down on mobile network improvements in 2026 with £700m investment - Virgin Media O2",
-      "url": "https://news.virginmediao2.co.uk/o2-doubles-down-on-mobile-network-improvements-in-2026-with-700m-investment/",
-      "publish_datetime": "2026-03-02T08:00:54Z"
     },
     {
       "title": "Q4/FY25 financial results - Virgin Media O2",
