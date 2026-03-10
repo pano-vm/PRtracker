@@ -268,7 +268,7 @@ def build_feed(key: str) -> dict:
 
     dated.sort(key=lambda i: i["publish_datetime"], reverse=True)
 
-    final = (dated + undated)[:20]
+    final = (dated + undated)[:10]
 
     return {
         "status": "ok",
