@@ -1,6 +1,14 @@
 const brands = [
-  { key: "vodafone", name: "Vodafone", file: "./data/vodafone.json" },
-  { key: "virginmediao2", name: "Virgin Media O2", file: "./data/virginmediao2.json" },
+  { key: "virginmediao2", name: "Virgin Media O2", group: "Telecoms", file: "./data/virginmediao2.json" },
+  { key: "vodafone", name: "Vodafone", group: "Telecoms", file: "./data/vodafone.json" },
+  { key: "ee", name: "EE", group: "Telecoms", file: "./data/ee.json" },
+  { key: "three", name: "Three", group: "Telecoms", file: "./data/three.json" },
+  { key: "bt", name: "BT", group: "Telecoms", file: "./data/bt.json" },
+  { key: "sky", name: "Sky", group: "Telecoms", file: "./data/sky.json" },
+
+  { key: "comparethemarket", name: "Compare the Market", group: "Affiliates", file: "./data/comparethemarket.json" },
+  { key: "moneysavingexpert", name: "MoneySavingExpert", group: "Affiliates", file: "./data/moneysavingexpert.json" },
+  { key: "uswitch", name: "uSwitch", group: "Affiliates", file: "./data/uswitch.json" },
 ];
 
 function el(tag, attrs = {}, children = []) {
@@ -13,7 +21,11 @@ function el(tag, attrs = {}, children = []) {
 function formatDate(iso) {
   if (!iso) return "Date unavailable";
   const d = new Date(iso);
-  return isNaN(d.getTime()) ? "Date unavailable" : d.toLocaleString("en-GB");
+  return isNaN(d.getTime()) ? "Date unavailable" : d.toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric"
+  });
 }
 
 async function loadBrand(brand) {
@@ -24,66 +36,80 @@ async function loadBrand(brand) {
 
 function renderBrand(brandName, payload) {
   const card = el("article", { class: "card" }, [
-    el("h2", {}, [brandName]),
+    el("div", { class: "card-head" }, [
+      el("h3", { class: "card-title" }, [brandName]),
+      el("span", { class: `status ${payload.status === "ok" ? "ok" : "error"}` }, [
+        payload.status === "ok" ? "Updated" : "Failed"
+      ])
+    ])
   ]);
 
   if (payload.status !== "ok") {
-    card.appendChild(el("p", { class: "error" }, [`Failed: ${payload.error || "Unknown error"}`]));
+    card.appendChild(el("p", { class: "error-text" }, [payload.error || "Could not load data"]));
     return card;
   }
 
   const items = payload.items || [];
   const latest = items[0];
 
-  card.appendChild(el("div", { class: "latest" }, [
-    el("h3", {}, ["Latest"]),
-    latest
-      ? el("p", {}, [
-          el("a", { href: latest.url, target: "_blank", rel: "noreferrer" }, [latest.title]),
-          el("span", { class: "muted" }, [` - ${formatDate(latest.publish_datetime)}`]),
-        ])
-      : el("p", { class: "muted" }, ["No items yet"]),
-  ]));
+  const latestBlock = el("div", { class: "latest-block" }, [
+    el("div", { class: "section-label" }, ["Latest press release"]),
+  ]);
 
-  card.appendChild(el("h3", {}, ["Last 20"]));
-
-  const list = el("ol", { class: "list" }, []);
-  items.slice(0, 20).forEach((it) => {
-    list.appendChild(el("li", {}, [
-      el("a", { href: it.url, target: "_blank", rel: "noreferrer" }, [it.title]),
-      el("span", { class: "muted" }, [` - ${formatDate(it.publish_datetime)}`]),
-    ]));
-  });
-  card.appendChild(list);
-
-  if (payload.generated_at) {
-    card.appendChild(el("p", { class: "muted small" }, [`Updated: ${formatDate(payload.generated_at)}`]));
+  if (latest) {
+    latestBlock.appendChild(
+      el("a", { href: latest.url, target: "_blank", rel: "noreferrer", class: "latest-link" }, [latest.title])
+    );
+    latestBlock.appendChild(
+      el("div", { class: "latest-date" }, [formatDate(latest.publish_datetime)])
+    );
+  } else {
+    latestBlock.appendChild(el("div", { class: "muted" }, ["No items found"]));
   }
 
+  card.appendChild(latestBlock);
+  card.appendChild(el("div", { class: "section-label list-label" }, ["Last 20"]));
+
+  const list = el("ol", { class: "press-list" }, []);
+  items.slice(0, 20).forEach((it) => {
+    list.appendChild(
+      el("li", { class: "press-item" }, [
+        el("a", { href: it.url, target: "_blank", rel: "noreferrer" }, [it.title]),
+        el("span", { class: "item-date" }, [formatDate(it.publish_datetime)])
+      ])
+    );
+  });
+
+  card.appendChild(list);
   return card;
 }
 
 async function main() {
-  const container = document.getElementById("brands");
-  container.innerHTML = "";
+  const telecomsContainer = document.getElementById("telecoms-grid");
+  const affiliatesContainer = document.getElementById("affiliates-grid");
 
-  let newestTimestamp = null;
+  telecomsContainer.innerHTML = "";
+  affiliatesContainer.innerHTML = "";
 
-  for (const b of brands) {
+  for (const brand of brands) {
     try {
-      const payload = await loadBrand(b);
-      if (payload.generated_at) {
-        const t = new Date(payload.generated_at).toISOString();
-        if (!newestTimestamp || t > newestTimestamp) newestTimestamp = t;
+      const payload = await loadBrand(brand);
+      const card = renderBrand(brand.name, payload);
+
+      if (brand.group === "Telecoms") {
+        telecomsContainer.appendChild(card);
+      } else {
+        affiliatesContainer.appendChild(card);
       }
-      container.appendChild(renderBrand(b.name, payload));
     } catch (e) {
-      container.appendChild(renderBrand(b.name, { status: "error", error: String(e) }));
+      const card = renderBrand(brand.name, { status: "error", error: String(e), items: [] });
+      if (brand.group === "Telecoms") {
+        telecomsContainer.appendChild(card);
+      } else {
+        affiliatesContainer.appendChild(card);
+      }
     }
   }
-
-  document.getElementById("lastUpdated").textContent =
-    newestTimestamp ? `Last updated: ${formatDate(newestTimestamp)}` : "";
 }
 
 main();
