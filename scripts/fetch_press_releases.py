@@ -185,6 +185,17 @@ def parse_title(html: str) -> str | None:
         return t
     return None
 
+def normalise_title(title: str) -> str:
+    if not title:
+        return title
+
+    # If the title is mostly uppercase, convert it to title case
+    letters = [c for c in title if c.isalpha()]
+    if letters and sum(1 for c in letters if c.isupper()) / len(letters) > 0.8:
+        return title.title()
+
+    return title
+
 def parse_publish_datetime(html: str) -> str | None:
     # Try schema.org datePublished (very common)
     m = re.search(r'"datePublished"\s*:\s*"([^"]+)"', html, flags=re.I)
@@ -246,6 +257,7 @@ def build_feed(key: str) -> dict:
         try:
             article_html = fetch(url)
             title = parse_title(article_html) or url
+            title = normalise_title(title)
             published = parse_publish_datetime(article_html)
 
             if not should_keep_item(key, title, url):
