@@ -2,7 +2,7 @@
   "status": "ok",
   "brand": "Sky",
   "group": "Telecoms",
-  "generated_at": "2026-03-10T16:58:07.878414Z",
+  "generated_at": "2026-03-10T17:16:22.310020Z",
   "items": [
     {
       "title": "https://www.skygroup.sky/_next/static/css/b16c487220656f86.css",
@@ -52,31 +52,6 @@
     {
       "title": "Assets | Press",
       "url": "https://www.skygroup.sky/press/assets#tv-imagery",
-      "publish_datetime": null
-    },
-    {
-      "title": "Social media | Press",
-      "url": "https://www.skygroup.sky/press/social-media",
-      "publish_datetime": null
-    },
-    {
-      "title": "Our governance | About",
-      "url": "https://www.skygroup.sky/about/our-governance/",
-      "publish_datetime": null
-    },
-    {
-      "title": "Our governance | About",
-      "url": "https://www.skygroup.sky/about/our-governance#modern-slavery",
-      "publish_datetime": null
-    },
-    {
-      "title": "Accessibility",
-      "url": "https://www.skygroup.sky/accessibility",
-      "publish_datetime": null
-    },
-    {
-      "title": "Sitemap",
-      "url": "https://www.skygroup.sky/sitemap",
       "publish_datetime": null
     }
   ]

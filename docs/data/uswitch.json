@@ -2,7 +2,7 @@
   "status": "ok",
   "brand": "uSwitch",
   "group": "Affiliates",
-  "generated_at": "2026-03-10T16:58:55.785031Z",
+  "generated_at": "2026-03-10T17:17:09.797868Z",
   "items": [
     {
       "title": "Energy price cap February 2026: how much is it and how does it work? - Uswitch",
@@ -52,56 +52,6 @@
     {
       "title": "https://www.uswitch.com/s3/uswitch-includes-production/img/pinned-tab-e307ea053e.svg",
       "url": "https://www.uswitch.com/s3/uswitch-includes-production/img/pinned-tab-e307ea053e.svg",
-      "publish_datetime": null
-    },
-    {
-      "title": "https://www.uswitch.com/s3/uswitch-includes-production/includes/astro/assets/preflight.css?version=1",
-      "url": "https://www.uswitch.com/s3/uswitch-includes-production/includes/astro/assets/preflight.css?version=1",
-      "publish_datetime": null
-    },
-    {
-      "title": "https://www.uswitch.com/s3/uswitch-includes-production/includes/astro/_astro/cookie.fiojhKbp.css",
-      "url": "https://www.uswitch.com/s3/uswitch-includes-production/includes/astro/_astro/cookie.fiojhKbp.css",
-      "publish_datetime": null
-    },
-    {
-      "title": "https://www.uswitch.com/s3/uswitch-includes-production/includes/astro/_astro/cookie.iRb2gmIT.css",
-      "url": "https://www.uswitch.com/s3/uswitch-includes-production/includes/astro/_astro/cookie.iRb2gmIT.css",
-      "publish_datetime": null
-    },
-    {
-      "title": "https://www.uswitch.com/s3/uswitch-includes-production/includes/astro/_astro/footer.DDlLuUUo.css",
-      "url": "https://www.uswitch.com/s3/uswitch-includes-production/includes/astro/_astro/footer.DDlLuUUo.css",
-      "publish_datetime": null
-    },
-    {
-      "title": "https://www.uswitch.com/s3/uswitch-includes-production/includes/astro/_astro/header.Cv9qBRcJ.css",
-      "url": "https://www.uswitch.com/s3/uswitch-includes-production/includes/astro/_astro/header.Cv9qBRcJ.css",
-      "publish_datetime": null
-    },
-    {
-      "title": "Broadband press releases - Uswitch",
-      "url": "https://www.uswitch.com/media-centre/category/broadband/",
-      "publish_datetime": null
-    },
-    {
-      "title": "https://www.uswitch.com/s3/uswitch-assets-eu/builder/q-B2tLmpaK.js",
-      "url": "https://www.uswitch.com/s3/uswitch-assets-eu/builder/q-B2tLmpaK.js",
-      "publish_datetime": null
-    },
-    {
-      "title": "https://www.uswitch.com/s3/uswitch-assets-eu/builder/style-BZh3gLRg.css",
-      "url": "https://www.uswitch.com/s3/uswitch-assets-eu/builder/style-BZh3gLRg.css",
-      "publish_datetime": null
-    },
-    {
-      "title": "https://www.uswitch.com/s3/uswitch-assets-eu/builder/q-Ct1IMQoX.js",
-      "url": "https://www.uswitch.com/s3/uswitch-assets-eu/builder/q-Ct1IMQoX.js",
-      "publish_datetime": null
-    },
-    {
-      "title": "https://www.uswitch.com/s3/uswitch-assets-eu/builder/bundle-graph-CFM1jQ5i.json",
-      "url": "https://www.uswitch.com/s3/uswitch-assets-eu/builder/bundle-graph-CFM1jQ5i.json",
       "publish_datetime": null
     }
   ]
