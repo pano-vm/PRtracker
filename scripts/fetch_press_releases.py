@@ -6,20 +6,139 @@ from html import unescape
 from urllib.parse import urljoin, urlparse, urlunparse, parse_qsl, urlencode
 from urllib.request import Request, urlopen
 
+TELECOM_KEYWORDS = [
+    "broadband",
+    "broad band",
+    "fibre",
+    "fiber",
+    "full fibre",
+    "full fiber",
+    "internet",
+    "wifi",
+    "wi-fi",
+    "router",
+    "gigabit",
+    "gig1",
+    "gig2",
+    "gigafast",
+    "speed",
+    "network",
+    "connectivity",
+    "mobile",
+    "mobiles",
+    "mobile phone",
+    "data",
+    "4g",
+    "5g",
+    "telecom",
+    "telecoms",
+    "telecommunications",
+    "tv",
+    "streaming",
+    "bundle",
+    "bundles",
+    "home phone",
+    "sim",
+    "sim-only",
+    "broadband deal",
+    "phone deal",
+    "o2",
+    "virgin",
+]
+
 APPROVED = {
-    "vodafone": {
-        "brand": "Vodafone",
-        "listing": "https://www.vodafone.co.uk/newscentre/press-release/",
-        "allowed_domains": {"www.vodafone.co.uk"},
-    },
     "virginmediao2": {
         "brand": "Virgin Media O2",
-        "listing": "https://news.virginmediao2.co.uk/news-views/",
+        "group": "Telecoms",
+        "listing_urls": [
+            "https://news.virginmediao2.co.uk/news-views/"
+        ],
         "allowed_domains": {"news.virginmediao2.co.uk"},
+    },
+    "vodafone": {
+        "brand": "Vodafone",
+        "group": "Telecoms",
+        "listing_urls": [
+            "https://www.vodafone.co.uk/newscentre/press-release/"
+        ],
+        "allowed_domains": {"www.vodafone.co.uk"},
+    },
+    "ee": {
+        "brand": "EE",
+        "group": "Telecoms",
+        "listing_urls": [
+            "https://newsroom.ee.co.uk/?h=1&d=blog"
+        ],
+        "allowed_domains": {"newsroom.ee.co.uk"},
+    },
+    "three": {
+        "brand": "Three",
+        "group": "Telecoms",
+        "listing_urls": [
+            "https://www.threemediacentre.co.uk/press-release-browser/",
+            "https://www.threemediacentre.co.uk/press-release-browser/page/2/",
+        ],
+        "allowed_domains": {"www.threemediacentre.co.uk"},
+    },
+    "bt": {
+        "brand": "BT",
+        "group": "Telecoms",
+        "listing_urls": [
+            "https://newsroom.bt.com/?h=1&d=excludehomepage"
+        ],
+        "allowed_domains": {"newsroom.bt.com"},
+    },
+    "sky": {
+        "brand": "Sky",
+        "group": "Telecoms",
+        "listing_urls": [
+            "https://www.skygroup.sky/press/newsroom"
+        ],
+        "allowed_domains": {"www.skygroup.sky"},
+    },
+    "comparethemarket": {
+        "brand": "Compare the Market",
+        "group": "Affiliates",
+        "listing_urls": [
+            "https://www.comparethemarket.com/inside-ctm/media-centre/"
+        ],
+        "allowed_domains": {"www.comparethemarket.com"},
+    },
+    "moneysavingexpert": {
+        "brand": "MoneySavingExpert",
+        "group": "Affiliates",
+        "listing_urls": [
+            "https://www.moneysavingexpert.com/pressoffice/",
+            "https://www.moneysavingexpert.com/pressoffice/?page=2",
+        ],
+        "allowed_domains": {"www.moneysavingexpert.com"},
+    },
+    "uswitch": {
+        "brand": "uSwitch",
+        "group": "Affiliates",
+        "listing_urls": [
+            "https://www.uswitch.com/media-centre/category/broadband/",
+            "https://www.uswitch.com/media-centre/category/mobiles/",
+        ],
+        "allowed_domains": {"www.uswitch.com"},
     },
 }
 
 UA = "PRtracker/1.0 (+GitHub Actions)"
+
+def contains_telecom_keyword(text: str) -> bool:
+    if not text:
+        return False
+    t = text.lower()
+    return any(keyword in t for keyword in TELECOM_KEYWORDS)
+
+
+def should_keep_item(brand_key: str, title: str, url: str) -> bool:
+    # Only filter the affiliate sites that contain mixed-topic press releases
+    if brand_key in {"comparethemarket", "moneysavingexpert"}:
+        combined = f"{title} {url}"
+        return contains_telecom_keyword(combined)
+    return True
 
 def fetch(url: str) -> str:
     req = Request(url, headers={"User-Agent": UA})
@@ -102,15 +221,40 @@ def normalise_iso(value: str) -> str | None:
 
 def build_feed(key: str) -> dict:
     cfg = APPROVED[key]
-    listing_html = fetch(cfg["listing"])
-    candidates = extract_links(listing_html, cfg["listing"], cfg["allowed_domains"])[:60]
+
+    candidate_urls = []
+    for listing_url in cfg["listing_urls"]:
+        try:
+            listing_html = fetch(listing_url)
+            links = extract_links(listing_html, listing_url, cfg["allowed_domains"])
+            candidate_urls.extend(links[:40])
+        except Exception:
+            continue
+
+    # Deduplicate candidate URLs
+    seen = set()
+    deduped_candidates = []
+    for u in candidate_urls:
+        if u not in seen:
+            seen.add(u)
+            deduped_candidates.append(u)
 
     items = []
-    for url in candidates:
+    seen_item_urls = set()
+
+    for url in deduped_candidates[:80]:
         try:
             article_html = fetch(url)
             title = parse_title(article_html) or url
             published = parse_publish_datetime(article_html)
+
+            if not should_keep_item(key, title, url):
+                continue
+
+            if url in seen_item_urls:
+                continue
+            seen_item_urls.add(url)
+
             items.append({
                 "title": title,
                 "url": url,
@@ -119,20 +263,17 @@ def build_feed(key: str) -> dict:
         except Exception:
             continue
 
-    # Sort: dated first newest to oldest, undated last
-    def sort_key(it):
-        pd = it.get("publish_datetime")
-        return (0, pd) if pd else (1, "")
-    items.sort(key=sort_key, reverse=False)
-    # items currently oldest first for dated. Reverse dated section by sorting properly:
     dated = [i for i in items if i.get("publish_datetime")]
     undated = [i for i in items if not i.get("publish_datetime")]
+
     dated.sort(key=lambda i: i["publish_datetime"], reverse=True)
 
     final = (dated + undated)[:20]
 
     return {
         "status": "ok",
+        "brand": cfg["brand"],
+        "group": cfg["group"],
         "generated_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
         "items": final,
     }
