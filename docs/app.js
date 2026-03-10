@@ -68,10 +68,10 @@ function renderBrand(brandName, payload) {
   }
 
   card.appendChild(latestBlock);
-  card.appendChild(el("div", { class: "section-label list-label" }, ["Last 20"]));
+  card.appendChild(el("div", { class: "section-label list-label" }, ["Latest 10"]));
 
   const list = el("ol", { class: "press-list" }, []);
-  items.slice(0, 20).forEach((it) => {
+  items.slice(0, 10).forEach((it) => {
     list.appendChild(
       el("li", { class: "press-item" }, [
         el("a", { href: it.url, target: "_blank", rel: "noreferrer" }, [it.title]),
