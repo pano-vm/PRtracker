@@ -240,6 +240,39 @@ def extract_bt_article_links(html: str, base: str) -> list[str]:
 
     return deduped
 
+def extract_sky_article_links(html: str, base: str) -> list[str]:
+    links = []
+
+    # Try to capture likely newsroom article URLs only
+    matches = re.findall(
+        r'href=["\'](https://www\.skygroup\.sky/press/[^"\']+)["\']',
+        html,
+        flags=re.I | re.S,
+    )
+
+    blocked = {
+        "https://www.skygroup.sky/press",
+        "https://www.skygroup.sky/press/newsroom",
+        "https://www.skygroup.sky/press/contacts",
+        "https://www.skygroup.sky/press/assets",
+        "https://www.skygroup.sky/press/social-media",
+    }
+
+    for href in matches:
+        url = strip_tracking(unescape(href)).rstrip("/")
+        if url in blocked:
+            continue
+        links.append(url)
+
+    seen = set()
+    deduped = []
+    for url in links:
+        if url not in seen:
+            seen.add(url)
+            deduped.append(url)
+
+    return deduped
+
 def parse_title(html: str) -> str | None:
     match = re.search(
         r'<meta[^>]+property=["\']og:title["\'][^>]+content=["\'](.*?)["\']',
@@ -351,6 +384,21 @@ def is_valid_article_url(brand_key: str, url: str) -> bool:
         ]
         if lower.rstrip("/") in [u.rstrip("/") for u in blocked_bt]:
             return False
+        if brand_key == "sky":
+        blocked_sky = [
+            "https://www.skygroup.sky/press",
+            "https://www.skygroup.sky/press/newsroom",
+            "https://www.skygroup.sky/press/contacts",
+            "https://www.skygroup.sky/press/assets",
+            "https://www.skygroup.sky/press/social-media",
+            "https://www.skygroup.sky/about",
+            "https://www.skygroup.sky/what-we-do",
+            "https://www.skygroup.sky/impact",
+            "https://www.skygroup.sky/careers",
+            "https://www.skygroup.sky/our-governance",
+        ]
+        if lower.rstrip("/") in [u.rstrip("/") for u in blocked_sky]:
+            return False
 
     return True
 
@@ -366,10 +414,16 @@ def build_feed(key: str) -> dict:
                 links = extract_vodafone_press_release_links(listing_html, listing_url)
             elif key == "bt":
                 links = extract_bt_article_links(listing_html, listing_url)
+            elif key == "sky":
+                links = extract_sky_article_links(listing_html, listing_url)
             else:
                 links = extract_links(listing_html, listing_url, cfg["allowed_domains"])
 
             candidate_urls.extend(links[:40])
+            if key == "sky":
+                print("sky links found:", len(links))
+                for link in links[:10]:
+                    print("sky candidate:", link)
         except Exception:
             continue
 
