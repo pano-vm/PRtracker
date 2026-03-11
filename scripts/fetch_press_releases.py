@@ -46,6 +46,9 @@ TELECOM_KEYWORDS = [
     "phone deal",
     "o2",
     "virgin",
+    "ofcom",
+    "price hike",
+    "mid-contract price hikes",
 ]
 
 APPROVED = {
@@ -98,14 +101,14 @@ APPROVED = {
         ],
         "allowed_domains": {"www.skygroup.sky"},
     },
-    "comparethemarket": {
-        "brand": "Compare the Market",
-        "group": "Affiliates",
-        "listing_urls": [
-            "https://www.comparethemarket.com/inside-ctm/media-centre/"
-        ],
-        "allowed_domains": {"www.comparethemarket.com"},
-    },
+    # "comparethemarket": {
+    #     "brand": "Compare the Market",
+    #     "group": "Affiliates",
+    #     "listing_urls": [
+    #         "https://www.comparethemarket.com/inside-ctm/media-centre/"
+    #     ],
+    #     "allowed_domains": {"www.comparethemarket.com"},
+    # },
     "moneysavingexpert": {
         "brand": "MoneySavingExpert",
         "group": "Affiliates",
@@ -125,8 +128,6 @@ APPROVED = {
         "allowed_domains": {"www.uswitch.com"},
     },
 }
-
-UA = "PRtracker/1.0 (+GitHub Actions)"
 
 
 def contains_telecom_keyword(text: str) -> bool:
@@ -253,36 +254,42 @@ def extract_bt_article_links(html: str, base: str) -> list[str]:
     return deduped
 
 
-def extract_comparethemarket_listing_items(html: str, base: str) -> list[dict]:
+def extract_moneysavingexpert_listing_items(html: str, base: str) -> list[dict]:
     items = []
 
-    matches = re.findall(
-        r'href="(https://www\.comparethemarket\.com/inside-ctm/media-centre/[^"]+/)"',
+    matches = re.finditer(
+        r'data-component-props="([^"]*?&quot;title&quot;:&quot;.*?&quot;url&quot;:&quot;.*?&quot;date&quot;:&quot;.*?&quot;[^"]*)"',
         html,
-        flags=re.I,
+        flags=re.I | re.S,
     )
 
     seen = set()
 
-    for url in matches:
-        clean_url = strip_tracking(unescape(url)).rstrip("/")
+    for match in matches:
+        raw_props = match.group(1)
+        props = unescape(raw_props).replace("&quot;", '"')
 
-        if clean_url == "https://www.comparethemarket.com/inside-ctm/media-centre":
+        title_match = re.search(r'"title":"(.*?)"', props, flags=re.S)
+        url_match = re.search(r'"url":"(.*?)"', props, flags=re.S)
+        date_match = re.search(r'"date":"(.*?)"', props, flags=re.S)
+
+        if not title_match or not url_match:
             continue
 
-        if clean_url in seen:
+        title = unescape(title_match.group(1)).strip()
+        rel_url = unescape(url_match.group(1)).strip()
+        date_value = unescape(date_match.group(1)).strip() if date_match else None
+
+        url = strip_tracking(urljoin(base, rel_url)).rstrip("/")
+
+        if url in seen:
             continue
-
-        seen.add(clean_url)
-
-        slug = clean_url.rsplit("/", 1)[-1]
-
-        title = slug.replace("-", " ").strip().title()
+        seen.add(url)
 
         items.append({
             "title": title,
-            "url": clean_url,
-            "publish_datetime": None,
+            "url": url,
+            "publish_datetime": normalise_iso(date_value) if date_value else None,
         })
 
     return items
@@ -525,19 +532,15 @@ def build_feed(key: str) -> dict:
             "items": final,
         }
 
-    if key == "comparethemarket":
+    if key == "moneysavingexpert":
         items = []
         for listing_url in cfg["listing_urls"]:
             try:
                 listing_html = fetch(listing_url)
-                print("comparethemarket html length:", len(listing_html))
-                print("comparethemarket has recent section:", "Recent press releases" in listing_html)
-                print("comparethemarket page title match:", "<title>Media contacts | Compare the Market</title>" in listing_html)
-                print("comparethemarket first 500 chars:", repr(listing_html[:500]))
-                listing_items = extract_comparethemarket_listing_items(listing_html, listing_url)
+                listing_items = extract_moneysavingexpert_listing_items(listing_html, listing_url)
                 items.extend(listing_items)
             except Exception as e:
-                print("comparethemarket fetch error:", repr(e))
+                print("moneysavingexpert fetch error:", repr(e))
                 continue
 
         seen = set()
@@ -547,16 +550,16 @@ def build_feed(key: str) -> dict:
                 seen.add(item["url"])
                 deduped.append(item)
 
-        print("comparethemarket extracted:", len(deduped))
-        for item in deduped[:10]:
-            print("comparethemarket item:", item["title"], "|", item["url"])
-
         deduped = [
             item for item in deduped
             if should_keep_item(key, item["title"], item["url"])
         ]
 
-        final = deduped[:10]
+        dated = [item for item in deduped if item.get("publish_datetime")]
+        undated = [item for item in deduped if not item.get("publish_datetime")]
+
+        dated.sort(key=lambda item: item["publish_datetime"], reverse=True)
+        final = (dated + undated)[:10]
 
         return {
             "status": "ok",
