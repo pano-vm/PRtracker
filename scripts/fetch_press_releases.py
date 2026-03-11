@@ -92,7 +92,7 @@ APPROVED = {
         "brand": "Sky",
         "group": "Telecoms",
         "listing_urls": [
-            "https://www.skygroup.sky/press/newsroom"
+            "https://www.skygroup.sky/api/search?searchTerm=&filterBy=&userLocale=en-gb&currentPage=0"
         ],
         "allowed_domains": {"www.skygroup.sky"},
     },
@@ -172,7 +172,7 @@ def extract_links(html: str, base: str, allowed_domains: set[str]) -> list[str]:
         if href.startswith("#"):
             continue
         if href.lower().startswith("javascript:") or href.lower().startswith("mailto:"):
-            continue
+                continue
 
         full = urljoin(base, unescape(href))
         full = strip_tracking(full)
@@ -240,36 +240,28 @@ def extract_bt_article_links(html: str, base: str) -> list[str]:
     return deduped
 
 
-def extract_sky_article_links(html: str, base: str) -> list[str]:
-    links = []
-    matches = re.findall(
-        r'href=["\'](https://www\.skygroup\.sky/press/[^"\']+)["\']',
-        html,
-        flags=re.I | re.S,
-    )
+def extract_sky_api_items(api_url: str) -> list[dict]:
+    html = fetch(api_url)
+    data = json.loads(html)
+    results = data.get("results", [])
 
-    blocked = {
-        "https://www.skygroup.sky/press",
-        "https://www.skygroup.sky/press/newsroom",
-        "https://www.skygroup.sky/press/contacts",
-        "https://www.skygroup.sky/press/assets",
-        "https://www.skygroup.sky/press/social-media",
-    }
+    items = []
+    for result in results:
+        title = (result.get("title") or "").strip()
+        publish_date = result.get("publishDate")
+        slug = result.get("slug") or ""
 
-    for href in matches:
-        url = strip_tracking(unescape(href)).rstrip("/")
-        if url in blocked:
+        if not title or not slug:
             continue
-        links.append(url)
 
-    seen = set()
-    deduped = []
-    for url in links:
-        if url not in seen:
-            seen.add(url)
-            deduped.append(url)
+        url = urljoin("https://www.skygroup.sky", slug)
+        items.append({
+            "title": title,
+            "url": strip_tracking(url),
+            "publish_datetime": normalise_iso(publish_date) if publish_date else None,
+        })
 
-    return deduped
+    return items
 
 
 def parse_title(html: str) -> str | None:
@@ -324,6 +316,9 @@ def parse_publish_datetime(html: str) -> str | None:
 
 
 def normalise_iso(value: str) -> str | None:
+    if not value:
+        return None
+
     value = value.strip()
 
     try:
@@ -385,27 +380,32 @@ def is_valid_article_url(brand_key: str, url: str) -> bool:
         if lower.rstrip("/") in [u.rstrip("/") for u in blocked_bt]:
             return False
 
-    if brand_key == "sky":
-        blocked_sky = [
-            "https://www.skygroup.sky/press",
-            "https://www.skygroup.sky/press/newsroom",
-            "https://www.skygroup.sky/press/contacts",
-            "https://www.skygroup.sky/press/assets",
-            "https://www.skygroup.sky/press/social-media",
-            "https://www.skygroup.sky/about",
-            "https://www.skygroup.sky/what-we-do",
-            "https://www.skygroup.sky/impact",
-            "https://www.skygroup.sky/careers",
-            "https://www.skygroup.sky/our-governance",
-        ]
-        if lower.rstrip("/") in [u.rstrip("/") for u in blocked_sky]:
-            return False
-
     return True
 
 
 def build_feed(key: str) -> dict:
     cfg = APPROVED[key]
+
+    if key == "sky":
+        items = extract_sky_api_items(cfg["listing_urls"][0])
+        items = [
+            item for item in items
+            if should_keep_item(key, item["title"], item["url"])
+        ]
+
+        dated = [item for item in items if item.get("publish_datetime")]
+        undated = [item for item in items if not item.get("publish_datetime")]
+
+        dated.sort(key=lambda item: item["publish_datetime"], reverse=True)
+        final = (dated + undated)[:10]
+
+        return {
+            "status": "ok",
+            "brand": cfg["brand"],
+            "group": cfg["group"],
+            "generated_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+            "items": final,
+        }
 
     candidate_urls = []
     for listing_url in cfg["listing_urls"]:
@@ -415,17 +415,10 @@ def build_feed(key: str) -> dict:
                 links = extract_vodafone_press_release_links(listing_html, listing_url)
             elif key == "bt":
                 links = extract_bt_article_links(listing_html, listing_url)
-            elif key == "sky":
-                links = extract_sky_article_links(listing_html, listing_url)
             else:
                 links = extract_links(listing_html, listing_url, cfg["allowed_domains"])
 
             candidate_urls.extend(links[:40])
-
-            if key == "sky":
-                print("sky links found:", len(links))
-                for link in links[:10]:
-                    print("sky candidate:", link)
         except Exception:
             continue
 
