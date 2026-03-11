@@ -172,7 +172,7 @@ def extract_links(html: str, base: str, allowed_domains: set[str]) -> list[str]:
         if href.startswith("#"):
             continue
         if href.lower().startswith("javascript:") or href.lower().startswith("mailto:"):
-                continue
+            continue
 
         full = urljoin(base, unescape(href))
         full = strip_tracking(full)
@@ -240,9 +240,40 @@ def extract_bt_article_links(html: str, base: str) -> list[str]:
     return deduped
 
 
+def extract_uswitch_article_links(html: str, base: str) -> list[str]:
+    links = []
+
+    matches = re.findall(
+        r'<a[^>]+href=["\'](/media-centre/[^"\']+)["\'][^>]*class=["\'][^"\']*type-heading-xs[^"\']*["\']',
+        html,
+        flags=re.I | re.S,
+    )
+
+    for href in matches:
+        url = strip_tracking(urljoin(base, unescape(href)))
+
+        if urlparse(url).netloc != "www.uswitch.com":
+            continue
+        if "/media-centre/category/" in url:
+            continue
+        if "?page=" in url:
+            continue
+
+        links.append(url)
+
+    seen = set()
+    deduped = []
+    for url in links:
+        if url not in seen:
+            seen.add(url)
+            deduped.append(url)
+
+    return deduped
+
+
 def extract_sky_api_items(api_url: str) -> list[dict]:
-    html = fetch(api_url)
-    data = json.loads(html)
+    raw = fetch(api_url)
+    data = json.loads(raw)
     results = data.get("results", [])
 
     items = []
@@ -380,6 +411,16 @@ def is_valid_article_url(brand_key: str, url: str) -> bool:
         if lower.rstrip("/") in [u.rstrip("/") for u in blocked_bt]:
             return False
 
+    if brand_key == "uswitch":
+        if "/media-centre/category/" in lower:
+            return False
+        if lower.rstrip("/") in [
+            "https://www.uswitch.com/media-centre",
+            "https://www.uswitch.com/media-centre/category/broadband",
+            "https://www.uswitch.com/media-centre/category/mobiles",
+        ]:
+            return False
+
     return True
 
 
@@ -415,6 +456,8 @@ def build_feed(key: str) -> dict:
                 links = extract_vodafone_press_release_links(listing_html, listing_url)
             elif key == "bt":
                 links = extract_bt_article_links(listing_html, listing_url)
+            elif key == "uswitch":
+                links = extract_uswitch_article_links(listing_html, listing_url)
             else:
                 links = extract_links(listing_html, listing_url, cfg["allowed_domains"])
 
