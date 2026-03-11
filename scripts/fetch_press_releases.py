@@ -216,10 +216,9 @@ def extract_vodafone_press_release_links(html: str, base: str) -> list[str]:
 
     return deduped
 
+
 def extract_bt_article_links(html: str, base: str) -> list[str]:
     links = []
-
-    # BT article links are in anchors with class "text_latestnews_more"
     matches = re.findall(
         r'<a[^>]+class=["\'][^"\']*text_latestnews_more[^"\']*["\'][^>]+href=["\'](.*?)["\']',
         html,
@@ -240,10 +239,9 @@ def extract_bt_article_links(html: str, base: str) -> list[str]:
 
     return deduped
 
+
 def extract_sky_article_links(html: str, base: str) -> list[str]:
     links = []
-
-    # Try to capture likely newsroom article URLs only
     matches = re.findall(
         r'href=["\'](https://www\.skygroup\.sky/press/[^"\']+)["\']',
         html,
@@ -272,6 +270,7 @@ def extract_sky_article_links(html: str, base: str) -> list[str]:
             deduped.append(url)
 
     return deduped
+
 
 def parse_title(html: str) -> str | None:
     match = re.search(
@@ -376,6 +375,7 @@ def is_valid_article_url(brand_key: str, url: str) -> bool:
     if brand_key == "vodafone":
         if lower.rstrip("/") == "https://www.vodafone.co.uk/newscentre/press-release":
             return False
+
     if brand_key == "bt":
         blocked_bt = [
             "https://newsroom.bt.com/",
@@ -384,19 +384,20 @@ def is_valid_article_url(brand_key: str, url: str) -> bool:
         ]
         if lower.rstrip("/") in [u.rstrip("/") for u in blocked_bt]:
             return False
-        if brand_key == "sky":
-            blocked_sky = [
-                "https://www.skygroup.sky/press",
-                "https://www.skygroup.sky/press/newsroom",
-                "https://www.skygroup.sky/press/contacts",
-                "https://www.skygroup.sky/press/assets",
-                "https://www.skygroup.sky/press/social-media",
-                "https://www.skygroup.sky/about",
-                "https://www.skygroup.sky/what-we-do",
-                "https://www.skygroup.sky/impact",
-                "https://www.skygroup.sky/careers",
-                "https://www.skygroup.sky/our-governance",
-            ]
+
+    if brand_key == "sky":
+        blocked_sky = [
+            "https://www.skygroup.sky/press",
+            "https://www.skygroup.sky/press/newsroom",
+            "https://www.skygroup.sky/press/contacts",
+            "https://www.skygroup.sky/press/assets",
+            "https://www.skygroup.sky/press/social-media",
+            "https://www.skygroup.sky/about",
+            "https://www.skygroup.sky/what-we-do",
+            "https://www.skygroup.sky/impact",
+            "https://www.skygroup.sky/careers",
+            "https://www.skygroup.sky/our-governance",
+        ]
         if lower.rstrip("/") in [u.rstrip("/") for u in blocked_sky]:
             return False
 
@@ -420,6 +421,7 @@ def build_feed(key: str) -> dict:
                 links = extract_links(listing_html, listing_url, cfg["allowed_domains"])
 
             candidate_urls.extend(links[:40])
+
             if key == "sky":
                 print("sky links found:", len(links))
                 for link in links[:10]:
