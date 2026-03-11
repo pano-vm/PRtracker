@@ -256,33 +256,27 @@ def extract_bt_article_links(html: str, base: str) -> list[str]:
 def extract_comparethemarket_listing_items(html: str, base: str) -> list[dict]:
     items = []
 
-    section_match = re.search(
-        r"<h3>\s*Recent press releases\s*</h3>(.*?)(?:</ul>|<h3|</section>)",
-        html,
-        flags=re.I | re.S,
-    )
-    if not section_match:
-        return items
-
-    section_html = section_match.group(1)
-
     matches = re.findall(
         r'href="(https://www\.comparethemarket\.com/inside-ctm/media-centre/[^"]+/)"',
-        section_html,
+        html,
         flags=re.I,
     )
 
     seen = set()
+
     for url in matches:
         clean_url = strip_tracking(unescape(url)).rstrip("/")
 
         if clean_url == "https://www.comparethemarket.com/inside-ctm/media-centre":
             continue
+
         if clean_url in seen:
             continue
+
         seen.add(clean_url)
 
         slug = clean_url.rsplit("/", 1)[-1]
+
         title = slug.replace("-", " ").strip().title()
 
         items.append({
