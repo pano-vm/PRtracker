@@ -2,11 +2,16 @@
   "status": "ok",
   "brand": "uSwitch",
   "group": "Affiliates",
-  "generated_at": "2026-03-11T16:35:23.921207Z",
+  "generated_at": "2026-03-11T16:54:42.624425Z",
   "items": [
     {
       "title": "18 million broadband and mobile customers could beat the April price hikes by acting now",
       "url": "https://www.uswitch.com/media-centre/2026/03/18-million-broadband-and-mobile-customers-could-beat-the-april-price-hikes-by-acting-now/",
+      "publish_datetime": "2026-03-01T00:00:00Z"
+    },
+    {
+      "title": "Uswitch responds to call for stronger phone theft protections from the Metropolitan Police",
+      "url": "https://www.uswitch.com/media-centre/2026/03/uswitch-responds-to-call-for-stronger-phone-theft-protections-from-the-metropolitan-police/",
       "publish_datetime": "2026-03-01T00:00:00Z"
     },
     {
@@ -47,11 +52,6 @@
     {
       "title": "Network nightmare: 22.4m Brits hit by broadband outages in the last year",
       "url": "https://www.uswitch.com/media-centre/2025/11/22-4-m-brits-hit-by-broadband-outages-in-the-last-year/",
-      "publish_datetime": "2025-11-01T00:00:00Z"
-    },
-    {
-      "title": "1.6m Brits at risk of overpaying as contracts expire ahead of Black Friday",
-      "url": "https://www.uswitch.com/media-centre/2025/11/1-6-m-brits-at-risk-of-overpaying-as-contracts-expire-ahead-of-black-friday/",
       "publish_datetime": "2025-11-01T00:00:00Z"
     }
   ]
