@@ -1,10 +1,10 @@
 import json
 import re
-import sys
 from datetime import datetime, timezone
 from html import unescape
 from urllib.parse import urljoin, urlparse, urlunparse, parse_qsl, urlencode
 from urllib.request import Request, urlopen
+
 
 TELECOM_KEYWORDS = [
     "broadband",
@@ -126,6 +126,7 @@ APPROVED = {
 
 UA = "PRtracker/1.0 (+GitHub Actions)"
 
+
 def contains_telecom_keyword(text: str) -> bool:
     if not text:
         return False
@@ -134,101 +135,194 @@ def contains_telecom_keyword(text: str) -> bool:
 
 
 def should_keep_item(brand_key: str, title: str, url: str) -> bool:
-    # Only filter the affiliate sites that contain mixed-topic press releases
     if brand_key in {"comparethemarket", "moneysavingexpert"}:
         combined = f"{title} {url}"
         return contains_telecom_keyword(combined)
     return True
 
+
 def fetch(url: str) -> str:
     req = Request(url, headers={"User-Agent": UA})
-    with urlopen(req, timeout=30) as r:
-        return r.read().decode("utf-8", errors="replace")
+    with urlopen(req, timeout=30) as response:
+        return response.read().decode("utf-8", errors="replace")
+
 
 def strip_tracking(url: str) -> str:
-    p = urlparse(url)
-    qs = [(k, v) for k, v in parse_qsl(p.query, keep_blank_values=True) if not k.lower().startswith("utm_")]
+    parsed = urlparse(url)
+    qs = [
+        (k, v)
+        for k, v in parse_qsl(parsed.query, keep_blank_values=True)
+        if not k.lower().startswith("utm_")
+    ]
     new_q = urlencode(qs)
-    return urlunparse((p.scheme, p.netloc, p.path, p.params, new_q, p.fragment))
+    return urlunparse(
+        (parsed.scheme, parsed.netloc, parsed.path, parsed.params, new_q, parsed.fragment)
+    )
+
 
 def domain_allowed(url: str, allowed: set[str]) -> bool:
     return urlparse(url).netloc in allowed
 
+
 def extract_links(html: str, base: str, allowed_domains: set[str]) -> list[str]:
-    # Simple href extraction. Good enough for a first pass.
     hrefs = re.findall(r'href=["\'](.*?)["\']', html, flags=re.IGNORECASE)
-    out = []
-    for h in hrefs:
-        if h.startswith("#") or h.lower().startswith("javascript:"):
+    urls = []
+
+    for href in hrefs:
+        if href.startswith("#"):
             continue
-        u = strip_tracking(urljoin(base, unescape(h)))
-        if domain_allowed(u, allowed_domains):
-            out.append(u)
-    # Deduplicate while preserving order
+        if href.lower().startswith("javascript:") or href.lower().startswith("mailto:"):
+            continue
+
+        full = urljoin(base, unescape(href))
+        full = strip_tracking(full)
+
+        if domain_allowed(full, allowed_domains):
+            urls.append(full)
+
     seen = set()
     deduped = []
-    for u in out:
-        if u not in seen:
-            seen.add(u)
-            deduped.append(u)
+    for url in urls:
+        if url not in seen:
+            seen.add(url)
+            deduped.append(url)
+
     return deduped
 
+
+def extract_vodafone_press_release_links(html: str, base: str) -> list[str]:
+    links = []
+    article_blocks = re.findall(r"<article\b.*?</article>", html, flags=re.I | re.S)
+
+    for block in article_blocks:
+        if not re.search(r'>\s*Press Release\s*<', block, flags=re.I):
+            continue
+
+        match = re.search(
+            r'href=["\'](https://www\.vodafone\.co\.uk/newscentre/[^"\']+)["\']',
+            block,
+            flags=re.I,
+        )
+        if match:
+            url = strip_tracking(unescape(match.group(1)))
+            links.append(url)
+
+    seen = set()
+    deduped = []
+    for url in links:
+        if url not in seen:
+            seen.add(url)
+            deduped.append(url)
+
+    return deduped
+
+
 def parse_title(html: str) -> str | None:
-    # Prefer og:title
-    m = re.search(r'<meta[^>]+property=["\']og:title["\'][^>]+content=["\'](.*?)["\']', html, flags=re.I)
-    if m:
-        return unescape(m.group(1)).strip()
-    # Fallback title tag
-    m = re.search(r"<title[^>]*>(.*?)</title>", html, flags=re.I | re.S)
-    if m:
-        t = re.sub(r"\s+", " ", unescape(m.group(1))).strip()
-        return t
+    match = re.search(
+        r'<meta[^>]+property=["\']og:title["\'][^>]+content=["\'](.*?)["\']',
+        html,
+        flags=re.I,
+    )
+    if match:
+        return unescape(match.group(1)).strip()
+
+    match = re.search(r"<title[^>]*>(.*?)</title>", html, flags=re.I | re.S)
+    if match:
+        return re.sub(r"\s+", " ", unescape(match.group(1))).strip()
+
     return None
+
 
 def normalise_title(title: str) -> str:
     if not title:
         return title
 
-    # If the title is mostly uppercase, convert it to title case
     letters = [c for c in title if c.isalpha()]
     if letters and sum(1 for c in letters if c.isupper()) / len(letters) > 0.8:
         return title.title()
 
     return title
 
+
 def parse_publish_datetime(html: str) -> str | None:
-    # Try schema.org datePublished (very common)
-    m = re.search(r'"datePublished"\s*:\s*"([^"]+)"', html, flags=re.I)
-    if m:
-        return normalise_iso(m.group(1))
-    # Try meta property article:published_time
-    m = re.search(r'<meta[^>]+property=["\']article:published_time["\'][^>]+content=["\'](.*?)["\']', html, flags=re.I)
-    if m:
-        return normalise_iso(m.group(1))
-    # Try meta name publish_date
-    m = re.search(r'<meta[^>]+name=["\']publish_date["\'][^>]+content=["\'](.*?)["\']', html, flags=re.I)
-    if m:
-        return normalise_iso(m.group(1))
+    match = re.search(r'"datePublished"\s*:\s*"([^"]+)"', html, flags=re.I)
+    if match:
+        return normalise_iso(match.group(1))
+
+    match = re.search(
+        r'<meta[^>]+property=["\']article:published_time["\'][^>]+content=["\'](.*?)["\']',
+        html,
+        flags=re.I,
+    )
+    if match:
+        return normalise_iso(match.group(1))
+
+    match = re.search(
+        r'<meta[^>]+name=["\']publish_date["\'][^>]+content=["\'](.*?)["\']',
+        html,
+        flags=re.I,
+    )
+    if match:
+        return normalise_iso(match.group(1))
+
     return None
 
+
 def normalise_iso(value: str) -> str | None:
-    v = value.strip()
-    # If it is already ISO, keep it. Otherwise try simple date formats.
+    value = value.strip()
+
     try:
-        # Handle trailing Z or offset automatically
-        dt = datetime.fromisoformat(v.replace("Z", "+00:00"))
+        dt = datetime.fromisoformat(value.replace("Z", "+00:00"))
         if not dt.tzinfo:
             dt = dt.replace(tzinfo=timezone.utc)
         return dt.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
     except Exception:
         pass
+
     for fmt in ("%Y-%m-%d", "%d %B %Y", "%d %b %Y"):
         try:
-            dt = datetime.strptime(v, fmt).replace(tzinfo=timezone.utc)
+            dt = datetime.strptime(value, fmt).replace(tzinfo=timezone.utc)
             return dt.isoformat().replace("+00:00", "Z")
         except Exception:
             continue
+
     return None
+
+
+def is_probable_asset(url: str) -> bool:
+    lower = url.lower()
+    asset_extensions = (
+        ".css", ".js", ".json", ".xml", ".png", ".jpg", ".jpeg",
+        ".gif", ".svg", ".webp", ".woff", ".woff2", ".ttf", ".ico",
+        ".pdf", ".mp4"
+    )
+    return lower.endswith(asset_extensions) or "/wp-content/" in lower
+
+
+def is_valid_article_url(brand_key: str, url: str) -> bool:
+    lower = url.lower()
+
+    if is_probable_asset(lower):
+        return False
+
+    blocked_fragments = [
+        "/tag/",
+        "/category/",
+        "/author/",
+        "/page/",
+        "/feed/",
+        "/wp-content/",
+        "/wp-json/",
+    ]
+    if any(fragment in lower for fragment in blocked_fragments):
+        return False
+
+    if brand_key == "vodafone":
+        if lower.rstrip("/") == "https://www.vodafone.co.uk/newscentre/press-release":
+            return False
+
+    return True
+
 
 def build_feed(key: str) -> dict:
     cfg = APPROVED[key]
@@ -237,18 +331,21 @@ def build_feed(key: str) -> dict:
     for listing_url in cfg["listing_urls"]:
         try:
             listing_html = fetch(listing_url)
-            links = extract_links(listing_html, listing_url, cfg["allowed_domains"])
+            if key == "vodafone":
+                links = extract_vodafone_press_release_links(listing_html, listing_url)
+            else:
+                links = extract_links(listing_html, listing_url, cfg["allowed_domains"])
+
             candidate_urls.extend(links[:40])
         except Exception:
             continue
 
-    # Deduplicate candidate URLs
     seen = set()
     deduped_candidates = []
-    for u in candidate_urls:
-        if u not in seen:
-            seen.add(u)
-            deduped_candidates.append(u)
+    for url in candidate_urls:
+        if url not in seen:
+            seen.add(url)
+            deduped_candidates.append(url)
 
     items = []
     seen_item_urls = set()
@@ -261,16 +358,6 @@ def build_feed(key: str) -> dict:
             article_html = fetch(url)
             title = parse_title(article_html) or url
             title = normalise_title(title)
-
-            if key == "vodafone":
-                bad_titles = {
-                    "Home - Vodafone UK News Centre",
-                    "For Journalists - Vodafone UK News Centre",
-                    "Press Release - Vodafone UK News Centre",
-                }
-                if title in bad_titles:
-                    continue
-
             published = parse_publish_datetime(article_html)
 
             if not should_keep_item(key, title, url):
@@ -288,10 +375,10 @@ def build_feed(key: str) -> dict:
         except Exception:
             continue
 
-    dated = [i for i in items if i.get("publish_datetime")]
-    undated = [i for i in items if not i.get("publish_datetime")]
+    dated = [item for item in items if item.get("publish_datetime")]
+    undated = [item for item in items if not item.get("publish_datetime")]
 
-    dated.sort(key=lambda i: i["publish_datetime"], reverse=True)
+    dated.sort(key=lambda item: item["publish_datetime"], reverse=True)
 
     final = (dated + undated)[:10]
 
@@ -303,58 +390,15 @@ def build_feed(key: str) -> dict:
         "items": final,
     }
 
-def is_probable_asset(url: str) -> bool:
-    lower = url.lower()
-    asset_extensions = (
-        ".css", ".js", ".json", ".xml", ".png", ".jpg", ".jpeg",
-        ".gif", ".svg", ".webp", ".woff", ".woff2", ".ttf", ".ico",
-        ".pdf", ".mp4"
-    )
-    return lower.endswith(asset_extensions) or "/wp-content/" in lower
-
-def is_valid_article_url(brand_key: str, url: str) -> bool:
-    lower = url.lower()
-
-    if is_probable_asset(lower):
-        return False
-
-    # Generic pages we never want
-    blocked_fragments = [
-        "/tag/",
-        "/category/",
-        "/author/",
-        "/page/",
-        "/feed/",
-        "/wp-content/",
-        "/wp-json/",
-    ]
-    if any(fragment in lower for fragment in blocked_fragments):
-        return False
-
-    if brand_key == "vodafone":
-        # Keep only likely article URLs, block obvious non-article pages
-        vodafone_blocked = [
-            "/for-journalists",
-            "/home",
-            "/press-release/",
-        ]
-        if any(fragment in lower for fragment in vodafone_blocked):
-            return False
-
-        # Vodafone article pages normally sit under the newscentre domain
-        # but should not be the main listing page itself.
-        if lower.rstrip("/") == "https://www.vodafone.co.uk/newscentre/press-release":
-            return False
-
-    return True
 
 def main():
     for key in APPROVED.keys():
-        out = build_feed(key)
+        output = build_feed(key)
         path = f"docs/data/{key}.json"
         with open(path, "w", encoding="utf-8") as f:
-            json.dump(out, f, ensure_ascii=False, indent=2)
-        print(f"Wrote {path} ({len(out['items'])} items)")
+            json.dump(output, f, ensure_ascii=False, indent=2)
+        print(f"Wrote {path} ({len(output['items'])} items)")
+
 
 if __name__ == "__main__":
     main()
