@@ -245,39 +245,42 @@ def extract_bt_article_links(html: str, base: str) -> list[str]:
 def extract_comparethemarket_listing_items(html: str, base: str) -> list[dict]:
     items = []
 
-    matches = re.finditer(
-        r'<a[^>]+href=["\'](https://www\.comparethemarket\.com/inside-ctm/media-centre/[^"\']+)["\'][^>]*>(.*?)</a>',
+    section_match = re.search(
+        r"<h3>\s*Recent press releases\s*</h3>(.*?)(?:</ul>|<h3|</section>)",
         html,
         flags=re.I | re.S,
     )
+    if not section_match:
+        return items
 
-    for match in matches:
-        url = strip_tracking(unescape(match.group(1))).rstrip("/")
-        title_html = match.group(2)
+    section_html = section_match.group(1)
 
-        if url == "https://www.comparethemarket.com/inside-ctm/media-centre":
+    matches = re.findall(
+        r'href="(https://www\.comparethemarket\.com/inside-ctm/media-centre/[^"]+/)"',
+        section_html,
+        flags=re.I,
+    )
+
+    seen = set()
+    for url in matches:
+        clean_url = strip_tracking(unescape(url)).rstrip("/")
+
+        if clean_url == "https://www.comparethemarket.com/inside-ctm/media-centre":
             continue
-
-        title = re.sub(r"<[^>]+>", "", title_html)
-        title = unescape(title).strip()
-
-        if not title:
+        if clean_url in seen:
             continue
+        seen.add(clean_url)
+
+        slug = clean_url.rsplit("/", 1)[-1]
+        title = slug.replace("-", " ").strip().title()
 
         items.append({
             "title": title,
-            "url": url,
+            "url": clean_url,
             "publish_datetime": None,
         })
 
-    seen = set()
-    deduped = []
-    for item in items:
-        if item["url"] not in seen:
-            seen.add(item["url"])
-            deduped.append(item)
-
-    return deduped
+    return items
 
 
 def extract_uswitch_listing_items(html: str, base: str) -> list[dict]:
