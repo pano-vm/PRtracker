@@ -256,10 +256,11 @@ def build_feed(key: str) -> dict:
     for url in deduped_candidates[:80]:
     if not is_valid_article_url(key, url):
         continue
+
     try:
         article_html = fetch(url)
-            title = parse_title(article_html) or url
-            title = normalise_title(title)
+        title = parse_title(article_html) or url
+        title = normalise_title(title)
         if key == "vodafone":
     bad_titles = {
         "Home - Vodafone UK News Centre",
