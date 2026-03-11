@@ -533,10 +533,11 @@ def build_feed(key: str) -> dict:
                 print("comparethemarket html length:", len(listing_html))
                 print("comparethemarket has recent section:", "Recent press releases" in listing_html)
                 print("comparethemarket page title match:", "<title>Media contacts | Compare the Market</title>" in listing_html)
-                print("comparethemarket first 500 chars:", listing_html[:500])
+                print("comparethemarket first 500 chars:", repr(listing_html[:500]))
                 listing_items = extract_comparethemarket_listing_items(listing_html, listing_url)
                 items.extend(listing_items)
-            except Exception:
+            except Exception as e:
+                print("comparethemarket fetch error:", repr(e))
                 continue
 
         seen = set()
