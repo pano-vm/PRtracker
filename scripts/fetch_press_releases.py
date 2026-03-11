@@ -216,6 +216,29 @@ def extract_vodafone_press_release_links(html: str, base: str) -> list[str]:
 
     return deduped
 
+def extract_bt_article_links(html: str, base: str) -> list[str]:
+    links = []
+
+    # BT article links are in anchors with class "text_latestnews_more"
+    matches = re.findall(
+        r'<a[^>]+class=["\'][^"\']*text_latestnews_more[^"\']*["\'][^>]+href=["\'](.*?)["\']',
+        html,
+        flags=re.I | re.S,
+    )
+
+    for href in matches:
+        url = strip_tracking(urljoin(base, unescape(href)))
+        if urlparse(url).netloc == "newsroom.bt.com":
+            links.append(url)
+
+    seen = set()
+    deduped = []
+    for url in links:
+        if url not in seen:
+            seen.add(url)
+            deduped.append(url)
+
+    return deduped
 
 def parse_title(html: str) -> str | None:
     match = re.search(
@@ -320,6 +343,14 @@ def is_valid_article_url(brand_key: str, url: str) -> bool:
     if brand_key == "vodafone":
         if lower.rstrip("/") == "https://www.vodafone.co.uk/newscentre/press-release":
             return False
+    if brand_key == "bt":
+        blocked_bt = [
+            "https://newsroom.bt.com/",
+            "https://newsroom.bt.com/?h=1&d=excludehomepage",
+            "https://newsroom.bt.com/archive/",
+        ]
+        if lower.rstrip("/") in [u.rstrip("/") for u in blocked_bt]:
+            return False
 
     return True
 
@@ -333,6 +364,8 @@ def build_feed(key: str) -> dict:
             listing_html = fetch(listing_url)
             if key == "vodafone":
                 links = extract_vodafone_press_release_links(listing_html, listing_url)
+            elif key == "bt":
+                links = extract_bt_article_links(listing_html, listing_url)
             else:
                 links = extract_links(listing_html, listing_url, cfg["allowed_domains"])
 
