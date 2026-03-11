@@ -240,16 +240,19 @@ def extract_bt_article_links(html: str, base: str) -> list[str]:
     return deduped
 
 
-def extract_uswitch_article_links(html: str, base: str) -> list[str]:
-    links = []
+def extract_uswitch_listing_items(html: str, base: str) -> list[dict]:
+    items = []
 
-    matches = re.findall(
-        r'<a[^>]+href=["\'](/media-centre/[^"\']+)["\'][^>]*class=["\'][^"\']*type-heading-xs[^"\']*["\']',
+    matches = re.finditer(
+        r'<a[^>]+href=["\'](/media-centre/[^"\']+)["\'][^>]*>(.*?)</a>',
         html,
         flags=re.I | re.S,
     )
 
-    for href in matches:
+    for match in matches:
+        href = match.group(1)
+        title_html = match.group(2)
+
         url = strip_tracking(urljoin(base, unescape(href)))
 
         if urlparse(url).netloc != "www.uswitch.com":
@@ -258,15 +261,27 @@ def extract_uswitch_article_links(html: str, base: str) -> list[str]:
             continue
         if "?page=" in url:
             continue
+        if not re.search(r"/media-centre/\d{4}/\d{2}/", url):
+            continue
 
-        links.append(url)
+        title = re.sub(r"<[^>]+>", "", title_html)
+        title = unescape(title).strip()
+
+        if not title:
+            continue
+
+        items.append({
+            "title": title,
+            "url": url,
+            "publish_datetime": extract_date_from_uswitch_url(url),
+        })
 
     seen = set()
     deduped = []
-    for url in links:
-        if url not in seen:
-            seen.add(url)
-            deduped.append(url)
+    for item in items:
+        if item["url"] not in seen:
+            seen.add(item["url"])
+            deduped.append(item)
 
     return deduped
 
@@ -370,6 +385,20 @@ def normalise_iso(value: str) -> str | None:
     return None
 
 
+def extract_date_from_uswitch_url(url: str) -> str | None:
+    match = re.search(r"/media-centre/(\d{4})/(\d{2})/", url)
+    if not match:
+        return None
+
+    year, month = match.groups()
+
+    try:
+        dt = datetime.strptime(f"{year}-{month}-01", "%Y-%m-%d").replace(tzinfo=timezone.utc)
+        return dt.isoformat().replace("+00:00", "Z")
+    except Exception:
+        return None
+
+
 def is_probable_asset(url: str) -> bool:
     lower = url.lower()
     asset_extensions = (
@@ -448,6 +477,42 @@ def build_feed(key: str) -> dict:
             "items": final,
         }
 
+    if key == "uswitch":
+        items = []
+        for listing_url in cfg["listing_urls"]:
+            try:
+                listing_html = fetch(listing_url)
+                listing_items = extract_uswitch_listing_items(listing_html, listing_url)
+                items.extend(listing_items[:20])
+            except Exception:
+                continue
+
+        seen = set()
+        deduped = []
+        for item in items:
+            if item["url"] not in seen:
+                seen.add(item["url"])
+                deduped.append(item)
+
+        deduped = [
+            item for item in deduped
+            if should_keep_item(key, item["title"], item["url"])
+        ]
+
+        dated = [item for item in deduped if item.get("publish_datetime")]
+        undated = [item for item in deduped if not item.get("publish_datetime")]
+
+        dated.sort(key=lambda item: item["publish_datetime"], reverse=True)
+        final = (dated + undated)[:10]
+
+        return {
+            "status": "ok",
+            "brand": cfg["brand"],
+            "group": cfg["group"],
+            "generated_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+            "items": final,
+        }
+
     candidate_urls = []
     for listing_url in cfg["listing_urls"]:
         try:
@@ -456,8 +521,6 @@ def build_feed(key: str) -> dict:
                 links = extract_vodafone_press_release_links(listing_html, listing_url)
             elif key == "bt":
                 links = extract_bt_article_links(listing_html, listing_url)
-            elif key == "uswitch":
-                links = extract_uswitch_article_links(listing_html, listing_url)
             else:
                 links = extract_links(listing_html, listing_url, cfg["allowed_domains"])
 
