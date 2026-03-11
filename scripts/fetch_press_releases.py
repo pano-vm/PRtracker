@@ -254,10 +254,20 @@ def build_feed(key: str) -> dict:
     seen_item_urls = set()
 
     for url in deduped_candidates[:80]:
-        try:
-            article_html = fetch(url)
+    if not is_valid_article_url(key, url):
+        continue
+    try:
+        article_html = fetch(url)
             title = parse_title(article_html) or url
             title = normalise_title(title)
+        if key == "vodafone":
+    bad_titles = {
+        "Home - Vodafone UK News Centre",
+        "For Journalists - Vodafone UK News Centre",
+        "Press Release - Vodafone UK News Centre",
+    }
+    if title in bad_titles:
+        continue
             published = parse_publish_datetime(article_html)
 
             if not should_keep_item(key, title, url):
@@ -289,6 +299,51 @@ def build_feed(key: str) -> dict:
         "generated_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
         "items": final,
     }
+
+def is_probable_asset(url: str) -> bool:
+    lower = url.lower()
+    asset_extensions = (
+        ".css", ".js", ".json", ".xml", ".png", ".jpg", ".jpeg",
+        ".gif", ".svg", ".webp", ".woff", ".woff2", ".ttf", ".ico",
+        ".pdf", ".mp4"
+    )
+    return lower.endswith(asset_extensions) or "/wp-content/" in lower
+
+def is_valid_article_url(brand_key: str, url: str) -> bool:
+    lower = url.lower()
+
+    if is_probable_asset(lower):
+        return False
+
+    # Generic pages we never want
+    blocked_fragments = [
+        "/tag/",
+        "/category/",
+        "/author/",
+        "/page/",
+        "/feed/",
+        "/wp-content/",
+        "/wp-json/",
+    ]
+    if any(fragment in lower for fragment in blocked_fragments):
+        return False
+
+    if brand_key == "vodafone":
+        # Keep only likely article URLs, block obvious non-article pages
+        vodafone_blocked = [
+            "/for-journalists",
+            "/home",
+            "/press-release/",
+        ]
+        if any(fragment in lower for fragment in vodafone_blocked):
+            return False
+
+        # Vodafone article pages normally sit under the newscentre domain
+        # but should not be the main listing page itself.
+        if lower.rstrip("/") == "https://www.vodafone.co.uk/newscentre/press-release":
+            return False
+
+    return True
 
 def main():
     for key in APPROVED.keys():
