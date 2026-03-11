@@ -2,57 +2,6 @@
   "status": "ok",
   "brand": "Sky",
   "group": "Telecoms",
-  "generated_at": "2026-03-11T10:16:26.957577Z",
-  "items": [
-    {
-      "title": "Believe in Better",
-      "url": "https://www.skygroup.sky/",
-      "publish_datetime": null
-    },
-    {
-      "title": "About",
-      "url": "https://www.skygroup.sky/about",
-      "publish_datetime": null
-    },
-    {
-      "title": "What we do",
-      "url": "https://www.skygroup.sky/what-we-do/",
-      "publish_datetime": null
-    },
-    {
-      "title": "Impact",
-      "url": "https://www.skygroup.sky/impact/",
-      "publish_datetime": null
-    },
-    {
-      "title": "Press",
-      "url": "https://www.skygroup.sky/press",
-      "publish_datetime": null
-    },
-    {
-      "title": "Careers",
-      "url": "https://www.skygroup.sky/careers",
-      "publish_datetime": null
-    },
-    {
-      "title": "Press",
-      "url": "https://www.skygroup.sky/press#screeners",
-      "publish_datetime": null
-    },
-    {
-      "title": "Assets | Press",
-      "url": "https://www.skygroup.sky/press/assets#tv-imagery",
-      "publish_datetime": null
-    },
-    {
-      "title": "Social media | Press",
-      "url": "https://www.skygroup.sky/press/social-media",
-      "publish_datetime": null
-    },
-    {
-      "title": "Our governance | About",
-      "url": "https://www.skygroup.sky/about/our-governance/",
-      "publish_datetime": null
-    }
-  ]
+  "generated_at": "2026-03-11T10:52:35.398353Z",
+  "items": []
 }
