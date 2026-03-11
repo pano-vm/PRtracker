@@ -254,21 +254,23 @@ def build_feed(key: str) -> dict:
     seen_item_urls = set()
 
     for url in deduped_candidates[:80]:
-    if not is_valid_article_url(key, url):
-        continue
+        if not is_valid_article_url(key, url):
+            continue
 
-    try:
-        article_html = fetch(url)
-        title = parse_title(article_html) or url
-        title = normalise_title(title)
-        if key == "vodafone":
-    bad_titles = {
-        "Home - Vodafone UK News Centre",
-        "For Journalists - Vodafone UK News Centre",
-        "Press Release - Vodafone UK News Centre",
-    }
-    if title in bad_titles:
-        continue
+        try:
+            article_html = fetch(url)
+            title = parse_title(article_html) or url
+            title = normalise_title(title)
+
+            if key == "vodafone":
+                bad_titles = {
+                    "Home - Vodafone UK News Centre",
+                    "For Journalists - Vodafone UK News Centre",
+                    "Press Release - Vodafone UK News Centre",
+                }
+                if title in bad_titles:
+                    continue
+
             published = parse_publish_datetime(article_html)
 
             if not should_keep_item(key, title, url):
