@@ -144,7 +144,18 @@ def should_keep_item(brand_key: str, title: str, url: str) -> bool:
 
 
 def fetch(url: str) -> str:
-    req = Request(url, headers={"User-Agent": UA})
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/122.0.0.0 Safari/537.36"
+        ),
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "en-GB,en;q=0.9",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+    }
+    req = Request(url, headers=headers)
     with urlopen(req, timeout=30) as response:
         return response.read().decode("utf-8", errors="replace")
 
@@ -525,6 +536,10 @@ def build_feed(key: str) -> dict:
         for listing_url in cfg["listing_urls"]:
             try:
                 listing_html = fetch(listing_url)
+                print("comparethemarket html length:", len(listing_html))
+                print("comparethemarket has recent section:", "Recent press releases" in listing_html)
+                print("comparethemarket page title match:", "<title>Media contacts | Compare the Market</title>" in listing_html)
+                print("comparethemarket first 500 chars:", listing_html[:500])
                 listing_items = extract_comparethemarket_listing_items(listing_html, listing_url)
                 items.extend(listing_items)
             except Exception:
