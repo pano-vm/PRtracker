@@ -245,26 +245,18 @@ def extract_bt_article_links(html: str, base: str) -> list[str]:
 def extract_comparethemarket_listing_items(html: str, base: str) -> list[dict]:
     items = []
 
-    section_match = re.search(
-        r"<h3>\s*Recent press releases\s*</h3>\s*<ul>(.*?)</ul>",
+    matches = re.finditer(
+        r'<a[^>]+href=["\'](https://www\.comparethemarket\.com/inside-ctm/media-centre/[^"\']+)["\'][^>]*>(.*?)</a>',
         html,
         flags=re.I | re.S,
     )
 
-    if not section_match:
-        return items
-
-    section_html = section_match.group(1)
-
-    matches = re.finditer(
-        r'<a[^>]+href=["\'](https://www\.comparethemarket\.com/inside-ctm/media-centre/[^"\']+)["\'][^>]*>(.*?)</a>',
-        section_html,
-        flags=re.I | re.S,
-    )
-
     for match in matches:
-        url = strip_tracking(unescape(match.group(1)))
+        url = strip_tracking(unescape(match.group(1))).rstrip("/")
         title_html = match.group(2)
+
+        if url == "https://www.comparethemarket.com/inside-ctm/media-centre":
+            continue
 
         title = re.sub(r"<[^>]+>", "", title_html)
         title = unescape(title).strip()
@@ -541,6 +533,10 @@ def build_feed(key: str) -> dict:
             if item["url"] not in seen:
                 seen.add(item["url"])
                 deduped.append(item)
+
+        print("comparethemarket extracted:", len(deduped))
+        for item in deduped[:10]:
+            print("comparethemarket item:", item["title"], "|", item["url"])
 
         deduped = [
             item for item in deduped
