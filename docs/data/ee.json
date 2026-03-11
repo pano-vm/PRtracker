@@ -2,8 +2,13 @@
   "status": "ok",
   "brand": "EE",
   "group": "Telecoms",
-  "generated_at": "2026-03-11T10:51:04.196278Z",
+  "generated_at": "2026-03-11T11:26:16.821056Z",
   "items": [
+    {
+      "title": "Ee Tv Expands Its Sports Entertainment Access With Dazn Launch",
+      "url": "https://newsroom.ee.co.uk/ee-tv-expands-its-sports-entertainment-access-with-dazn-launch/",
+      "publish_datetime": "2026-03-11T11:25:47Z"
+    },
     {
       "title": "iPhone 17e and iPad Air Coming to EE’s Award-winning 5G+ Network",
       "url": "https://newsroom.ee.co.uk/iphone-17e-and-ipad-air-coming-to-ees-award-winning-5g-network/",
@@ -48,11 +53,6 @@
       "title": "From Not-Spot To Hotspot: Ee Delivers Uk First For The People Of Penmachno",
       "url": "https://newsroom.ee.co.uk/ee-delivers-uk-first-for-the-people-of-penmachno/",
       "publish_datetime": "2026-01-27T06:00:00Z"
-    },
-    {
-      "title": "Ee Launches Refurbished Smartphone Plan Range, Giving New Wave Of Tech Thrifters A Smarter, More Sustainable Way To Upgrade To A New Phone",
-      "url": "https://newsroom.ee.co.uk/ee-launches-refurbished-smartphone-plan-range-giving-new-wave-of-tech-thrifters-a-smarter-more-sustainable-way-to-upgrade-to-a-new-phone/",
-      "publish_datetime": "2026-01-22T09:03:29Z"
     }
   ]
 }
