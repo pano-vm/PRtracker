@@ -385,18 +385,18 @@ def is_valid_article_url(brand_key: str, url: str) -> bool:
         if lower.rstrip("/") in [u.rstrip("/") for u in blocked_bt]:
             return False
         if brand_key == "sky":
-        blocked_sky = [
-            "https://www.skygroup.sky/press",
-            "https://www.skygroup.sky/press/newsroom",
-            "https://www.skygroup.sky/press/contacts",
-            "https://www.skygroup.sky/press/assets",
-            "https://www.skygroup.sky/press/social-media",
-            "https://www.skygroup.sky/about",
-            "https://www.skygroup.sky/what-we-do",
-            "https://www.skygroup.sky/impact",
-            "https://www.skygroup.sky/careers",
-            "https://www.skygroup.sky/our-governance",
-        ]
+            blocked_sky = [
+                "https://www.skygroup.sky/press",
+                "https://www.skygroup.sky/press/newsroom",
+                "https://www.skygroup.sky/press/contacts",
+                "https://www.skygroup.sky/press/assets",
+                "https://www.skygroup.sky/press/social-media",
+                "https://www.skygroup.sky/about",
+                "https://www.skygroup.sky/what-we-do",
+                "https://www.skygroup.sky/impact",
+                "https://www.skygroup.sky/careers",
+                "https://www.skygroup.sky/our-governance",
+            ]
         if lower.rstrip("/") in [u.rstrip("/") for u in blocked_sky]:
             return False
 
