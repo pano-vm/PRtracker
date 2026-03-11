@@ -2,7 +2,7 @@
   "status": "ok",
   "brand": "uSwitch",
   "group": "Affiliates",
-  "generated_at": "2026-03-11T07:47:26.812488Z",
+  "generated_at": "2026-03-11T09:31:02.828891Z",
   "items": [
     {
       "title": "Energy price cap February 2026: how much is it and how does it work? - Uswitch",
@@ -30,28 +30,28 @@
       "publish_datetime": "2024-09-24T16:27:52Z"
     },
     {
-      "title": "https://www.uswitch.com/s3/uswitch-assets-eu/fonts/founders-grotesk/founders-grotesk-bold.woff2",
-      "url": "https://www.uswitch.com/s3/uswitch-assets-eu/fonts/founders-grotesk/founders-grotesk-bold.woff2",
+      "title": "https://www.uswitch.com/s3/uswitch-includes-production/includes/astro/assets/preflight.css?version=1",
+      "url": "https://www.uswitch.com/s3/uswitch-includes-production/includes/astro/assets/preflight.css?version=1",
       "publish_datetime": null
     },
     {
-      "title": "https://www.uswitch.com/s3/uswitch-includes-production/img/favicon-48x48.ico",
-      "url": "https://www.uswitch.com/s3/uswitch-includes-production/img/favicon-48x48.ico",
+      "title": "Cookie policy - Uswitch",
+      "url": "https://www.uswitch.com/about-us/cookie-policy/",
       "publish_datetime": null
     },
     {
-      "title": "https://www.uswitch.com/s3/uswitch-includes-production/img/favicon-light-48x48.ico",
-      "url": "https://www.uswitch.com/s3/uswitch-includes-production/img/favicon-light-48x48.ico",
+      "title": "Uswitch.com - We Put U First - Uswitch",
+      "url": "https://www.uswitch.com/",
       "publish_datetime": null
     },
     {
-      "title": "https://www.uswitch.com/s3/uswitch-includes-production/img/apple-touch-icon-be43205660.png",
-      "url": "https://www.uswitch.com/s3/uswitch-includes-production/img/apple-touch-icon-be43205660.png",
+      "title": "Compare Energy: Gas & Electricity Comparison - Uswitch",
+      "url": "https://www.uswitch.com/gas-electricity/",
       "publish_datetime": null
     },
     {
-      "title": "https://www.uswitch.com/s3/uswitch-includes-production/img/pinned-tab-e307ea053e.svg",
-      "url": "https://www.uswitch.com/s3/uswitch-includes-production/img/pinned-tab-e307ea053e.svg",
+      "title": "Compare Electricity-Only Energy Deals - Uswitch",
+      "url": "https://www.uswitch.com/gas-electricity/electricity-only/",
       "publish_datetime": null
     }
   ]

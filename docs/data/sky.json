@@ -2,18 +2,8 @@
   "status": "ok",
   "brand": "Sky",
   "group": "Telecoms",
-  "generated_at": "2026-03-11T07:46:52.347348Z",
+  "generated_at": "2026-03-11T09:30:23.178804Z",
   "items": [
-    {
-      "title": "https://www.skygroup.sky/_next/static/css/b16c487220656f86.css",
-      "url": "https://www.skygroup.sky/_next/static/css/b16c487220656f86.css",
-      "publish_datetime": null
-    },
-    {
-      "title": "https://www.skygroup.sky/_next/static/chunks/webpack-4ef407cb41d4909b.js",
-      "url": "https://www.skygroup.sky/_next/static/chunks/webpack-4ef407cb41d4909b.js",
-      "publish_datetime": null
-    },
     {
       "title": "Believe in Better",
       "url": "https://www.skygroup.sky/",
@@ -52,6 +42,16 @@
     {
       "title": "Assets | Press",
       "url": "https://www.skygroup.sky/press/assets#tv-imagery",
+      "publish_datetime": null
+    },
+    {
+      "title": "Social media | Press",
+      "url": "https://www.skygroup.sky/press/social-media",
+      "publish_datetime": null
+    },
+    {
+      "title": "Our governance | About",
+      "url": "https://www.skygroup.sky/about/our-governance/",
       "publish_datetime": null
     }
   ]

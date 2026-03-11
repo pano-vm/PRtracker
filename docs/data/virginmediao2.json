@@ -2,8 +2,13 @@
   "status": "ok",
   "brand": "Virgin Media O2",
   "group": "Telecoms",
-  "generated_at": "2026-03-11T07:44:34.515436Z",
+  "generated_at": "2026-03-11T09:28:02.070609Z",
   "items": [
+    {
+      "title": "O2 is offering millions of customers the chance to upgrade to 5G+ at no extra cost - Virgin Media O2",
+      "url": "https://news.virginmediao2.co.uk/o2-is-offering-millions-of-customers-the-chance-to-upgrade-to-5g-at-no-extra-cost/",
+      "publish_datetime": "2026-03-11T09:03:55Z"
+    },
     {
       "title": "O2 and Ontix deploy small cells to boost capacity in Bath - Virgin Media O2",
       "url": "https://news.virginmediao2.co.uk/o2-and-ontix-deploy-small-cells-to-boost-capacity-in-bath/",
@@ -48,11 +53,6 @@
       "title": "How Virgin Media O2 is investing in the UK’s connectivity and committing to consumer fairness - Virgin Media O2",
       "url": "https://news.virginmediao2.co.uk/how-virgin-media-o2-is-investing-in-the-uks-connectivity-and-committing-to-consumer-fairness/",
       "publish_datetime": "2026-02-11T16:13:28Z"
-    },
-    {
-      "title": "Corporate statements - Virgin Media O2",
-      "url": "https://news.virginmediao2.co.uk/corporate-statements/",
-      "publish_datetime": "2024-08-02T12:49:23Z"
     }
   ]
 }

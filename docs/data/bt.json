@@ -2,7 +2,7 @@
   "status": "ok",
   "brand": "BT",
   "group": "Telecoms",
-  "generated_at": "2026-03-11T07:46:42.803399Z",
+  "generated_at": "2026-03-11T09:30:09.689817Z",
   "items": [
     {
       "title": "BT Group partners with Gavin & Stacey star to put digital training ‘on track’ - as over 65s call for social places to learn online skills",
@@ -45,13 +45,13 @@
       "publish_datetime": null
     },
     {
-      "title": "<![CDATA[BT Group Newsroom ]]>",
-      "url": "https://newsroom.bt.com/feed/en",
+      "title": "Latest Blogs",
+      "url": "https://newsroom.bt.com/blogs/",
       "publish_datetime": null
     },
     {
-      "title": "Latest Blogs",
-      "url": "https://newsroom.bt.com/blogs/",
+      "title": "Media image library",
+      "url": "https://newsroom.bt.com/image-library/",
       "publish_datetime": null
     }
   ]

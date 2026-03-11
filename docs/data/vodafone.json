@@ -2,42 +2,12 @@
   "status": "ok",
   "brand": "Vodafone",
   "group": "Telecoms",
-  "generated_at": "2026-03-11T07:44:47.198273Z",
+  "generated_at": "2026-03-11T09:28:09.170673Z",
   "items": [
-    {
-      "title": "Treat mum this Mother’s Day with Vodafone’s VeryMe Rewards",
-      "url": "https://www.vodafone.co.uk/newscentre/press-release/treat-mum-mothers-day-veryme-rewards/",
-      "publish_datetime": "2026-03-10T10:10:44Z"
-    },
-    {
-      "title": "Get the new Google Pixel 10a on Vodafone now from £7 a month",
-      "url": "https://www.vodafone.co.uk/newscentre/press-release/get-google-pixel-10a/",
-      "publish_datetime": "2026-03-05T08:55:40Z"
-    },
     {
       "title": "VodafoneThree Network Improvement Checker - Vodafone UK News Centre",
       "url": "https://www.vodafone.co.uk/newscentre/vodafonethree-network-improvement-checker/",
       "publish_datetime": "2026-02-17T17:34:29Z"
-    },
-    {
-      "title": "For journalists - Vodafone UK News Centre",
-      "url": "https://www.vodafone.co.uk/newscentre/for-journalists/",
-      "publish_datetime": "2018-09-13T09:10:24Z"
-    },
-    {
-      "title": "Home - Vodafone UK News Centre",
-      "url": "https://www.vodafone.co.uk/newscentre/",
-      "publish_datetime": "2015-06-04T15:31:14Z"
-    },
-    {
-      "title": "Press Release - Vodafone UK News Centre",
-      "url": "https://www.vodafone.co.uk/newscentre/press-release/",
-      "publish_datetime": null
-    },
-    {
-      "title": "Press Release - Vodafone UK News Centre",
-      "url": "https://www.vodafone.co.uk/newscentre/press-release/page/2/",
-      "publish_datetime": null
     },
     {
       "title": "Vodafone - Our Best Ever Network | Now With 5G",
@@ -45,13 +15,43 @@
       "publish_datetime": null
     },
     {
-      "title": "Press Release - Vodafone UK News Centre",
-      "url": "https://www.vodafone.co.uk/newscentre/press-release/feed/",
+      "title": "News - Vodafone UK News Centre",
+      "url": "https://www.vodafone.co.uk/newscentre/news/",
       "publish_datetime": null
     },
     {
-      "title": "https://www.vodafone.co.uk/newscentre/wp-content/plugins/metronet-profile-picture/dist/blocks.style.build.css?ver=2.6.3",
-      "url": "https://www.vodafone.co.uk/newscentre/wp-content/plugins/metronet-profile-picture/dist/blocks.style.build.css?ver=2.6.3",
+      "title": "Features - Vodafone UK News Centre",
+      "url": "https://www.vodafone.co.uk/newscentre/features/",
+      "publish_datetime": null
+    },
+    {
+      "title": "Our network - Vodafone UK News Centre",
+      "url": "https://www.vodafone.co.uk/newscentre/our-network/",
+      "publish_datetime": null
+    },
+    {
+      "title": "5G - Vodafone UK News Centre",
+      "url": "https://www.vodafone.co.uk/newscentre/5g/",
+      "publish_datetime": null
+    },
+    {
+      "title": "Business - Vodafone UK News Centre",
+      "url": "https://www.vodafone.co.uk/newscentre/business/",
+      "publish_datetime": null
+    },
+    {
+      "title": "Digital Parenting - Vodafone UK News Centre",
+      "url": "https://www.vodafone.co.uk/newscentre/smart-living/digital-parenting/",
+      "publish_datetime": null
+    },
+    {
+      "title": "everyone.connected - Vodafone UK News Centre",
+      "url": "https://www.vodafone.co.uk/newscentre/everyone-connected/",
+      "publish_datetime": null
+    },
+    {
+      "title": "Careers - Vodafone UK News Centre",
+      "url": "https://www.vodafone.co.uk/newscentre/careers/",
       "publish_datetime": null
     }
   ]
