@@ -27,6 +27,8 @@ TELECOM_KEYWORDS = [
     "mobile",
     "mobiles",
     "mobile phone",
+    "phone",
+    "phones",
     "data",
     "4g",
     "5g",
@@ -37,10 +39,11 @@ TELECOM_KEYWORDS = [
     "streaming",
     "bundle",
     "bundles",
+    "home phone",
     "sim",
-    "broadband",
-    "phone",
-    "phones",
+    "sim-only",
+    "broadband deal",
+    "phone deal",
     "o2",
     "virgin",
 ]
@@ -235,6 +238,52 @@ def extract_bt_article_links(html: str, base: str) -> list[str]:
         if url not in seen:
             seen.add(url)
             deduped.append(url)
+
+    return deduped
+
+
+def extract_comparethemarket_listing_items(html: str, base: str) -> list[dict]:
+    items = []
+
+    section_match = re.search(
+        r"<h3>\s*Recent press releases\s*</h3>\s*<ul>(.*?)</ul>",
+        html,
+        flags=re.I | re.S,
+    )
+
+    if not section_match:
+        return items
+
+    section_html = section_match.group(1)
+
+    matches = re.finditer(
+        r'<a[^>]+href=["\'](https://www\.comparethemarket\.com/inside-ctm/media-centre/[^"\']+)["\'][^>]*>(.*?)</a>',
+        section_html,
+        flags=re.I | re.S,
+    )
+
+    for match in matches:
+        url = strip_tracking(unescape(match.group(1)))
+        title_html = match.group(2)
+
+        title = re.sub(r"<[^>]+>", "", title_html)
+        title = unescape(title).strip()
+
+        if not title:
+            continue
+
+        items.append({
+            "title": title,
+            "url": url,
+            "publish_datetime": None,
+        })
+
+    seen = set()
+    deduped = []
+    for item in items:
+        if item["url"] not in seen:
+            seen.add(item["url"])
+            deduped.append(item)
 
     return deduped
 
@@ -467,6 +516,38 @@ def build_feed(key: str) -> dict:
 
         dated.sort(key=lambda item: item["publish_datetime"], reverse=True)
         final = (dated + undated)[:10]
+
+        return {
+            "status": "ok",
+            "brand": cfg["brand"],
+            "group": cfg["group"],
+            "generated_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+            "items": final,
+        }
+
+    if key == "comparethemarket":
+        items = []
+        for listing_url in cfg["listing_urls"]:
+            try:
+                listing_html = fetch(listing_url)
+                listing_items = extract_comparethemarket_listing_items(listing_html, listing_url)
+                items.extend(listing_items)
+            except Exception:
+                continue
+
+        seen = set()
+        deduped = []
+        for item in items:
+            if item["url"] not in seen:
+                seen.add(item["url"])
+                deduped.append(item)
+
+        deduped = [
+            item for item in deduped
+            if should_keep_item(key, item["title"], item["url"])
+        ]
+
+        final = deduped[:10]
 
         return {
             "status": "ok",
