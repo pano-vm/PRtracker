@@ -2,8 +2,13 @@
   "status": "ok",
   "brand": "EE",
   "group": "Telecoms",
-  "generated_at": "2026-03-13T13:53:21.062386Z",
+  "generated_at": "2026-03-13T14:18:03.829094Z",
   "items": [
+    {
+      "title": "Whisky, Waves And Wildlife: Ee Breaks New Ground To Connect Communities On Islay",
+      "url": "https://newsroom.ee.co.uk/whisky-waves-and-wildlife-ee-breaks-new-ground-to-connect-communities-on-islay/",
+      "publish_datetime": "2026-03-13T13:54:09Z"
+    },
     {
       "title": "Ee Tv Expands Its Sports Entertainment Access With Dazn Launch",
       "url": "https://newsroom.ee.co.uk/ee-tv-expands-its-sports-entertainment-access-with-dazn-launch/",
@@ -48,11 +53,6 @@
       "title": "Ee Launches First Experience Store Of 2026 In Lakeside With Former England Lioness Rachel Yankey Obe",
       "url": "https://newsroom.ee.co.uk/ee-launches-first-experience-store-of-2026-in-lakeside-with-former-england-lioness-rachel-yankey-obe/",
       "publish_datetime": "2026-01-29T11:34:49Z"
-    },
-    {
-      "title": "From Not-Spot To Hotspot: Ee Delivers Uk First For The People Of Penmachno",
-      "url": "https://newsroom.ee.co.uk/ee-delivers-uk-first-for-the-people-of-penmachno/",
-      "publish_datetime": "2026-01-27T06:00:00Z"
     }
   ]
 }

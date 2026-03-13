@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-03-13T13:54:43.260472Z",
-  "summary": "Major competitors are leveraging high-profile hardware launches, including the iPhone 17e and Samsung Galaxy S26, to promote 5G+ network superiority and speed-based incentives. EE is aggressively expanding its content ecosystem through a DAZN partnership to challenge multi-play providers, while Vodafone is introducing speed-doubling offers to target high-bandwidth users. Market sentiment is heavily focused on impending April price hikes and network reliability, creating a critical window for Virgin Media O2 to differentiate on value and service stability.",
+  "generated_at": "2026-03-13T14:19:57.087475Z",
+  "summary": "Major competitors are leveraging high-profile hardware launches for the iPhone 17e and Samsung S26 series to drive customer acquisition through enhanced value propositions and tiered rewards. EE and BT are strengthening their market leadership claims through external network validations and strategic content partnerships like DAZN to boost their entertainment offerings. Concurrently, Vodafone’s introduction of speed-boosting technology and BT’s focus on enterprise 5G solutions present direct threats to Virgin Media O2’s core performance and B2B growth targets.",
   "signals": [
     {
-      "brand": "EE",
-      "type": "Partnership",
-      "headline": "Ee Tv Expands Its Sports Entertainment Access With Dazn Launch",
-      "impact": "This integration strengthens EE's entertainment bundle, directly challenging Virgin Media’s historical advantage in sports content aggregation and multi-play value."
+      "brand": "Vodafone",
+      "type": "Network investment",
+      "headline": "Speed Boost offers Vodafone customers up to 2x faster speeds",
+      "impact": "This initiative directly challenges Virgin Media O2’s brand identity as a speed leader by offering significant performance enhancements to the mobile user base."
     },
     {
-      "brand": "Vodafone",
-      "type": "Pricing",
-      "headline": "Speed Boost offers Vodafone customers up to 2x faster speeds",
-      "impact": "By offering software-driven speed increases, Vodafone is attempting to neutralize Virgin Media’s core marketing claim of having the UK's fastest major broadband and mobile speeds."
+      "brand": "EE",
+      "type": "Product launch",
+      "headline": "Ee Tv Expands Its Sports Entertainment Access With Dazn Launch",
+      "impact": "The integration of DAZN into EE’s ecosystem increases competitive pressure on Virgin Media’s entertainment aggregation and sports-led customer retention strategy."
     },
     {
       "brand": "BT",
-      "type": "Network investment",
+      "type": "Partnership",
       "headline": "BT Group and Ericsson strengthen partnership to unlock smarter, more reliable 5G services for UK businesses",
-      "impact": "This collaboration enhances BT's enterprise 5G capabilities, posing a significant threat to Virgin Media O2’s B2B growth and private network market share."
+      "impact": "This partnership intensifies competition in the high-value enterprise sector, potentially threatening Virgin Media O2’s share of the B2B managed services market."
     }
   ],
   "momentum": [
@@ -36,7 +36,7 @@
     },
     {
       "brand": "EE",
-      "count": 7
+      "count": 8
     },
     {
       "brand": "Three",
