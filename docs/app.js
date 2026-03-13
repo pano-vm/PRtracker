@@ -131,6 +131,31 @@ function renderMomentum(momentum) {
   });
 }
 
+function renderTopicTrends(topicTrends) {
+  const trendsListEl = document.getElementById("trends-list");
+  const trendsSectionEl = document.getElementById("trends-section");
+
+  if (!trendsListEl || !trendsSectionEl) return;
+
+  trendsListEl.innerHTML = "";
+
+  if (!topicTrends || !topicTrends.length) {
+    trendsSectionEl.style.display = "none";
+    return;
+  }
+
+  trendsSectionEl.style.display = "block";
+
+  topicTrends.forEach((item) => {
+    const chip = el("div", { className: "trend-chip" }, [
+      el("span", { className: "trend-topic" }, [item.topic || "Topic"]),
+      el("span", { className: "trend-count" }, [`${item.count || 0}`])
+    ]);
+
+    trendsListEl.appendChild(chip);
+  });
+}
+
 async function loadOverview() {
   try {
     const response = await fetch("./data/overview.json", { cache: "no-store" });
@@ -151,6 +176,7 @@ async function loadOverview() {
 
     renderSignals(data.signals || []);
     renderMomentum(data.momentum || []);
+    renderTopicTrends(data.topic_trends || []);
 
     const formattedDate = formatDateTime(data.generated_at);
 
@@ -177,6 +203,7 @@ async function loadOverview() {
 
     renderSignals([]);
     renderMomentum([]);
+    renderTopicTrends([]);
   }
 }
 
