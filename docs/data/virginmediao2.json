@@ -2,8 +2,13 @@
   "status": "ok",
   "brand": "Virgin Media O2",
   "group": "Telecoms",
-  "generated_at": "2026-03-13T07:46:43.005189Z",
+  "generated_at": "2026-03-13T09:43:32.445392Z",
   "items": [
+    {
+      "title": "O2. Now in space - Virgin Media O2",
+      "url": "https://news.virginmediao2.co.uk/o2-now-in-space/",
+      "publish_datetime": "2026-03-13T08:39:08Z"
+    },
     {
       "title": "Parents urged to check £12.50 broadband support as online revision becomes essential for exams - Virgin Media O2",
       "url": "https://news.virginmediao2.co.uk/parents-urged-to-check-12-50-broadband-support-as-online-revision-becomes-essential-for-exams/",
@@ -30,29 +35,24 @@
       "publish_datetime": "2026-03-04T15:28:50Z"
     },
     {
-      "title": "Virgin Media O2 appoints Vivo’s David Melcon as Chief Financial Officer - Virgin Media O2",
-      "url": "https://news.virginmediao2.co.uk/virgin-media-o2-appoints-vivos-david-melcon-as-chief-financial-officer/",
-      "publish_datetime": "2026-03-04T10:57:55Z"
-    },
-    {
-      "title": "Britain’s brand-new boyband, December 10, to perform FREE O2 Presents… show for fans at O2 Shepherd’s Bush Empire - Virgin Media O2",
-      "url": "https://news.virginmediao2.co.uk/britains-brand-new-boyband-december-10-to-perform-free-o2-presents-show-for-fans-at-o2-shepherds-bush-empire/",
-      "publish_datetime": "2026-03-02T19:03:37Z"
-    },
-    {
-      "title": "Virgin Media O2 supports customers affected by events in the Middle East - Virgin Media O2",
-      "url": "https://news.virginmediao2.co.uk/virgin-media-o2-supports-customers-affected-by-events-in-the-middle-east/",
-      "publish_datetime": "2026-03-02T17:34:07Z"
-    },
-    {
-      "title": "March giveaways on Priority from O2: Win a Mega Tech Bundle, get discounted beauty treatments, free tastecard memberships, Greggs sausage rolls and more - Virgin Media O2",
-      "url": "https://news.virginmediao2.co.uk/march-giveaways-on-priority-from-o2-win-a-mega-tech-bundle-get-discounted-beauty-treatments-free-tastecard-memberships-greggs-sausage-rolls-and-more/",
-      "publish_datetime": "2026-03-02T09:37:16Z"
-    },
-    {
       "title": "Q4/FY25 financial results - Virgin Media O2",
       "url": "https://news.virginmediao2.co.uk/investors/",
       "publish_datetime": "2026-02-18T07:30:06Z"
+    },
+    {
+      "title": "How Virgin Media O2 is investing in the UK’s connectivity and committing to consumer fairness - Virgin Media O2",
+      "url": "https://news.virginmediao2.co.uk/how-virgin-media-o2-is-investing-in-the-uks-connectivity-and-committing-to-consumer-fairness/",
+      "publish_datetime": "2026-02-11T16:13:28Z"
+    },
+    {
+      "title": "Corporate statements - Virgin Media O2",
+      "url": "https://news.virginmediao2.co.uk/corporate-statements/",
+      "publish_datetime": "2024-08-02T12:49:23Z"
+    },
+    {
+      "title": "Virgin Media O2 | Sustainability and Responsible Business",
+      "url": "https://news.virginmediao2.co.uk/responsible-business/",
+      "publish_datetime": "2024-03-19T11:51:43Z"
     }
   ]
 }

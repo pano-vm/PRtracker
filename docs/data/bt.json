@@ -2,8 +2,13 @@
   "status": "ok",
   "brand": "BT",
   "group": "Telecoms",
-  "generated_at": "2026-03-13T07:48:31.935810Z",
+  "generated_at": "2026-03-13T09:45:19.866631Z",
   "items": [
+    {
+      "title": "Whisky, waves and wildlife: EE breaks new ground to connect communities on Islay",
+      "url": "https://newsroom.bt.com/whisky-waves-and-wildlife-ee-breaks-new-ground-to-connect-communities-on-islay/",
+      "publish_datetime": "2026-03-13T09:30:00Z"
+    },
     {
       "title": "BT Group partners with Gavin & Stacey star to put digital training ‘on track’ - as over 65s call for social places to learn online skills",
       "url": "https://newsroom.bt.com/bt-group-partners-with-gavin--stacey-star-to-put-digital-training-on-track---as-over-65s-call-for-social-places-to-learn-online-skills/",
@@ -48,11 +53,6 @@
       "title": "BT completes sale of its Radianz business to TNS",
       "url": "https://newsroom.bt.com/bt-completes-sale-of-its-radianz-business-to-tns/",
       "publish_datetime": "2026-02-02T11:00:00Z"
-    },
-    {
-      "title": "From not-spot to hotspot: EE delivers UK first for the people of Penmachno",
-      "url": "https://newsroom.bt.com/from-not-spot-to-hotspot-ee-delivers-uk-first-for-the-people-of-penmachno/",
-      "publish_datetime": "2026-01-27T13:21:33Z"
     }
   ]
 }
