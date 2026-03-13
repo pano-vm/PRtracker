@@ -9,45 +9,50 @@
 <body>
   <main class="wrap">
     <header class="header">
-      <h1>Press Release Tracker</h1>
-      <p class="sub">Official sources only. Latest plus last 10 per brand.</p>
+      <div class="header-intro">
+        <h1>Press Release Tracker</h1>
+        <p class="sub">Official sources only. Latest plus last 10 per brand.</p>
+      </div>
 
-      <div class="actions">
-        <a class="btn" href="https://github.com/YOUR_ORG/YOUR_REPO/actions/workflows/refresh.yml" target="_blank" rel="noreferrer">
-          Update now (Run workflow)
-        </a>
-        <span id="lastUpdated" class="muted"></span>
+      <div class="header-meta">
+        <div class="actions">
+          <a class="btn" href="https://github.com/YOUR_ORG/YOUR_REPO/actions/workflows/refresh.yml" target="_blank" rel="noreferrer">
+            Update now (Run workflow)
+          </a>
+          <span id="lastUpdated" class="muted"></span>
+        </div>
       </div>
     </header>
 
-  <section class="overview-card" id="overview-card">
-    <div class="group-header">
-      <h2>Market Intelligence Snapshot</h2>
-    </div>
-
-    <div class="overview-body">
-      <p id="overview-summary">Loading overview...</p>
-      <p id="overview-updated" class="overview-updated muted"></p>
-    </div>
-
-    <div class="intelligence-grid">
-      <div class="intelligence-panel signals-section" id="signals-section">
-        <h3 class="signals-title">Key Competitor Signals</h3>
-        <div id="signals-list" class="signals-list compact-signals"></div>
+    <section class="overview-card" id="overview-card">
+      <div class="group-header">
+        <h2>Market Intelligence Snapshot</h2>
       </div>
 
-      <div class="intelligence-panel momentum-section" id="momentum-section">
-        <h3 class="momentum-title">Competitor Momentum</h3>
-        <div id="momentum-list" class="momentum-list compact-momentum"></div>
+      <div class="overview-body">
+        <p id="overview-summary">Loading overview...</p>
+        <p id="overview-updated" class="overview-updated muted"></p>
       </div>
 
-      <div class="intelligence-panel trends-section" id="trends-section">
-        <h3 class="trends-title">Trending telecom topics</h3>
-        <div id="trends-list" class="trends-list"></div>
+      <div class="intelligence-grid">
+        <div class="intelligence-panel signals-section" id="signals-section">
+          <h3 class="signals-title">Key Competitor Signals</h3>
+          <div id="signals-list" class="signals-list compact-signals"></div>
+        </div>
+
+        <div class="intelligence-panel momentum-section" id="momentum-section">
+          <h3 class="momentum-title">Competitor Momentum - Last 30 Days</h3>
+          <div id="momentum-list" class="momentum-list compact-momentum"></div>
+        </div>
+
+        <div class="intelligence-panel trends-section" id="trends-section">
+          <h3 class="trends-title">Trending telecom topics</h3>
+          <div id="trends-list" class="trends-list"></div>
+        </div>
       </div>
-    </div>
-  </section>
-    
+    </section>
+
+    <div class="telecom-divider" aria-hidden="true"></div>
 
     <section class="group-section">
       <div class="group-header">
