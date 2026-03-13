@@ -10,6 +10,9 @@ const brands = [
   { key: "uswitch", name: "uSwitch", group: "Affiliates", file: "./data/uswitch.json" }
 ];
 
+const DEFAULT_VISIBLE_ITEMS = 5;
+const MAX_VISIBLE_ITEMS = 10;
+
 function el(tag, attrs = {}, children = []) {
   const node = document.createElement(tag);
   Object.entries(attrs).forEach(([k, v]) => node.setAttribute(k, v));
@@ -90,6 +93,45 @@ async function loadOverview() {
   }
 }
 
+function createPressList(items, expanded = false) {
+  const visibleCount = expanded ? Math.min(items.length, MAX_VISIBLE_ITEMS) : Math.min(items.length, DEFAULT_VISIBLE_ITEMS);
+  const list = el("ol", { class: "press-list" }, []);
+
+  items.slice(0, visibleCount).forEach((it) => {
+    list.appendChild(
+      el("li", { class: "press-item" }, [
+        el("a", { href: it.url, target: "_blank", rel: "noreferrer" }, [it.title]),
+        el("span", { class: "item-date" }, [formatDate(it.publish_datetime)])
+      ])
+    );
+  });
+
+  return list;
+}
+
+function createShowMoreButton(items, listContainer, labelEl) {
+  let expanded = false;
+
+  const button = el("button", { type: "button", class: "show-more-btn" }, ["Show more"]);
+
+  button.addEventListener("click", () => {
+    expanded = !expanded;
+
+    const newList = createPressList(items, expanded);
+    listContainer.innerHTML = "";
+    listContainer.appendChild(newList);
+
+    labelEl.textContent = expanded ? `Latest ${Math.min(items.length, MAX_VISIBLE_ITEMS)}` : `Latest ${DEFAULT_VISIBLE_ITEMS}`;
+    button.textContent = expanded ? "Show less" : "Show more";
+
+    if (!expanded) {
+      listContainer.scrollTop = 0;
+    }
+  });
+
+  return button;
+}
+
 function renderBrand(brandName, payload) {
   const card = el("article", { class: "card" }, [
     el("div", { class: "card-head" }, [
@@ -124,19 +166,23 @@ function renderBrand(brandName, payload) {
   }
 
   card.appendChild(latestBlock);
-  card.appendChild(el("div", { class: "section-label list-label" }, ["Latest 10"]));
 
-  const list = el("ol", { class: "press-list" }, []);
-  items.slice(0, 10).forEach((it) => {
-    list.appendChild(
-      el("li", { class: "press-item" }, [
-        el("a", { href: it.url, target: "_blank", rel: "noreferrer" }, [it.title]),
-        el("span", { class: "item-date" }, [formatDate(it.publish_datetime)])
-      ])
-    );
-  });
+  const initialVisibleCount = Math.min(items.length, DEFAULT_VISIBLE_ITEMS);
+  const listLabel = el("div", { class: "section-label list-label" }, [`Latest ${initialVisibleCount}`]);
+  card.appendChild(listLabel);
 
-  card.appendChild(list);
+  const listContainer = el("div", { class: "press-list-wrap" }, [
+    createPressList(items, false)
+  ]);
+  card.appendChild(listContainer);
+
+  if (items.length > DEFAULT_VISIBLE_ITEMS) {
+    const controls = el("div", { class: "card-controls" }, [
+      createShowMoreButton(items, listContainer, listLabel)
+    ]);
+    card.appendChild(controls);
+  }
+
   return card;
 }
 
