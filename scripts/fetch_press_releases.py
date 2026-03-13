@@ -1,4 +1,6 @@
 import json
+import os
+from openai import OpenAI
 import re
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
@@ -856,6 +858,60 @@ def build_feed(key: str) -> dict:
         "items": final,
     }
 
+def generate_ai_overview(all_brand_data: list[dict]) -> dict:
+    api_key = os.getenv("OPENAI_API_KEY")
+
+    if not api_key:
+        return generate_overview(all_brand_data)
+
+    all_items = dedupe_items_by_title_and_url(all_brand_data)
+
+    if not all_items:
+        return {
+            "generated_at": utc_now_iso(),
+            "summary": "No recent telecom press releases were available for summarisation."
+        }
+
+    lines = []
+    for item in all_items[:80]:
+        brand = item.get("brand", "Unknown brand")
+        title = item.get("title", "").strip()
+        if title:
+            lines.append(f"- {brand}: {title}")
+
+    prompt = (
+        "You are summarising UK telecom and telecom-affiliate press releases for a competitive intelligence tracker.\n\n"
+        "Write a short overview in 2 sentences.\n"
+        "Keep it factual, concise and natural.\n"
+        "Focus on the main themes across brands, such as broadband, mobile, pricing, regulation, partnerships, TV or infrastructure.\n"
+        "If relevant, distinguish between telecom brand announcements and affiliate or consumer-rights coverage.\n"
+        "Do not use bullet points.\n"
+        "Do not mention that you are an AI.\n\n"
+        "Headlines:\n"
+        + "\n".join(lines)
+    )
+
+    try:
+        client = OpenAI(api_key=api_key)
+
+        response = client.responses.create(
+            model="gpt-4.1-mini",
+            input=prompt
+        )
+
+        summary = (response.output_text or "").strip()
+
+        if not summary:
+            return generate_overview(all_brand_data)
+
+        return {
+            "generated_at": utc_now_iso(),
+            "summary": summary
+        }
+
+    except Exception as e:
+        print("OpenAI overview generation failed:", repr(e))
+        return generate_overview(all_brand_data)
 
 def main():
     all_outputs = []
@@ -870,7 +926,7 @@ def main():
 
         print(f"Wrote {path} ({len(output['items'])} items)")
 
-    overview = generate_overview(all_outputs)
+    overview = generate_ai_overview(all_outputs)
     overview_path = "docs/data/overview.json"
 
     with open(overview_path, "w", encoding="utf-8") as f:
