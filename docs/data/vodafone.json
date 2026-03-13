@@ -2,8 +2,18 @@
   "status": "ok",
   "brand": "Vodafone",
   "group": "Telecoms",
-  "generated_at": "2026-03-12T07:48:18.264688Z",
+  "generated_at": "2026-03-13T07:46:51.509681Z",
   "items": [
+    {
+      "title": "Speed Boost offers Vodafone customers up to 2x faster speeds",
+      "url": "https://www.vodafone.co.uk/newscentre/press-release/speed-boost-up-to-2x-faster-mobile-data-speeds/",
+      "publish_datetime": "2026-03-12T11:27:05Z"
+    },
+    {
+      "title": "Order the iPhone 17e and iPad Air now on Vodafone",
+      "url": "https://www.vodafone.co.uk/newscentre/press-release/new-iphone-17e-and-ipad-air/",
+      "publish_datetime": "2026-03-12T10:10:31Z"
+    },
     {
       "title": "The Samsung Galaxy S26 series is now available on Vodafone",
       "url": "https://www.vodafone.co.uk/newscentre/press-release/samsung-galaxy-s26-series-now-available/",
@@ -43,16 +53,6 @@
       "title": "Safer Internet Day 2026: Almost a third of children who use AI chatbots see them as friends",
       "url": "https://www.vodafone.co.uk/newscentre/press-release/ai-chatbots-safer-internet-day-2026/",
       "publish_datetime": "2026-02-10T08:48:57Z"
-    },
-    {
-      "title": "Vodafone launches 'First Term', celebrating family connections",
-      "url": "https://www.vodafone.co.uk/newscentre/press-release/vodafone-together-first-term-campaign/",
-      "publish_datetime": "2026-01-30T13:06:37Z"
-    },
-    {
-      "title": "Vodafone Business and Centrica sign four-year deal",
-      "url": "https://www.vodafone.co.uk/newscentre/press-release/vodafone-business-centrica-four-year-deal/",
-      "publish_datetime": "2026-01-27T08:53:13Z"
     }
   ]
 }

@@ -2,8 +2,13 @@
   "status": "ok",
   "brand": "Virgin Media O2",
   "group": "Telecoms",
-  "generated_at": "2026-03-12T07:48:09.082654Z",
+  "generated_at": "2026-03-13T07:46:43.005189Z",
   "items": [
+    {
+      "title": "Parents urged to check £12.50 broadband support as online revision becomes essential for exams - Virgin Media O2",
+      "url": "https://news.virginmediao2.co.uk/parents-urged-to-check-12-50-broadband-support-as-online-revision-becomes-essential-for-exams/",
+      "publish_datetime": "2026-03-12T10:00:30Z"
+    },
     {
       "title": "O2 is offering millions of customers the chance to upgrade to 5G+ at no extra cost - Virgin Media O2",
       "url": "https://news.virginmediao2.co.uk/o2-is-offering-millions-of-customers-the-chance-to-upgrade-to-5g-at-no-extra-cost/",
@@ -48,11 +53,6 @@
       "title": "Q4/FY25 financial results - Virgin Media O2",
       "url": "https://news.virginmediao2.co.uk/investors/",
       "publish_datetime": "2026-02-18T07:30:06Z"
-    },
-    {
-      "title": "How Virgin Media O2 is investing in the UK’s connectivity and committing to consumer fairness - Virgin Media O2",
-      "url": "https://news.virginmediao2.co.uk/how-virgin-media-o2-is-investing-in-the-uks-connectivity-and-committing-to-consumer-fairness/",
-      "publish_datetime": "2026-02-11T16:13:28Z"
     }
   ]
 }
