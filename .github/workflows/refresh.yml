@@ -20,7 +20,12 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install dependencies
+        run: pip install openai
+
       - name: Fetch latest press releases
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python scripts/fetch_press_releases.py
 
       - name: Commit updated data
