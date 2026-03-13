@@ -7,8 +7,7 @@ from html import unescape
 from urllib.parse import urljoin, urlparse, urlunparse, parse_qsl, urlencode
 from urllib.request import Request, urlopen
 
-from openai import OpenAI
-
+from google import genai
 
 TELECOM_KEYWORDS = [
     "broadband",
@@ -772,7 +771,7 @@ def generate_overview(all_brand_data: list[dict]) -> dict:
 
 
 def generate_ai_overview(all_brand_data: list[dict]) -> dict:
-    api_key = os.getenv("OPENAI_API_KEY")
+    api_key = os.getenv("GEMINI_API_KEY")
 
     if not api_key:
         return generate_overview(all_brand_data)
@@ -806,14 +805,14 @@ def generate_ai_overview(all_brand_data: list[dict]) -> dict:
     )
 
     try:
-        client = OpenAI(api_key=api_key)
+        client = genai.Client(api_key=api_key)
 
-        response = client.responses.create(
-            model="gpt-4.1-mini",
-            input=prompt,
+        response = client.models.generate_content(
+            model="gemini-3-flash-preview",
+            contents=prompt,
         )
 
-        summary = (response.output_text or "").strip()
+        summary = (response.text or "").strip()
 
         if not summary:
             return generate_overview(all_brand_data)
@@ -824,7 +823,7 @@ def generate_ai_overview(all_brand_data: list[dict]) -> dict:
         }
 
     except Exception as e:
-        print("OpenAI overview generation failed:", repr(e))
+        print("Gemini overview generation failed:", repr(e))
         return generate_overview(all_brand_data)
 
 
