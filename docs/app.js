@@ -13,6 +13,17 @@ const brands = [
 const DEFAULT_VISIBLE_ITEMS = 5;
 const MAX_VISIBLE_ITEMS = 10;
 
+const TOPIC_LABELS = {
+  broadband: "Broadband strategy",
+  mobile: "Mobile market",
+  network: "Network investment",
+  pricing: "Pricing changes",
+  regulation: "Regulation / Ofcom",
+  "streaming and TV": "Entertainment partnerships",
+  partnerships: "Partnerships",
+  infrastructure: "Infrastructure"
+};
+
 function el(tag, attrs = {}, children = []) {
   const node = document.createElement(tag);
 
@@ -59,6 +70,10 @@ function formatDateTime(iso) {
       });
 }
 
+function getTopicLabel(topic) {
+  return TOPIC_LABELS[topic] || topic || "Topic";
+}
+
 async function loadBrand(brand) {
   const res = await fetch(brand.file, { cache: "no-store" });
   if (!res.ok) throw new Error(`Failed to load ${brand.file}: ${res.status}`);
@@ -81,13 +96,15 @@ function renderSignals(signals) {
   signalsSectionEl.style.display = "block";
 
   signals.forEach((signal) => {
+    const impactText = signal.impact ? `Impact: ${signal.impact}` : "";
+
     const card = el("article", { className: "signal-card" }, [
       el("div", { className: "signal-head" }, [
         el("div", { className: "signal-brand" }, [signal.brand || "Unknown"]),
         el("span", { className: "signal-type" }, [signal.type || "Strategic update"])
       ]),
       el("div", { className: "signal-headline" }, [signal.headline || ""]),
-      el("div", { className: "signal-impact" }, [signal.impact || ""])
+      el("div", { className: "signal-impact" }, [impactText])
     ]);
 
     signalsListEl.appendChild(card);
@@ -113,8 +130,11 @@ function renderMomentum(momentum) {
 
   momentum.forEach((item) => {
     const widthPercent = Math.max((item.count / maxCount) * 100, 8);
+    const isOurBrand = item.brand === "Virgin Media O2";
 
-    const card = el("article", { className: "momentum-card" }, [
+    const card = el("article", {
+      className: `momentum-card${isOurBrand ? " vm02" : ""}`
+    }, [
       el("div", { className: "momentum-head" }, [
         el("div", { className: "momentum-brand" }, [item.brand || "Unknown"]),
         el("div", { className: "momentum-count" }, [`${item.count}`])
@@ -148,7 +168,7 @@ function renderTopicTrends(topicTrends) {
 
   topicTrends.forEach((item) => {
     const chip = el("div", { className: "trend-chip" }, [
-      el("span", { className: "trend-topic" }, [item.topic || "Topic"]),
+      el("span", { className: "trend-topic" }, [getTopicLabel(item.topic)]),
       el("span", { className: "trend-count" }, [`${item.count || 0}`])
     ]);
 
@@ -258,7 +278,7 @@ function createShowMoreButton(items, listContainer, labelEl) {
 }
 
 function renderBrand(brandName, payload) {
-  const statusText = payload.status === "ok" ? "Live" : "Issue";
+  const statusText = payload.status === "ok" ? "Live feed" : "Issue";
 
   const card = el("article", { className: "card" }, [
     el("div", { className: "card-head" }, [
