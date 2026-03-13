@@ -772,6 +772,8 @@ def generate_overview(all_brand_data: list[dict]) -> dict:
 
 def build_competitor_momentum(all_brand_data: list[dict]) -> list[dict]:
     momentum = []
+    now = datetime.now(timezone.utc)
+    window_days = 30
 
     for brand_data in all_brand_data:
         brand = brand_data.get("brand", "")
@@ -781,9 +783,25 @@ def build_competitor_momentum(all_brand_data: list[dict]) -> list[dict]:
         if group != "Telecoms":
             continue
 
+        recent_count = 0
+
+        for item in items:
+            publish_datetime = item.get("publish_datetime")
+            if not publish_datetime:
+                continue
+
+            try:
+                published = datetime.fromisoformat(publish_datetime.replace("Z", "+00:00"))
+                age_days = (now - published).days
+
+                if age_days <= window_days:
+                    recent_count += 1
+            except Exception:
+                continue
+
         momentum.append({
             "brand": brand,
-            "count": len(items),
+            "count": recent_count,
         })
 
     momentum.sort(key=lambda item: item["count"], reverse=True)
