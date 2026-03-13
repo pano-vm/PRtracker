@@ -1,12 +1,24 @@
 {
-  "generated_at": "...",
-  "summary": "...",
+  "generated_at": "2026-03-13T12:46:04.830213Z",
+  "summary": "Major competitors are aggressively leveraging new hardware cycles and content partnerships to differentiate their offerings ahead of spring price adjustments. Vodafone is directly challenging our speed leadership with its new performance-boosting service, while EE is enhancing its media ecosystem through a strategic DAZN integration. Competitors are also heavily publicizing third-party network quality awards to erode our premium connectivity positioning.",
   "signals": [
     {
       "brand": "Vodafone",
       "type": "Network investment",
-      "headline": "Vodafone expands full fibre broadband footprint across new UK towns",
-      "impact": "This increases competitive pressure in fixed broadband markets where network reach and speed claims are important."
+      "headline": "Speed Boost offers Vodafone customers up to 2x faster speeds",
+      "impact": "This initiative directly challenges Virgin Media O2's core speed advantage by offering performance parity to mobile and broadband customers without immediate cost increases."
+    },
+    {
+      "brand": "EE",
+      "type": "Product launch",
+      "headline": "Ee Tv Expands Its Sports Entertainment Access With Dazn Launch",
+      "impact": "Expanding into niche sports content via DAZN makes EE's TV proposition more competitive against our premium sports bundles and Virgin TV 360 platform."
+    },
+    {
+      "brand": "EE",
+      "type": "Consumer sentiment",
+      "headline": "Ee Named The Uk’S Number One Network In Two Landmark Studies",
+      "impact": "EE's aggressive marketing of independent network superiority threatens our brand perception and could increase churn as customers prioritize reliability during the flagship device launch season."
     }
   ]
 }
