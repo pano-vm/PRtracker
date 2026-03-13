@@ -377,3 +377,33 @@ body {
     border-radius: 18px;
   }
 }
+
+.press-list-wrap {
+  flex: 1;
+  min-height: 0;
+}
+
+.card-controls {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+
+.show-more-btn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+  font-family: inherit;
+  padding: 0;
+  cursor: pointer;
+}
+
+.show-more-btn:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
