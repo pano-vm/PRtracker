@@ -15,7 +15,15 @@ const MAX_VISIBLE_ITEMS = 10;
 
 function el(tag, attrs = {}, children = []) {
   const node = document.createElement(tag);
-  Object.entries(attrs).forEach(([k, v]) => node.setAttribute(k, v));
+  Object.entries(attrs).forEach(([k, v]) => {
+    if (k === "className") {
+      node.className = v;
+    } else if (k === "textContent") {
+      node.textContent = v;
+    } else {
+      node.setAttribute(k, v);
+    }
+  });
   children.forEach((c) => node.appendChild(typeof c === "string" ? document.createTextNode(c) : c));
   return node;
 }
@@ -94,16 +102,24 @@ async function loadOverview() {
 }
 
 function createPressList(items, expanded = false) {
-  const visibleCount = expanded ? Math.min(items.length, MAX_VISIBLE_ITEMS) : Math.min(items.length, DEFAULT_VISIBLE_ITEMS);
-  const list = el("ol", { class: "press-list" }, []);
+  const visibleCount = expanded
+    ? Math.min(items.length, MAX_VISIBLE_ITEMS)
+    : Math.min(items.length, DEFAULT_VISIBLE_ITEMS);
 
-  items.slice(0, visibleCount).forEach((it) => {
-    list.appendChild(
-      el("li", { class: "press-item" }, [
-        el("a", { href: it.url, target: "_blank", rel: "noreferrer" }, [it.title]),
-        el("span", { class: "item-date" }, [formatDate(it.publish_datetime)])
+  const list = el("ol", { className: "press-list" }, []);
+
+  items.slice(0, visibleCount).forEach((it, index) => {
+    const item = el("li", { className: "press-item" }, [
+      el("div", { className: "press-item-row" }, [
+        el("span", { className: "press-item-number", textContent: `${index + 1}.` }),
+        el("div", { className: "press-item-content" }, [
+          el("a", { href: it.url, target: "_blank", rel: "noreferrer" }, [it.title]),
+          el("span", { className: "item-date" }, [formatDate(it.publish_datetime)])
+        ])
       ])
-    );
+    ]);
+
+    list.appendChild(item);
   });
 
   return list;
@@ -112,7 +128,7 @@ function createPressList(items, expanded = false) {
 function createShowMoreButton(items, listContainer, labelEl) {
   let expanded = false;
 
-  const button = el("button", { type: "button", class: "show-more-btn" }, ["Show more"]);
+  const button = el("button", { type: "button", className: "show-more-btn" }, ["Show more"]);
 
   button.addEventListener("click", () => {
     expanded = !expanded;
@@ -121,7 +137,10 @@ function createShowMoreButton(items, listContainer, labelEl) {
     listContainer.innerHTML = "";
     listContainer.appendChild(newList);
 
-    labelEl.textContent = expanded ? `Latest ${Math.min(items.length, MAX_VISIBLE_ITEMS)}` : `Latest ${DEFAULT_VISIBLE_ITEMS}`;
+    labelEl.textContent = expanded
+      ? `Latest ${Math.min(items.length, MAX_VISIBLE_ITEMS)}`
+      : `Latest ${Math.min(items.length, DEFAULT_VISIBLE_ITEMS)}`;
+
     button.textContent = expanded ? "Show less" : "Show more";
 
     if (!expanded) {
@@ -133,51 +152,54 @@ function createShowMoreButton(items, listContainer, labelEl) {
 }
 
 function renderBrand(brandName, payload) {
-  const card = el("article", { class: "card" }, [
-    el("div", { class: "card-head" }, [
-      el("h3", { class: "card-title" }, [brandName]),
-      el("span", { class: `status ${payload.status === "ok" ? "ok" : "error"}` }, [
-        payload.status === "ok" ? "Updated" : "Failed"
+  const statusText = payload.status === "ok" ? "Live" : "Issue";
+
+  const card = el("article", { className: "card" }, [
+    el("div", { className: "card-head" }, [
+      el("h3", { className: "card-title" }, [brandName]),
+      el("span", { className: `status ${payload.status === "ok" ? "ok" : "error"}` }, [
+        el("span", { className: "status-dot" }, []),
+        el("span", { className: "status-label" }, [statusText])
       ])
     ])
   ]);
 
   if (payload.status !== "ok") {
-    card.appendChild(el("p", { class: "error-text" }, [payload.error || "Could not load data"]));
+    card.appendChild(el("p", { className: "error-text" }, [payload.error || "Could not load data"]));
     return card;
   }
 
   const items = payload.items || [];
   const latest = items[0];
 
-  const latestBlock = el("div", { class: "latest-block" }, [
-    el("div", { class: "section-label" }, ["Latest press release"])
+  const latestBlock = el("div", { className: "latest-block" }, [
+    el("div", { className: "section-label" }, ["Latest press release"])
   ]);
 
   if (latest) {
     latestBlock.appendChild(
-      el("a", { href: latest.url, target: "_blank", rel: "noreferrer", class: "latest-link" }, [latest.title])
+      el("a", { href: latest.url, target: "_blank", rel: "noreferrer", className: "latest-link" }, [latest.title])
     );
     latestBlock.appendChild(
-      el("div", { class: "latest-date" }, [formatDate(latest.publish_datetime)])
+      el("div", { className: "latest-date" }, [formatDate(latest.publish_datetime)])
     );
   } else {
-    latestBlock.appendChild(el("div", { class: "muted" }, ["No items found"]));
+    latestBlock.appendChild(el("div", { className: "muted" }, ["No items found"]));
   }
 
   card.appendChild(latestBlock);
 
   const initialVisibleCount = Math.min(items.length, DEFAULT_VISIBLE_ITEMS);
-  const listLabel = el("div", { class: "section-label list-label" }, [`Latest ${initialVisibleCount}`]);
+  const listLabel = el("div", { className: "section-label list-label" }, [`Latest ${initialVisibleCount}`]);
   card.appendChild(listLabel);
 
-  const listContainer = el("div", { class: "press-list-wrap" }, [
+  const listContainer = el("div", { className: "press-list-wrap" }, [
     createPressList(items, false)
   ]);
   card.appendChild(listContainer);
 
   if (items.length > DEFAULT_VISIBLE_ITEMS) {
-    const controls = el("div", { class: "card-controls" }, [
+    const controls = el("div", { className: "card-controls" }, [
       createShowMoreButton(items, listContainer, listLabel)
     ]);
     card.appendChild(controls);
