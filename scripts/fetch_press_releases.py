@@ -1,12 +1,13 @@
 import json
 import os
-from openai import OpenAI
 import re
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from html import unescape
 from urllib.parse import urljoin, urlparse, urlunparse, parse_qsl, urlencode
 from urllib.request import Request, urlopen
+
+from openai import OpenAI
 
 
 TELECOM_KEYWORDS = [
@@ -56,33 +57,91 @@ TELECOM_KEYWORDS = [
 
 TOPIC_KEYWORDS = {
     "broadband": [
-        "broadband", "broad band", "fibre", "fiber", "full fibre", "full fiber",
-        "internet", "wifi", "wi-fi", "router", "gigabit", "gig1", "gig2", "gigafast"
+        "broadband",
+        "broad band",
+        "fibre",
+        "fiber",
+        "full fibre",
+        "full fiber",
+        "internet",
+        "wifi",
+        "wi-fi",
+        "router",
+        "gigabit",
+        "gig1",
+        "gig2",
+        "gigafast",
     ],
     "mobile": [
-        "mobile", "mobiles", "phone", "phones", "mobile phone", "sim", "sim-only",
-        "handset", "smartphone", "data"
+        "mobile",
+        "mobiles",
+        "phone",
+        "phones",
+        "mobile phone",
+        "sim",
+        "sim-only",
+        "handset",
+        "smartphone",
+        "data",
     ],
     "network": [
-        "network", "connectivity", "coverage", "4g", "5g"
+        "network",
+        "connectivity",
+        "coverage",
+        "4g",
+        "5g",
     ],
     "pricing": [
-        "price", "pricing", "price hike", "price rises", "cost", "bill", "tariff",
-        "deal", "deals", "bundle", "bundles", "mid-contract"
+        "price",
+        "pricing",
+        "price hike",
+        "price rises",
+        "cost",
+        "bill",
+        "tariff",
+        "deal",
+        "deals",
+        "bundle",
+        "bundles",
+        "mid-contract",
     ],
     "regulation": [
-        "ofcom", "regulation", "regulatory", "rules", "consumer", "complaint",
-        "complaints", "rights", "mid-contract"
+        "ofcom",
+        "regulation",
+        "regulatory",
+        "rules",
+        "consumer",
+        "complaint",
+        "complaints",
+        "rights",
+        "mid-contract",
     ],
     "streaming and TV": [
-        "tv", "streaming", "sport", "sports", "entertainment", "cinema"
+        "tv",
+        "streaming",
+        "sport",
+        "sports",
+        "entertainment",
+        "cinema",
     ],
     "partnerships": [
-        "partner", "partners", "partnership", "partnerships", "collaboration", "collaborates"
+        "partner",
+        "partners",
+        "partnership",
+        "partnerships",
+        "collaboration",
+        "collaborates",
     ],
     "infrastructure": [
-        "infrastructure", "rollout", "roll-out", "expansion", "expand", "upgrade",
-        "build", "builds", "deployment"
+        "infrastructure",
+        "rollout",
+        "roll-out",
+        "expansion",
+        "expand",
+        "upgrade",
+        "build",
+        "builds",
+        "deployment",
     ],
 }
 
@@ -496,9 +555,22 @@ def extract_date_from_uswitch_url(url: str) -> str | None:
 def is_probable_asset(url: str) -> bool:
     lower = url.lower()
     asset_extensions = (
-        ".css", ".js", ".json", ".xml", ".png", ".jpg", ".jpeg",
-        ".gif", ".svg", ".webp", ".woff", ".woff2", ".ttf", ".ico",
-        ".pdf", ".mp4"
+        ".css",
+        ".js",
+        ".json",
+        ".xml",
+        ".png",
+        ".jpg",
+        ".jpeg",
+        ".gif",
+        ".svg",
+        ".webp",
+        ".woff",
+        ".woff2",
+        ".ttf",
+        ".ico",
+        ".pdf",
+        ".mp4",
     )
     return lower.endswith(asset_extensions) or "/wp-content/" in lower
 
@@ -598,8 +670,10 @@ def dedupe_items_by_title_and_url(all_brand_data: list[dict]) -> list[dict]:
             title = (item.get("title") or "").strip()
             url = (item.get("url") or "").strip()
             key = (title.lower(), url.lower())
+
             if not title or key in seen:
                 continue
+
             seen.add(key)
             deduped.append({
                 "brand": brand,
@@ -695,6 +769,63 @@ def generate_overview(all_brand_data: list[dict]) -> dict:
         "generated_at": utc_now_iso(),
         "summary": summary,
     }
+
+
+def generate_ai_overview(all_brand_data: list[dict]) -> dict:
+    api_key = os.getenv("OPENAI_API_KEY")
+
+    if not api_key:
+        return generate_overview(all_brand_data)
+
+    all_items = dedupe_items_by_title_and_url(all_brand_data)
+
+    if not all_items:
+        return {
+            "generated_at": utc_now_iso(),
+            "summary": "No recent telecom press releases were available for summarisation.",
+        }
+
+    lines = []
+    for item in all_items[:80]:
+        brand = item.get("brand", "Unknown brand")
+        title = (item.get("title") or "").strip()
+        if title:
+            safe_title = title.replace("\n", " ").strip()
+            lines.append(f"- {brand}: {safe_title[:220]}")
+
+    prompt = (
+        "You are summarising UK telecom and telecom-affiliate press releases for a competitive intelligence tracker.\n\n"
+        "Write a short overview in 2 sentences.\n"
+        "Keep it factual, concise and natural.\n"
+        "Focus on the main themes across brands, such as broadband, mobile, pricing, regulation, partnerships, TV or infrastructure.\n"
+        "If relevant, distinguish between telecom brand announcements and affiliate or consumer-rights coverage.\n"
+        "Do not use bullet points.\n"
+        "Do not mention that you are an AI.\n\n"
+        "Headlines:\n"
+        + "\n".join(lines)
+    )
+
+    try:
+        client = OpenAI(api_key=api_key)
+
+        response = client.responses.create(
+            model="gpt-4.1-mini",
+            input=prompt,
+        )
+
+        summary = (response.output_text or "").strip()
+
+        if not summary:
+            return generate_overview(all_brand_data)
+
+        return {
+            "generated_at": utc_now_iso(),
+            "summary": summary,
+        }
+
+    except Exception as e:
+        print("OpenAI overview generation failed:", repr(e))
+        return generate_overview(all_brand_data)
 
 
 def build_feed(key: str) -> dict:
@@ -858,60 +989,6 @@ def build_feed(key: str) -> dict:
         "items": final,
     }
 
-def generate_ai_overview(all_brand_data: list[dict]) -> dict:
-    api_key = os.getenv("OPENAI_API_KEY")
-
-    if not api_key:
-        return generate_overview(all_brand_data)
-
-    all_items = dedupe_items_by_title_and_url(all_brand_data)
-
-    if not all_items:
-        return {
-            "generated_at": utc_now_iso(),
-            "summary": "No recent telecom press releases were available for summarisation."
-        }
-
-    lines = []
-    for item in all_items[:80]:
-        brand = item.get("brand", "Unknown brand")
-        title = item.get("title", "").strip()
-        if title:
-            lines.append(f"- {brand}: {title}")
-
-    prompt = (
-        "You are summarising UK telecom and telecom-affiliate press releases for a competitive intelligence tracker.\n\n"
-        "Write a short overview in 2 sentences.\n"
-        "Keep it factual, concise and natural.\n"
-        "Focus on the main themes across brands, such as broadband, mobile, pricing, regulation, partnerships, TV or infrastructure.\n"
-        "If relevant, distinguish between telecom brand announcements and affiliate or consumer-rights coverage.\n"
-        "Do not use bullet points.\n"
-        "Do not mention that you are an AI.\n\n"
-        "Headlines:\n"
-        + "\n".join(lines)
-    )
-
-    try:
-        client = OpenAI(api_key=api_key)
-
-        response = client.responses.create(
-            model="gpt-4.1-mini",
-            input=prompt
-        )
-
-        summary = (response.output_text or "").strip()
-
-        if not summary:
-            return generate_overview(all_brand_data)
-
-        return {
-            "generated_at": utc_now_iso(),
-            "summary": summary
-        }
-
-    except Exception as e:
-        print("OpenAI overview generation failed:", repr(e))
-        return generate_overview(all_brand_data)
 
 def main():
     all_outputs = []
