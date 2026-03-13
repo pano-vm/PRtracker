@@ -58,6 +58,35 @@ async function loadBrand(brand) {
   return await res.json();
 }
 
+function renderSignals(signals) {
+  const signalsListEl = document.getElementById("signals-list");
+  const signalsSectionEl = document.getElementById("signals-section");
+
+  if (!signalsListEl || !signalsSectionEl) return;
+
+  signalsListEl.innerHTML = "";
+
+  if (!signals || !signals.length) {
+    signalsSectionEl.style.display = "none";
+    return;
+  }
+
+  signalsSectionEl.style.display = "block";
+
+  signals.forEach((signal) => {
+    const card = el("article", { className: "signal-card" }, [
+      el("div", { className: "signal-head" }, [
+        el("div", { className: "signal-brand" }, [signal.brand || "Unknown"]),
+        el("span", { className: "signal-type" }, [signal.type || "Strategic update"])
+      ]),
+      el("div", { className: "signal-headline" }, [signal.headline || ""]),
+      el("div", { className: "signal-impact" }, [signal.impact || ""])
+    ]);
+
+    signalsListEl.appendChild(card);
+  });
+}
+
 async function loadOverview() {
   try {
     const response = await fetch("./data/overview.json", { cache: "no-store" });
@@ -75,6 +104,8 @@ async function loadOverview() {
     if (summaryEl) {
       summaryEl.textContent = data.summary || "No overview available.";
     }
+
+    renderSignals(data.signals || []);
 
     const formattedDate = formatDateTime(data.generated_at);
 
@@ -98,6 +129,8 @@ async function loadOverview() {
     if (updatedEl) {
       updatedEl.textContent = "";
     }
+
+    renderSignals([]);
   }
 }
 
