@@ -790,17 +790,25 @@ def generate_ai_overview(all_brand_data: list[dict]) -> dict:
         title = (item.get("title") or "").strip()
         if title:
             safe_title = title.replace("\n", " ").strip()
-            lines.append(f"- {brand}: {safe_title[:220]}")
+            lines.append(f"Brand: {brand} | Headline: {safe_title[:220]}")
 
     prompt = (
-        "You are summarising UK telecom and telecom-affiliate press releases for a competitive intelligence tracker.\n\n"
-        "Write a short overview in 2 sentences.\n"
-        "Keep it factual, concise and natural.\n"
-        "Focus on the main themes across brands, such as broadband, mobile, pricing, regulation, partnerships, TV or infrastructure.\n"
-        "If relevant, distinguish between telecom brand announcements and affiliate or consumer-rights coverage.\n"
-        "Do not use bullet points.\n"
-        "Do not mention that you are an AI.\n\n"
-        "Headlines:\n"
+        "You are analysing telecom press releases for Virgin Media O2's competitive intelligence dashboard.\n\n"
+        "Virgin Media O2 is our company. All other telecom brands should be treated as competitors.\n\n"
+        "Write a concise 3 sentence strategic overview highlighting:\n"
+        "- key developments from competitors\n"
+        "- potential risks to Virgin Media O2\n"
+        "- potential opportunities for Virgin Media O2\n\n"
+        "Guidelines:\n"
+        "- Focus on telecom themes such as broadband rollout, mobile pricing, network investment, partnerships, TV or regulation.\n"
+        "- Highlight notable competitor activity from Vodafone, BT, Sky, EE and Three.\n"
+        "- If Virgin Media O2 appears in the headlines, frame it as our company activity.\n"
+        "- If affiliate sites (MoneySavingExpert or uSwitch) appear, describe them as consumer or regulatory commentary.\n"
+        "- Do not repeat headlines.\n"
+        "- Do not use bullet points.\n"
+        "- Write in a neutral business intelligence tone suitable for internal leadership updates.\n\n"
+
+        "Press release headlines:\n"
         + "\n".join(lines)
     )
 
