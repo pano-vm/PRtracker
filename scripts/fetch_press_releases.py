@@ -769,6 +769,31 @@ def generate_overview(all_brand_data: list[dict]) -> dict:
         "summary": summary,
     }
 
+def build_topic_trends(all_brand_data: list[dict]) -> list[dict]:
+    topic_counts = Counter()
+
+    for brand_data in all_brand_data:
+        group = brand_data.get("group", "")
+        items = brand_data.get("items", []) or []
+
+        if group != "Telecoms":
+            continue
+
+        for item in items:
+            title = (item.get("title") or "").strip()
+            if not title:
+                continue
+
+            matched_topics = detect_topics(title)
+            for topic in matched_topics:
+                topic_counts[topic] += 1
+
+    trends = [
+        {"topic": topic, "count": count}
+        for topic, count in topic_counts.most_common(6)
+    ]
+
+    return trends
 
 def build_competitor_momentum(all_brand_data: list[dict]) -> list[dict]:
     momentum = []
@@ -815,6 +840,7 @@ def generate_ai_overview(all_brand_data: list[dict]) -> dict:
         fallback = generate_overview(all_brand_data)
         fallback["signals"] = []
         fallback["momentum"] = build_competitor_momentum(all_brand_data)
+        fallback["topic_trends"] = build_topic_trends(all_brand_data)
         return fallback
 
     all_items = dedupe_items_by_title_and_url(all_brand_data)
@@ -825,6 +851,7 @@ def generate_ai_overview(all_brand_data: list[dict]) -> dict:
             "summary": "No recent telecom press releases were available for summarisation.",
             "signals": [],
             "momentum": build_competitor_momentum(all_brand_data),
+            "topic_trends": build_topic_trends(all_brand_data),
         }
 
     lines = []
@@ -880,6 +907,7 @@ def generate_ai_overview(all_brand_data: list[dict]) -> dict:
             fallback = generate_overview(all_brand_data)
             fallback["signals"] = []
             fallback["momentum"] = build_competitor_momentum(all_brand_data)
+            fallback["topic_trends"] = build_topic_trends(all_brand_data)
             return fallback
 
         cleaned = raw_text.strip()
@@ -896,6 +924,7 @@ def generate_ai_overview(all_brand_data: list[dict]) -> dict:
             fallback = generate_overview(all_brand_data)
             fallback["signals"] = []
             fallback["momentum"] = build_competitor_momentum(all_brand_data)
+            fallback["topic_trends"] = build_topic_trends(all_brand_data)
             return fallback
 
         cleaned_signals = []
@@ -920,6 +949,7 @@ def generate_ai_overview(all_brand_data: list[dict]) -> dict:
             "summary": summary,
             "signals": cleaned_signals,
             "momentum": build_competitor_momentum(all_brand_data),
+            "topic_trends": build_topic_trends(all_brand_data),
         }
 
     except Exception as e:
@@ -927,6 +957,7 @@ def generate_ai_overview(all_brand_data: list[dict]) -> dict:
         fallback = generate_overview(all_brand_data)
         fallback["signals"] = []
         fallback["momentum"] = build_competitor_momentum(all_brand_data)
+        fallback["topic_trends"] = build_topic_trends(all_brand_data)
         return fallback
 
 
