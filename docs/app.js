@@ -6,9 +6,8 @@ const brands = [
   { key: "bt", name: "BT", group: "Telecoms", file: "./data/bt.json" },
   { key: "sky", name: "Sky", group: "Telecoms", file: "./data/sky.json" },
 
-  { key: "comparethemarket", name: "Compare the Market", group: "Affiliates", file: "./data/comparethemarket.json" },
   { key: "moneysavingexpert", name: "MoneySavingExpert", group: "Affiliates", file: "./data/moneysavingexpert.json" },
-  { key: "uswitch", name: "uSwitch", group: "Affiliates", file: "./data/uswitch.json" },
+  { key: "uswitch", name: "uSwitch", group: "Affiliates", file: "./data/uswitch.json" }
 ];
 
 function el(tag, attrs = {}, children = []) {
@@ -21,17 +20,74 @@ function el(tag, attrs = {}, children = []) {
 function formatDate(iso) {
   if (!iso) return "Date unavailable";
   const d = new Date(iso);
-  return isNaN(d.getTime()) ? "Date unavailable" : d.toLocaleDateString("en-GB", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric"
-  });
+  return isNaN(d.getTime())
+    ? "Date unavailable"
+    : d.toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+      });
+}
+
+function formatDateTime(iso) {
+  if (!iso) return "";
+  const d = new Date(iso);
+  return isNaN(d.getTime())
+    ? ""
+    : d.toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+      });
 }
 
 async function loadBrand(brand) {
   const res = await fetch(brand.file, { cache: "no-store" });
   if (!res.ok) throw new Error(`Failed to load ${brand.file}: ${res.status}`);
   return await res.json();
+}
+
+async function loadOverview() {
+  try {
+    const response = await fetch("./data/overview.json", { cache: "no-store" });
+
+    if (!response.ok) {
+      throw new Error(`Failed to load overview.json: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    const summaryEl = document.getElementById("overview-summary");
+    const updatedEl = document.getElementById("overview-updated");
+    const lastUpdatedEl = document.getElementById("lastUpdated");
+
+    if (summaryEl) {
+      summaryEl.textContent = data.summary || "No overview available.";
+    }
+
+    const formattedDate = formatDateTime(data.generated_at);
+
+    if (updatedEl) {
+      updatedEl.textContent = formattedDate ? `Updated: ${formattedDate}` : "";
+    }
+
+    if (lastUpdatedEl) {
+      lastUpdatedEl.textContent = formattedDate ? `Last updated: ${formattedDate}` : "";
+    }
+  } catch (error) {
+    console.error("Failed to load overview:", error);
+
+    const summaryEl = document.getElementById("overview-summary");
+    const updatedEl = document.getElementById("overview-updated");
+
+    if (summaryEl) {
+      summaryEl.textContent = "Overview unavailable right now.";
+    }
+
+    if (updatedEl) {
+      updatedEl.textContent = "";
+    }
+  }
 }
 
 function renderBrand(brandName, payload) {
@@ -53,7 +109,7 @@ function renderBrand(brandName, payload) {
   const latest = items[0];
 
   const latestBlock = el("div", { class: "latest-block" }, [
-    el("div", { class: "section-label" }, ["Latest press release"]),
+    el("div", { class: "section-label" }, ["Latest press release"])
   ]);
 
   if (latest) {
@@ -91,6 +147,8 @@ async function main() {
   telecomsContainer.innerHTML = "";
   affiliatesContainer.innerHTML = "";
 
+  await loadOverview();
+
   for (const brand of brands) {
     try {
       const payload = await loadBrand(brand);
@@ -103,6 +161,7 @@ async function main() {
       }
     } catch (e) {
       const card = renderBrand(brand.name, { status: "error", error: String(e), items: [] });
+
       if (brand.group === "Telecoms") {
         telecomsContainer.appendChild(card);
       } else {
