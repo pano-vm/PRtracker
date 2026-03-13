@@ -1,5 +1,6 @@
 import json
 import re
+from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from html import unescape
 from urllib.parse import urljoin, urlparse, urlunparse, parse_qsl, urlencode
@@ -50,6 +51,38 @@ TELECOM_KEYWORDS = [
     "price hike",
     "mid-contract price hikes",
 ]
+
+TOPIC_KEYWORDS = {
+    "broadband": [
+        "broadband", "broad band", "fibre", "fiber", "full fibre", "full fiber",
+        "internet", "wifi", "wi-fi", "router", "gigabit", "gig1", "gig2", "gigafast"
+    ],
+    "mobile": [
+        "mobile", "mobiles", "phone", "phones", "mobile phone", "sim", "sim-only",
+        "handset", "smartphone", "data"
+    ],
+    "network": [
+        "network", "connectivity", "coverage", "4g", "5g"
+    ],
+    "pricing": [
+        "price", "pricing", "price hike", "price rises", "cost", "bill", "tariff",
+        "deal", "deals", "bundle", "bundles", "mid-contract"
+    ],
+    "regulation": [
+        "ofcom", "regulation", "regulatory", "rules", "consumer", "complaint",
+        "complaints", "rights", "mid-contract"
+    ],
+    "streaming and TV": [
+        "tv", "streaming", "sport", "sports", "entertainment", "cinema"
+    ],
+    "partnerships": [
+        "partner", "partners", "partnership", "partnerships", "collaboration", "collaborates"
+    ],
+    "infrastructure": [
+        "infrastructure", "rollout", "roll-out", "expansion", "expand", "upgrade",
+        "build", "builds", "deployment"
+    ],
+}
 
 APPROVED = {
     "virginmediao2": {
@@ -128,6 +161,10 @@ APPROVED = {
         "allowed_domains": {"www.uswitch.com"},
     },
 }
+
+
+def utc_now_iso() -> str:
+    return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
 
 
 def contains_telecom_keyword(text: str) -> bool:
@@ -508,6 +545,156 @@ def is_valid_article_url(brand_key: str, url: str) -> bool:
     return True
 
 
+def detect_topics(title: str) -> list[str]:
+    if not title:
+        return []
+
+    title_lower = title.lower()
+    matched_topics = []
+
+    for topic, keywords in TOPIC_KEYWORDS.items():
+        if any(keyword in title_lower for keyword in keywords):
+            matched_topics.append(topic)
+
+    return matched_topics
+
+
+def format_topic_list(topics: list[str]) -> str:
+    if not topics:
+        return ""
+
+    if len(topics) == 1:
+        return topics[0]
+
+    if len(topics) == 2:
+        return f"{topics[0]} and {topics[1]}"
+
+    return f"{topics[0]}, {topics[1]} and {topics[2]}"
+
+
+def format_brand_list(brands: list[str]) -> str:
+    if not brands:
+        return ""
+
+    if len(brands) == 1:
+        return brands[0]
+
+    if len(brands) == 2:
+        return f"{brands[0]} and {brands[1]}"
+
+    return f"{brands[0]}, {brands[1]} and {brands[2]}"
+
+
+def dedupe_items_by_title_and_url(all_brand_data: list[dict]) -> list[dict]:
+    deduped = []
+    seen = set()
+
+    for brand_data in all_brand_data:
+        brand = brand_data.get("brand", "")
+        group = brand_data.get("group", "")
+        for item in brand_data.get("items", []):
+            title = (item.get("title") or "").strip()
+            url = (item.get("url") or "").strip()
+            key = (title.lower(), url.lower())
+            if not title or key in seen:
+                continue
+            seen.add(key)
+            deduped.append({
+                "brand": brand,
+                "group": group,
+                "title": title,
+                "url": url,
+                "publish_datetime": item.get("publish_datetime"),
+            })
+
+    return deduped
+
+
+def generate_overview(all_brand_data: list[dict]) -> dict:
+    all_items = dedupe_items_by_title_and_url(all_brand_data)
+
+    topic_counts = Counter()
+    telecom_brand_counts = Counter()
+    affiliate_topic_counts = Counter()
+    topic_brand_counts = defaultdict(Counter)
+
+    for item in all_items:
+        brand = item["brand"]
+        group = item["group"]
+        title = item["title"]
+
+        matched_topics = detect_topics(title)
+        if not matched_topics:
+            continue
+
+        if group == "Telecoms":
+            telecom_brand_counts[brand] += 1
+
+        for topic in matched_topics:
+            topic_counts[topic] += 1
+            topic_brand_counts[topic][brand] += 1
+
+            if group == "Affiliates":
+                affiliate_topic_counts[topic] += 1
+
+    top_topics = [topic for topic, _ in topic_counts.most_common(3)]
+    top_telecom_brands = [brand for brand, _ in telecom_brand_counts.most_common(2)]
+
+    summary_parts = []
+
+    if top_topics:
+        summary_parts.append(
+            f"Recent telecom news is focused on {format_topic_list(top_topics)}."
+        )
+    else:
+        summary_parts.append(
+            "Recent telecom announcements span product updates, network developments and consumer-facing news across major UK brands."
+        )
+
+    if top_telecom_brands:
+        strongest_brand_topic = None
+        for topic in top_topics:
+            if topic_brand_counts[topic]:
+                strongest_brand_topic = topic
+                break
+
+        if strongest_brand_topic in {"broadband", "network", "infrastructure"}:
+            summary_parts.append(
+                f"{format_brand_list(top_telecom_brands)} are leading network and infrastructure-related announcements."
+            )
+        elif strongest_brand_topic in {"mobile", "pricing"}:
+            summary_parts.append(
+                f"{format_brand_list(top_telecom_brands)} are leading mobile and consumer offer announcements."
+            )
+        else:
+            summary_parts.append(
+                f"{format_brand_list(top_telecom_brands)} are among the most active brands in the current update."
+            )
+
+    if affiliate_topic_counts:
+        top_affiliate_topic, _ = affiliate_topic_counts.most_common(1)[0]
+
+        if top_affiliate_topic == "regulation":
+            summary_parts.append(
+                "Affiliate coverage is focused on regulation and consumer rights."
+            )
+        elif top_affiliate_topic == "pricing":
+            summary_parts.append(
+                "Affiliate coverage is focused on pricing, deals and consumer-facing changes."
+            )
+        else:
+            summary_parts.append(
+                f"Affiliate coverage is also highlighting {top_affiliate_topic}."
+            )
+
+    summary = " ".join(summary_parts).strip()
+
+    return {
+        "generated_at": utc_now_iso(),
+        "summary": summary,
+    }
+
+
 def build_feed(key: str) -> dict:
     cfg = APPROVED[key]
 
@@ -528,7 +715,7 @@ def build_feed(key: str) -> dict:
             "status": "ok",
             "brand": cfg["brand"],
             "group": cfg["group"],
-            "generated_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+            "generated_at": utc_now_iso(),
             "items": final,
         }
 
@@ -565,7 +752,7 @@ def build_feed(key: str) -> dict:
             "status": "ok",
             "brand": cfg["brand"],
             "group": cfg["group"],
-            "generated_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+            "generated_at": utc_now_iso(),
             "items": final,
         }
 
@@ -601,7 +788,7 @@ def build_feed(key: str) -> dict:
             "status": "ok",
             "brand": cfg["brand"],
             "group": cfg["group"],
-            "generated_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+            "generated_at": utc_now_iso(),
             "items": final,
         }
 
@@ -659,25 +846,37 @@ def build_feed(key: str) -> dict:
     undated = [item for item in items if not item.get("publish_datetime")]
 
     dated.sort(key=lambda item: item["publish_datetime"], reverse=True)
-
     final = (dated + undated)[:10]
 
     return {
         "status": "ok",
         "brand": cfg["brand"],
         "group": cfg["group"],
-        "generated_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+        "generated_at": utc_now_iso(),
         "items": final,
     }
 
 
 def main():
+    all_outputs = []
+
     for key in APPROVED.keys():
         output = build_feed(key)
+        all_outputs.append(output)
+
         path = f"docs/data/{key}.json"
         with open(path, "w", encoding="utf-8") as f:
             json.dump(output, f, ensure_ascii=False, indent=2)
+
         print(f"Wrote {path} ({len(output['items'])} items)")
+
+    overview = generate_overview(all_outputs)
+    overview_path = "docs/data/overview.json"
+
+    with open(overview_path, "w", encoding="utf-8") as f:
+        json.dump(overview, f, ensure_ascii=False, indent=2)
+
+    print(f"Wrote {overview_path}")
 
 
 if __name__ == "__main__":
