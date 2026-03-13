@@ -774,7 +774,9 @@ def generate_ai_overview(all_brand_data: list[dict]) -> dict:
     api_key = os.getenv("GEMINI_API_KEY")
 
     if not api_key:
-        return generate_overview(all_brand_data)
+        fallback = generate_overview(all_brand_data)
+        fallback["signals"] = []
+        return fallback
 
     all_items = dedupe_items_by_title_and_url(all_brand_data)
 
@@ -782,6 +784,7 @@ def generate_ai_overview(all_brand_data: list[dict]) -> dict:
         return {
             "generated_at": utc_now_iso(),
             "summary": "No recent telecom press releases were available for summarisation.",
+            "signals": [],
         }
 
     lines = []
@@ -795,19 +798,30 @@ def generate_ai_overview(all_brand_data: list[dict]) -> dict:
     prompt = (
         "You are analysing telecom press releases for Virgin Media O2's competitive intelligence dashboard.\n\n"
         "Virgin Media O2 is our company. All other telecom brands should be treated as competitors.\n\n"
-        "Write a concise 3 sentence strategic overview highlighting:\n"
-        "- key developments from competitors\n"
-        "- potential risks to Virgin Media O2\n"
-        "- potential opportunities for Virgin Media O2\n\n"
-        "Guidelines:\n"
-        "- Focus on telecom themes such as broadband rollout, mobile pricing, network investment, partnerships, TV or regulation.\n"
-        "- Highlight notable competitor activity from Vodafone, BT, Sky, EE and Three.\n"
-        "- If Virgin Media O2 appears in the headlines, frame it as our company activity.\n"
-        "- If affiliate sites (MoneySavingExpert or uSwitch) appear, describe them as consumer or regulatory commentary.\n"
-        "- Do not repeat headlines.\n"
-        "- Do not use bullet points.\n"
-        "- Write in a neutral business intelligence tone suitable for internal leadership updates.\n\n"
-
+        "Return valid JSON only with this exact structure:\n"
+        "{\n"
+        '  "summary": "string",\n'
+        '  "signals": [\n'
+        "    {\n"
+        '      "brand": "string",\n'
+        '      "type": "string",\n'
+        '      "headline": "string",\n'
+        '      "impact": "string"\n'
+        "    }\n"
+        "  ]\n"
+        "}\n\n"
+        "Instructions:\n"
+        "- Write a concise 3 sentence summary.\n"
+        "- Focus on competitor developments, market themes, risks and opportunities for Virgin Media O2.\n"
+        "- Treat Vodafone, BT, EE, Three and Sky as competitors.\n"
+        "- Treat MoneySavingExpert and uSwitch as affiliate or consumer/regulatory commentary.\n"
+        "- Select the 3 most strategically relevant competitor signals.\n"
+        "- Each signal must include brand, type, headline and impact.\n"
+        "- 'type' should be something like Network investment, Pricing, Partnership, Regulation, Product launch or Consumer sentiment.\n"
+        "- 'impact' should explain why it matters for Virgin Media O2 in one sentence.\n"
+        "- Do not include markdown.\n"
+        "- Do not include code fences.\n"
+        "- Output valid JSON only.\n\n"
         "Press release headlines:\n"
         + "\n".join(lines)
     )
@@ -820,19 +834,56 @@ def generate_ai_overview(all_brand_data: list[dict]) -> dict:
             contents=prompt,
         )
 
-        summary = (response.text or "").strip()
+        raw_text = (response.text or "").strip()
+
+        if not raw_text:
+            fallback = generate_overview(all_brand_data)
+            fallback["signals"] = []
+            return fallback
+
+        cleaned = raw_text.strip()
+
+        if cleaned.startswith("```"):
+            cleaned = cleaned.replace("```json", "").replace("```", "").strip()
+
+        parsed = json.loads(cleaned)
+
+        summary = (parsed.get("summary") or "").strip()
+        signals = parsed.get("signals") or []
 
         if not summary:
-            return generate_overview(all_brand_data)
+            fallback = generate_overview(all_brand_data)
+            fallback["signals"] = []
+            return fallback
+
+        cleaned_signals = []
+        for signal in signals[:3]:
+            brand = str(signal.get("brand", "")).strip()
+            signal_type = str(signal.get("type", "")).strip()
+            headline = str(signal.get("headline", "")).strip()
+            impact = str(signal.get("impact", "")).strip()
+
+            if not headline:
+                continue
+
+            cleaned_signals.append({
+                "brand": brand or "Unknown",
+                "type": signal_type or "Strategic update",
+                "headline": headline,
+                "impact": impact or "This development may have competitive implications for Virgin Media O2.",
+            })
 
         return {
             "generated_at": utc_now_iso(),
             "summary": summary,
+            "signals": cleaned_signals,
         }
 
     except Exception as e:
         print("Gemini overview generation failed:", repr(e))
-        return generate_overview(all_brand_data)
+        fallback = generate_overview(all_brand_data)
+        fallback["signals"] = []
+        return fallback
 
 
 def build_feed(key: str) -> dict:
