@@ -635,3 +635,57 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+.trends-section {
+  margin: 0 0 18px;
+  padding: 16px 18px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow-soft);
+}
+
+.trends-section .group-header {
+  margin-bottom: 10px;
+}
+
+.trends-section .group-header h2 {
+  font-size: 18px;
+}
+
+.trends-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.trend-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent-soft) 0%, var(--purple-soft) 100%);
+  border: 1px solid #dbe6ff;
+}
+
+.trend-topic {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-strong);
+}
+
+.trend-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 7px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 800;
+}
