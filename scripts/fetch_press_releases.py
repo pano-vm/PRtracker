@@ -770,12 +770,33 @@ def generate_overview(all_brand_data: list[dict]) -> dict:
     }
 
 
+def build_competitor_momentum(all_brand_data: list[dict]) -> list[dict]:
+    momentum = []
+
+    for brand_data in all_brand_data:
+        brand = brand_data.get("brand", "")
+        group = brand_data.get("group", "")
+        items = brand_data.get("items", []) or []
+
+        if group != "Telecoms":
+            continue
+
+        momentum.append({
+            "brand": brand,
+            "count": len(items),
+        })
+
+    momentum.sort(key=lambda item: item["count"], reverse=True)
+    return momentum
+
+
 def generate_ai_overview(all_brand_data: list[dict]) -> dict:
     api_key = os.getenv("GEMINI_API_KEY")
 
     if not api_key:
         fallback = generate_overview(all_brand_data)
         fallback["signals"] = []
+        fallback["momentum"] = build_competitor_momentum(all_brand_data)
         return fallback
 
     all_items = dedupe_items_by_title_and_url(all_brand_data)
@@ -785,6 +806,7 @@ def generate_ai_overview(all_brand_data: list[dict]) -> dict:
             "generated_at": utc_now_iso(),
             "summary": "No recent telecom press releases were available for summarisation.",
             "signals": [],
+            "momentum": build_competitor_momentum(all_brand_data),
         }
 
     lines = []
@@ -839,6 +861,7 @@ def generate_ai_overview(all_brand_data: list[dict]) -> dict:
         if not raw_text:
             fallback = generate_overview(all_brand_data)
             fallback["signals"] = []
+            fallback["momentum"] = build_competitor_momentum(all_brand_data)
             return fallback
 
         cleaned = raw_text.strip()
@@ -854,6 +877,7 @@ def generate_ai_overview(all_brand_data: list[dict]) -> dict:
         if not summary:
             fallback = generate_overview(all_brand_data)
             fallback["signals"] = []
+            fallback["momentum"] = build_competitor_momentum(all_brand_data)
             return fallback
 
         cleaned_signals = []
@@ -877,12 +901,14 @@ def generate_ai_overview(all_brand_data: list[dict]) -> dict:
             "generated_at": utc_now_iso(),
             "summary": summary,
             "signals": cleaned_signals,
+            "momentum": build_competitor_momentum(all_brand_data),
         }
 
     except Exception as e:
         print("Gemini overview generation failed:", repr(e))
         fallback = generate_overview(all_brand_data)
         fallback["signals"] = []
+        fallback["momentum"] = build_competitor_momentum(all_brand_data)
         return fallback
 
 
