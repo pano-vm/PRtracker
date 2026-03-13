@@ -15,6 +15,7 @@ const MAX_VISIBLE_ITEMS = 10;
 
 function el(tag, attrs = {}, children = []) {
   const node = document.createElement(tag);
+
   Object.entries(attrs).forEach(([k, v]) => {
     if (k === "className") {
       node.className = v;
@@ -24,13 +25,18 @@ function el(tag, attrs = {}, children = []) {
       node.setAttribute(k, v);
     }
   });
-  children.forEach((c) => node.appendChild(typeof c === "string" ? document.createTextNode(c) : c));
+
+  children.forEach((c) => {
+    node.appendChild(typeof c === "string" ? document.createTextNode(c) : c);
+  });
+
   return node;
 }
 
 function formatDate(iso) {
   if (!iso) return "Date unavailable";
   const d = new Date(iso);
+
   return isNaN(d.getTime())
     ? "Date unavailable"
     : d.toLocaleDateString("en-GB", {
@@ -43,6 +49,7 @@ function formatDate(iso) {
 function formatDateTime(iso) {
   if (!iso) return "";
   const d = new Date(iso);
+
   return isNaN(d.getTime())
     ? ""
     : d.toLocaleDateString("en-GB", {
@@ -87,6 +94,43 @@ function renderSignals(signals) {
   });
 }
 
+function renderMomentum(momentum) {
+  const momentumListEl = document.getElementById("momentum-list");
+  const momentumSectionEl = document.getElementById("momentum-section");
+
+  if (!momentumListEl || !momentumSectionEl) return;
+
+  momentumListEl.innerHTML = "";
+
+  if (!momentum || !momentum.length) {
+    momentumSectionEl.style.display = "none";
+    return;
+  }
+
+  momentumSectionEl.style.display = "block";
+
+  const maxCount = Math.max(...momentum.map((item) => item.count), 1);
+
+  momentum.forEach((item) => {
+    const widthPercent = Math.max((item.count / maxCount) * 100, 8);
+
+    const card = el("article", { className: "momentum-card" }, [
+      el("div", { className: "momentum-head" }, [
+        el("div", { className: "momentum-brand" }, [item.brand || "Unknown"]),
+        el("div", { className: "momentum-count" }, [`${item.count}`])
+      ]),
+      el("div", { className: "momentum-bar-track" }, [
+        el("div", {
+          className: "momentum-bar-fill",
+          style: `width: ${widthPercent}%;`
+        }, [])
+      ])
+    ]);
+
+    momentumListEl.appendChild(card);
+  });
+}
+
 async function loadOverview() {
   try {
     const response = await fetch("./data/overview.json", { cache: "no-store" });
@@ -106,6 +150,7 @@ async function loadOverview() {
     }
 
     renderSignals(data.signals || []);
+    renderMomentum(data.momentum || []);
 
     const formattedDate = formatDateTime(data.generated_at);
 
@@ -131,6 +176,7 @@ async function loadOverview() {
     }
 
     renderSignals([]);
+    renderMomentum([]);
   }
 }
 
