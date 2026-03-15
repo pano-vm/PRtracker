@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-03-14T07:39:05.151053Z",
-  "summary": "Competitors are leveraging flagship device launches and aggressive network performance claims to capture market share during the spring upgrade cycle. EE is specifically targeting the sports media space through a new DAZN partnership, while Vodafone and BT focus on software-driven speed boosts and enterprise 5G reliability. Consumer sentiment is currently focused on mid-contract price rises, creating a risk for retention and an opportunity for value-based messaging.",
+  "generated_at": "2026-03-15T07:48:40.215490Z",
+  "summary": "Competitors are aggressively targeting Virgin Media O2’s market position through high-speed broadband enhancements and expanded sports content offerings. EE and BT are leveraging new network quality rankings to dominate consumer perception while Vodafone introduces speed-doubling incentives to erode VMO2's technical performance lead. These developments, coupled with consumer group focus on April price hikes, heighten the risk of churn among value-conscious customers.",
   "signals": [
     {
       "brand": "EE",
       "type": "Product launch",
       "headline": "Ee Tv Expands Its Sports Entertainment Access With Dazn Launch",
-      "impact": "This expansion into niche sports streaming strengthens EE's media bundle, directly challenging Virgin Media’s traditional dominance in the sports television market."
+      "impact": "This integration strengthens EE’s entertainment bundle, directly competing with Virgin Media’s comprehensive sports TV packages for high-value households."
     },
     {
       "brand": "Vodafone",
       "type": "Network investment",
       "headline": "Speed Boost offers Vodafone customers up to 2x faster speeds",
-      "impact": "By offering significant speed upgrades to existing customers, Vodafone is directly attacking VMO2’s core marketing proposition of providing the UK's fastest connectivity."
+      "impact": "By offering 2x speed increases, Vodafone is attempting to neutralize Virgin Media’s core speed advantage in the fixed broadband market."
     },
     {
       "brand": "BT",
-      "type": "Partnership",
-      "headline": "BT Group and Ericsson strengthen partnership to unlock smarter, more reliable 5G services for UK businesses",
-      "impact": "This collaboration prioritizes enterprise-grade 5G reliability, posing a threat to O2 Business’s market share in the high-value corporate and industrial sectors."
+      "type": "Consumer sentiment",
+      "headline": "EE named the UK’s number one network in two landmark studies – official results revealed",
+      "impact": "BT's promotion of these official rankings challenges Virgin Media O2’s network authority and provides competitors with significant marketing leverage during spring contract renewals."
     }
   ],
   "momentum": [
@@ -31,12 +31,12 @@
       "count": 9
     },
     {
-      "brand": "Virgin Media O2",
+      "brand": "EE",
       "count": 8
     },
     {
-      "brand": "EE",
-      "count": 8
+      "brand": "Virgin Media O2",
+      "count": 7
     },
     {
       "brand": "Three",
@@ -44,7 +44,7 @@
     },
     {
       "brand": "BT",
-      "count": 6
+      "count": 5
     }
   ],
   "topic_trends": [
