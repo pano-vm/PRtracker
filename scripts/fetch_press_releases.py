@@ -195,14 +195,6 @@ APPROVED = {
         ],
         "allowed_domains": {"www.skygroup.sky"},
     },
-    # "comparethemarket": {
-    #     "brand": "Compare the Market",
-    #     "group": "Affiliates",
-    #     "listing_urls": [
-    #         "https://www.comparethemarket.com/inside-ctm/media-centre/"
-    #     ],
-    #     "allowed_domains": {"www.comparethemarket.com"},
-    # },
     "moneysavingexpert": {
         "brand": "MoneySavingExpert",
         "group": "Affiliates",
@@ -281,26 +273,6 @@ def fetch(url: str) -> str:
             last_error = e
 
     raise last_error
-
-
-def fetch_with_playwright(url: str) -> str:
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        page = browser.new_page(
-            user_agent=(
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                "AppleWebKit/537.36 (KHTML, like Gecko) "
-                "Chrome/122.0.0.0 Safari/537.36"
-            ),
-            locale="en-GB",
-        )
-
-        page.goto(url, wait_until="domcontentloaded", timeout=60000)
-        page.wait_for_timeout(3000)
-
-        html = page.content()
-        browser.close()
-        return html
 
 
 def strip_tracking(url: str) -> str:
@@ -395,6 +367,21 @@ def extract_bt_article_links(html: str, base: str) -> list[str]:
 
     return deduped
 
+
+def extract_mse_date_from_url(url: str) -> str | None:
+    match = re.search(r"/pressoffice/(\d{4})/", url)
+    if not match:
+        return None
+
+    year = match.group(1)
+
+    try:
+        dt = datetime.strptime(f"{year}-01-01", "%Y-%m-%d").replace(tzinfo=timezone.utc)
+        return dt.isoformat().replace("+00:00", "Z")
+    except Exception:
+        return None
+
+
 def extract_moneysavingexpert_items_with_playwright(url: str) -> list[dict]:
     items = []
 
@@ -415,7 +402,6 @@ def extract_moneysavingexpert_items_with_playwright(url: str) -> list[dict]:
 
         print(f"[MSE] page title: {page.title()}")
 
-        # Try cookie buttons if present
         cookie_selectors = [
             "button:has-text('Accept')",
             "button:has-text('Accept all')",
@@ -438,7 +424,6 @@ def extract_moneysavingexpert_items_with_playwright(url: str) -> list[dict]:
         print(f"[MSE] contains 'Press Office': {'Press Office' in html}")
         print(f"[MSE] contains 'Martin Lewis': {'Martin Lewis' in html}")
 
-        # Save debug HTML temporarily so you can inspect it in the repo if needed
         with open("docs/data/mse_debug.html", "w", encoding="utf-8") as f:
             f.write(html)
 
@@ -477,53 +462,6 @@ def extract_moneysavingexpert_items_with_playwright(url: str) -> list[dict]:
                 continue
 
         browser.close()
-
-    return items
-
-
-def extract_mse_date_from_url(url: str) -> str | None:
-    match = re.search(r"/pressoffice/(\d{4})/", url)
-    if not match:
-        return None
-
-    year = match.group(1)
-
-    try:
-        dt = datetime.strptime(f"{year}-01-01", "%Y-%m-%d").replace(tzinfo=timezone.utc)
-        return dt.isoformat().replace("+00:00", "Z")
-    except Exception:
-        return None
-
-
-def extract_moneysavingexpert_listing_items(html: str, base: str) -> list[dict]:
-    items = []
-
-    matches = re.finditer(
-        r'<a[^>]+href=["\'](?P<href>/pressoffice/\d{4}/[^"\']+/?)["\'][^>]*>(?P<title>.*?)</a>',
-        html,
-        flags=re.I | re.S,
-    )
-
-    seen = set()
-
-    for match in matches:
-        href = unescape(match.group("href")).strip()
-        title_html = match.group("title")
-
-        title = re.sub(r"<[^>]+>", "", title_html)
-        title = re.sub(r"\s+", " ", unescape(title)).strip()
-
-        url = strip_tracking(urljoin(base, href)).rstrip("/")
-
-        if not title or url in seen:
-            continue
-        seen.add(url)
-
-        items.append({
-            "title": title,
-            "url": url,
-            "publish_datetime": extract_mse_date_from_url(url),
-        })
 
     return items
 
@@ -905,6 +843,7 @@ def generate_overview(all_brand_data: list[dict]) -> dict:
         "summary": summary,
     }
 
+
 def build_topic_trends(all_brand_data: list[dict]) -> list[dict]:
     topic_counts = Counter()
 
@@ -930,6 +869,7 @@ def build_topic_trends(all_brand_data: list[dict]) -> list[dict]:
     ]
 
     return trends
+
 
 def build_competitor_momentum(all_brand_data: list[dict]) -> list[dict]:
     momentum = []
@@ -1121,63 +1061,63 @@ def build_feed(key: str) -> dict:
             "items": final,
         }
 
-        if key == "moneysavingexpert":
-            items = []
+    if key == "moneysavingexpert":
+        items = []
 
-            for listing_url in cfg["listing_urls"]:
-                try:
-                    print(f"\n[MSE] listing URL: {listing_url}")
-                    listing_items = extract_moneysavingexpert_items_with_playwright(listing_url)
+        for listing_url in cfg["listing_urls"]:
+            try:
+                print(f"\n[MSE] listing URL: {listing_url}")
+                listing_items = extract_moneysavingexpert_items_with_playwright(listing_url)
 
-                    print(f"[MSE] extracted count: {len(listing_items)}")
-                    print("[MSE] sample extracted:", [
-                        {
-                            "title": item["title"],
-                            "url": item["url"],
-                            "publish_datetime": item["publish_datetime"],
-                        }
-                        for item in listing_items[:5]
-                    ])
+                print(f"[MSE] extracted count: {len(listing_items)}")
+                print("[MSE] sample extracted:", [
+                    {
+                        "title": item["title"],
+                        "url": item["url"],
+                        "publish_datetime": item["publish_datetime"],
+                    }
+                    for item in listing_items[:5]
+                ])
 
-                    items.extend(listing_items)
+                items.extend(listing_items)
 
-                except Exception as e:
-                    print("[MSE] fetch error:", repr(e))
-                    continue
+            except Exception as e:
+                print("[MSE] fetch error:", repr(e))
+                continue
 
-            seen = set()
-            deduped = []
-            for item in items:
-                if item["url"] not in seen:
-                    seen.add(item["url"])
-                    deduped.append(item)
+        seen = set()
+        deduped = []
+        for item in items:
+            if item["url"] not in seen:
+                seen.add(item["url"])
+                deduped.append(item)
 
-            print(f"[MSE] deduped before filter: {len(deduped)}")
-            print("[MSE] deduped titles:", [item["title"] for item in deduped[:10]])
+        print(f"[MSE] deduped before filter: {len(deduped)}")
+        print("[MSE] deduped titles:", [item["title"] for item in deduped[:10]])
 
-            kept = [
-                item for item in deduped
-                if should_keep_item(key, item["title"], item["url"])
-            ]
+        kept = [
+            item for item in deduped
+            if should_keep_item(key, item["title"], item["url"])
+        ]
 
-            print(f"[MSE] kept after telecom filter: {len(kept)}")
-            print("[MSE] kept titles:", [item["title"] for item in kept[:10]])
+        print(f"[MSE] kept after telecom filter: {len(kept)}")
+        print("[MSE] kept titles:", [item["title"] for item in kept[:10]])
 
-            dated = [item for item in kept if item.get("publish_datetime")]
-            undated = [item for item in kept if not item.get("publish_datetime")]
+        dated = [item for item in kept if item.get("publish_datetime")]
+        undated = [item for item in kept if not item.get("publish_datetime")]
 
-            dated.sort(key=lambda item: item["publish_datetime"], reverse=True)
-            final = (dated + undated)[:10]
+        dated.sort(key=lambda item: item["publish_datetime"], reverse=True)
+        final = (dated + undated)[:10]
 
-            print(f"[MSE] final items written: {len(final)}")
+        print(f"[MSE] final items written: {len(final)}")
 
-            return {
-                "status": "ok",
-                "brand": cfg["brand"],
-                "group": cfg["group"],
-                "generated_at": utc_now_iso(),
-                "items": final,
-            }
+        return {
+            "status": "ok",
+            "brand": cfg["brand"],
+            "group": cfg["group"],
+            "generated_at": utc_now_iso(),
+            "items": final,
+        }
 
     if key == "uswitch":
         items = []
