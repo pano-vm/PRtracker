@@ -1122,62 +1122,62 @@ def build_feed(key: str) -> dict:
         }
 
         if key == "moneysavingexpert":
-        items = []
+            items = []
 
-        for listing_url in cfg["listing_urls"]:
-            try:
-                print(f"\n[MSE] listing URL: {listing_url}")
-                listing_items = extract_moneysavingexpert_items_with_playwright(listing_url)
+            for listing_url in cfg["listing_urls"]:
+                try:
+                    print(f"\n[MSE] listing URL: {listing_url}")
+                    listing_items = extract_moneysavingexpert_items_with_playwright(listing_url)
 
-                print(f"[MSE] extracted count: {len(listing_items)}")
-                print("[MSE] sample extracted:", [
-                    {
-                        "title": item["title"],
-                        "url": item["url"],
-                        "publish_datetime": item["publish_datetime"],
-                    }
-                    for item in listing_items[:5]
-                ])
+                    print(f"[MSE] extracted count: {len(listing_items)}")
+                    print("[MSE] sample extracted:", [
+                        {
+                            "title": item["title"],
+                            "url": item["url"],
+                            "publish_datetime": item["publish_datetime"],
+                        }
+                        for item in listing_items[:5]
+                    ])
 
-                items.extend(listing_items)
+                    items.extend(listing_items)
 
-            except Exception as e:
-                print("[MSE] fetch error:", repr(e))
-                continue
+                except Exception as e:
+                    print("[MSE] fetch error:", repr(e))
+                    continue
 
-        seen = set()
-        deduped = []
-        for item in items:
-            if item["url"] not in seen:
-                seen.add(item["url"])
-                deduped.append(item)
+            seen = set()
+            deduped = []
+            for item in items:
+                if item["url"] not in seen:
+                    seen.add(item["url"])
+                    deduped.append(item)
 
-        print(f"[MSE] deduped before filter: {len(deduped)}")
-        print("[MSE] deduped titles:", [item["title"] for item in deduped[:10]])
+            print(f"[MSE] deduped before filter: {len(deduped)}")
+            print("[MSE] deduped titles:", [item["title"] for item in deduped[:10]])
 
-        kept = [
-            item for item in deduped
-            if should_keep_item(key, item["title"], item["url"])
-        ]
+            kept = [
+                item for item in deduped
+                if should_keep_item(key, item["title"], item["url"])
+            ]
 
-        print(f"[MSE] kept after telecom filter: {len(kept)}")
-        print("[MSE] kept titles:", [item["title"] for item in kept[:10]])
+            print(f"[MSE] kept after telecom filter: {len(kept)}")
+            print("[MSE] kept titles:", [item["title"] for item in kept[:10]])
 
-        dated = [item for item in kept if item.get("publish_datetime")]
-        undated = [item for item in kept if not item.get("publish_datetime")]
+            dated = [item for item in kept if item.get("publish_datetime")]
+            undated = [item for item in kept if not item.get("publish_datetime")]
 
-        dated.sort(key=lambda item: item["publish_datetime"], reverse=True)
-        final = (dated + undated)[:10]
+            dated.sort(key=lambda item: item["publish_datetime"], reverse=True)
+            final = (dated + undated)[:10]
 
-        print(f"[MSE] final items written: {len(final)}")
+            print(f"[MSE] final items written: {len(final)}")
 
-        return {
-            "status": "ok",
-            "brand": cfg["brand"],
-            "group": cfg["group"],
-            "generated_at": utc_now_iso(),
-            "items": final,
-        }
+            return {
+                "status": "ok",
+                "brand": cfg["brand"],
+                "group": cfg["group"],
+                "generated_at": utc_now_iso(),
+                "items": final,
+            }
 
     if key == "uswitch":
         items = []
