@@ -7,6 +7,7 @@ from html import unescape
 from urllib.parse import urljoin, urlparse, urlunparse, parse_qsl, urlencode
 
 import requests
+from playwright.sync_api import sync_playwright
 from google import genai
 
 TELECOM_KEYWORDS = [
@@ -280,6 +281,26 @@ def fetch(url: str) -> str:
             last_error = e
 
     raise last_error
+
+
+def fetch_with_playwright(url: str) -> str:
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        page = browser.new_page(
+            user_agent=(
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/122.0.0.0 Safari/537.36"
+            ),
+            locale="en-GB",
+        )
+
+        page.goto(url, wait_until="domcontentloaded", timeout=60000)
+        page.wait_for_timeout(3000)
+
+        html = page.content()
+        browser.close()
+        return html
 
 
 def strip_tracking(url: str) -> str:
@@ -1020,7 +1041,7 @@ def build_feed(key: str) -> dict:
 
         for listing_url in cfg["listing_urls"]:
             try:
-                listing_html = fetch(listing_url)
+                listing_html = fetch_with_playwright(listing_url)
 
                 print(f"\n[MSE] listing URL: {listing_url}")
                 print(f"[MSE] HTML length: {len(listing_html)}")
