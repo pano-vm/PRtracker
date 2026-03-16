@@ -2,8 +2,13 @@
   "status": "ok",
   "brand": "Virgin Media O2",
   "group": "Telecoms",
-  "generated_at": "2026-03-16T09:03:32.921209Z",
+  "generated_at": "2026-03-16T10:56:50.937440Z",
   "items": [
+    {
+      "title": "O2 stores across Yorkshire and the Midlands get behind the Government’s new online safety campaign, ‘You Won’t Know Until You Ask’ - Virgin Media O2",
+      "url": "https://news.virginmediao2.co.uk/o2-stores-across-yorkshire-and-the-midlands-get-behind-the-governments-new-online-safety-campaign-you-wont-know-until-you-ask/",
+      "publish_datetime": "2026-03-16T09:56:57Z"
+    },
     {
       "title": "O2. Now in space - Virgin Media O2",
       "url": "https://news.virginmediao2.co.uk/o2-now-in-space/",
@@ -48,11 +53,6 @@
       "title": "Corporate statements - Virgin Media O2",
       "url": "https://news.virginmediao2.co.uk/corporate-statements/",
       "publish_datetime": "2024-08-02T12:49:23Z"
-    },
-    {
-      "title": "Virgin Media O2 | Sustainability and Responsible Business",
-      "url": "https://news.virginmediao2.co.uk/responsible-business/",
-      "publish_datetime": "2024-03-19T11:51:43Z"
     }
   ]
 }

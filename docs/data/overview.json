@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-03-16T09:06:01.764816Z",
-  "summary": "Competitors are intensifying pressure through aggressive network speed enhancements and expanded content partnerships to capture market share during the spring flagship launch window. EE's integration of DAZN into its TV platform and Vodafone’s complimentary speed upgrades directly challenge Virgin Media O2’s core value propositions in premium entertainment and connectivity. Additionally, BT’s report of record fiber growth indicates a rapidly closing infrastructure gap that threatens Virgin Media O2's traditional speed advantage.",
+  "generated_at": "2026-03-16T10:59:24.160675Z",
+  "summary": "Competitors are intensifying their network quality claims, with EE securing top rankings in landmark studies and BT reporting record growth in full-fibre connections. Vodafone is aggressively targeting performance-driven users with its new Speed Boost offer, while Sky is leveraging deep hardware discounts to capture the flagship smartphone market. These developments highlight a growing risk to Virgin Media O2’s market share in both premium mobile and high-speed fixed-line segments.",
   "signals": [
     {
       "brand": "EE",
-      "type": "Product launch",
-      "headline": "Ee Tv Expands Its Sports Entertainment Access With Dazn Launch",
-      "impact": "This move strengthens EE's content ecosystem, creating a more formidable alternative to Virgin Media O2's entertainment and sports packages for converged customers."
+      "type": "Network investment",
+      "headline": "EE Named The UK’S Number One Network In Two Landmark Studies – Official Results Revealed",
+      "impact": "EE's reinforced status as the UK's top network directly challenges O2’s network reputation and could lead to customer churn toward the perceived market leader."
     },
     {
       "brand": "Vodafone",
-      "type": "Network investment",
+      "type": "Product launch",
       "headline": "Speed Boost offers Vodafone customers up to 2x faster speeds",
-      "impact": "Providing complimentary speed upgrades at no extra cost directly challenges Virgin Media O2’s ability to charge a premium for higher-tier connectivity speeds."
+      "impact": "Offering a free performance upgrade forces O2 to either match the speed increase or risk losing high-data users who prioritize throughput over other perks."
     },
     {
       "brand": "BT",
       "type": "Network investment",
       "headline": "BT is delivering, with record full fibre connections and further retail customer growth",
-      "impact": "The acceleration of Openreach's fiber footprint significantly erodes the geographic network advantage Virgin Media O2 has historically maintained over its primary competitor."
+      "impact": "The rapid expansion of BT’s full-fibre footprint reduces Virgin Media’s infrastructure advantage and creates more direct competition in high-speed broadband areas."
     }
   ],
   "momentum": [
@@ -32,7 +32,7 @@
     },
     {
       "brand": "Virgin Media O2",
-      "count": 7
+      "count": 8
     },
     {
       "brand": "EE",
