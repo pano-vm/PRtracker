@@ -5,8 +5,8 @@ from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from html import unescape
 from urllib.parse import urljoin, urlparse, urlunparse, parse_qsl, urlencode
-from urllib.request import Request, urlopen
 
+import requests
 from google import genai
 
 TELECOM_KEYWORDS = [
@@ -242,20 +242,44 @@ def should_keep_item(brand_key: str, title: str, url: str) -> bool:
 
 
 def fetch(url: str) -> str:
-    headers = {
-        "User-Agent": (
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-            "AppleWebKit/537.36 (KHTML, like Gecko) "
-            "Chrome/122.0.0.0 Safari/537.36"
-        ),
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-        "Accept-Language": "en-GB,en;q=0.9",
-        "Cache-Control": "no-cache",
-        "Pragma": "no-cache",
-    }
-    req = Request(url, headers=headers)
-    with urlopen(req, timeout=30) as response:
-        return response.read().decode("utf-8", errors="replace")
+    header_sets = [
+        {
+            "User-Agent": (
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/122.0.0.0 Safari/537.36"
+            ),
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+            "Accept-Language": "en-GB,en;q=0.9",
+            "Cache-Control": "no-cache",
+            "Pragma": "no-cache",
+            "Referer": "https://www.google.com/",
+            "Upgrade-Insecure-Requests": "1",
+        },
+        {
+            "User-Agent": (
+                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                "AppleWebKit/605.1.15 (KHTML, like Gecko) "
+                "Version/17.0 Safari/605.1.15"
+            ),
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "Accept-Language": "en-GB,en;q=0.9",
+            "Referer": "https://www.google.com/",
+        },
+    ]
+
+    last_error = None
+    session = requests.Session()
+
+    for headers in header_sets:
+        try:
+            response = session.get(url, headers=headers, timeout=30)
+            response.raise_for_status()
+            return response.text
+        except Exception as e:
+            last_error = e
+
+    raise last_error
 
 
 def strip_tracking(url: str) -> str:
