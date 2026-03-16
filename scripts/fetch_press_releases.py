@@ -351,28 +351,34 @@ def extract_bt_article_links(html: str, base: str) -> list[str]:
     return deduped
 
 
+def extract_mse_date_from_url(url: str) -> str | None:
+    match = re.search(r"/pressoffice/(\d{4})/", url)
+    if not match:
+        return None
+
+    year = match.group(1)
+
+    try:
+        dt = datetime.strptime(f"{year}-01-01", "%Y-%m-%d").replace(tzinfo=timezone.utc)
+        return dt.isoformat().replace("+00:00", "Z")
+    except Exception:
+        return None
+
+
 def extract_moneysavingexpert_listing_items(html: str, base: str) -> list[dict]:
     items = []
 
-    # Restrict to the main press office area if possible
-    main_match = re.search(
-        r'Home of all MoneySavingExpert\.com\'s press releases(.*?)(?:Latest weekly email|FAQs|Privacy)',
+    matches = re.finditer(
+        r'<a[^>]+href=["\'](?P<href>/pressoffice/\d{4}/[^"\']+/?)["\'][^>]*>(?P<title>.*?)</a>',
         html,
-        flags=re.I | re.S,
-    )
-    section = main_match.group(1) if main_match else html
-
-    pattern = re.compile(
-        r'<a[^>]+href=["\'](?P<href>/pressoffice/\d{4}/[^"\']+/?)["\'][^>]*>(?P<title>.*?)</a>.*?(?P<date>\d{1,2}\s+[A-Za-z]+\s+\d{4})',
         flags=re.I | re.S,
     )
 
     seen = set()
 
-    for match in pattern.finditer(section):
+    for match in matches:
         href = unescape(match.group("href")).strip()
         title_html = match.group("title")
-        date_value = unescape(match.group("date")).strip()
 
         title = re.sub(r"<[^>]+>", "", title_html)
         title = re.sub(r"\s+", " ", unescape(title)).strip()
@@ -386,7 +392,7 @@ def extract_moneysavingexpert_listing_items(html: str, base: str) -> list[dict]:
         items.append({
             "title": title,
             "url": url,
-            "publish_datetime": normalise_iso(date_value),
+            "publish_datetime": extract_mse_date_from_url(url),
         })
 
     return items
@@ -991,6 +997,11 @@ def build_feed(key: str) -> dict:
             try:
                 listing_html = fetch(listing_url)
                 listing_items = extract_moneysavingexpert_listing_items(listing_html, listing_url)
+
+                print(f"MSE listing URL: {listing_url}")
+                print(f"MSE extracted from page: {len(listing_items)}")
+                print("MSE sample extracted titles:", [item["title"] for item in listing_items[:5]])
+
                 items.extend(listing_items)
             except Exception as e:
                 print("moneysavingexpert fetch error:", repr(e))
@@ -1003,16 +1014,24 @@ def build_feed(key: str) -> dict:
                 seen.add(item["url"])
                 deduped.append(item)
 
+        print(f"MSE deduped before filter: {len(deduped)}")
+        print("MSE deduped sample:", [item["title"] for item in deduped[:10]])
+
         deduped = [
             item for item in deduped
             if should_keep_item(key, item["title"], item["url"])
         ]
+
+        print(f"MSE kept after telecom filter: {len(deduped)}")
+        print("MSE kept sample:", [item["title"] for item in deduped[:10]])
 
         dated = [item for item in deduped if item.get("publish_datetime")]
         undated = [item for item in deduped if not item.get("publish_datetime")]
 
         dated.sort(key=lambda item: item["publish_datetime"], reverse=True)
         final = (dated + undated)[:10]
+
+        print(f"MSE final items written: {len(final)}")
 
         return {
             "status": "ok",
