@@ -132,11 +132,21 @@ function renderMomentum(momentum) {
     const widthPercent = Math.max((item.count / maxCount) * 100, 8);
     const isOurBrand = item.brand === "Virgin Media O2";
 
+    const brandChildren = [
+      el("span", { className: "momentum-brand-name" }, [item.brand || "Unknown"])
+    ];
+
+    if (isOurBrand) {
+      brandChildren.push(
+        el("span", { className: "momentum-brand-tag" }, ["Our brand"])
+      );
+    }
+
     const card = el("article", {
       className: `momentum-card${isOurBrand ? " vm02" : ""}`
     }, [
       el("div", { className: "momentum-head" }, [
-        el("div", { className: "momentum-brand" }, [item.brand || "Unknown"]),
+        el("div", { className: "momentum-brand" }, brandChildren),
         el("div", { className: "momentum-count" }, [`${item.count}`])
       ]),
       el("div", { className: "momentum-bar-track" }, [
