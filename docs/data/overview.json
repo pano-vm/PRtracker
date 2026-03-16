@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-03-16T11:44:03.645286Z",
-  "summary": "Competitors are aggressively leveraging flagship device launches with enhanced 5G+ network claims and new content partnerships like EE's DAZN integration. Vodafone's Speed Boost initiative poses a direct threat to our speed-based market positioning, while BT’s record full-fibre growth signals intensifying pressure in the fixed-line sector. These moves highlight a strategic shift toward performance-based competition and content bundling, requiring us to defend our premium network status during the spring flagship season.",
+  "generated_at": "2026-03-16T11:56:05.025841Z",
+  "summary": "Competitors are aggressively targeting the high-end mobile market through 5G+ deployments and flagship device bundles while expanding content partnerships to drive multi-service growth. Network performance remains a primary battleground, with rivals leveraging speed enhancements and third-party quality awards to challenge Virgin Media O2’s connectivity perception. Consumer price sensitivity is being amplified by affiliate commentary ahead of April increases, creating a risk of churn to more flexible or perk-heavy competitor plans.",
   "signals": [
     {
       "brand": "Vodafone",
       "type": "Product launch",
       "headline": "Speed Boost offers Vodafone customers up to 2x faster speeds",
-      "impact": "This initiative directly challenges Virgin Media O2’s core competitive advantage of superior speed by providing a performance uplift to Vodafone's existing mobile customer base."
+      "impact": "This direct challenge to connectivity speeds could entice Virgin Media O2 customers who prioritize bandwidth for data-intensive activities like streaming and gaming."
     },
     {
       "brand": "EE",
       "type": "Partnership",
       "headline": "Ee Tv Expands Its Sports Entertainment Access With Dazn Launch",
-      "impact": "The addition of DAZN strengthens EE’s content ecosystem, increasing the competitive pressure on Virgin Media’s TV and entertainment bundling strategy."
+      "impact": "Expanding sports content via DAZN strengthens EE's quad-play proposition, intensifying competition for Virgin Media O2’s high-value TV and broadband subscriber base."
     },
     {
-      "brand": "BT",
-      "type": "Network investment",
-      "headline": "BT is delivering, with record full fibre connections and further retail customer growth",
-      "impact": "Continued momentum in Openreach’s fiber rollout and retail growth threatens Virgin Media's fixed-line market share and requires an accelerated response in our own network expansion."
+      "brand": "Three",
+      "type": "Pricing",
+      "headline": "Personalised phone plans and more perks from Three UK",
+      "impact": "Increased plan flexibility and added-value rewards from Three directly target the O2 Priority and flexible contract USPs, increasing the risk of price-driven churn."
     }
   ],
   "momentum": [
