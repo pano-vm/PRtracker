@@ -354,39 +354,39 @@ def extract_bt_article_links(html: str, base: str) -> list[str]:
 def extract_moneysavingexpert_listing_items(html: str, base: str) -> list[dict]:
     items = []
 
-    matches = re.finditer(
-        r'data-component-props="([^"]*?&quot;title&quot;:&quot;.*?&quot;url&quot;:&quot;.*?&quot;date&quot;:&quot;.*?&quot;[^"]*)"',
+    # Restrict to the main press office area if possible
+    main_match = re.search(
+        r'Home of all MoneySavingExpert\.com\'s press releases(.*?)(?:Latest weekly email|FAQs|Privacy)',
         html,
+        flags=re.I | re.S,
+    )
+    section = main_match.group(1) if main_match else html
+
+    pattern = re.compile(
+        r'<a[^>]+href=["\'](?P<href>/pressoffice/\d{4}/[^"\']+/?)["\'][^>]*>(?P<title>.*?)</a>.*?(?P<date>\d{1,2}\s+[A-Za-z]+\s+\d{4})',
         flags=re.I | re.S,
     )
 
     seen = set()
 
-    for match in matches:
-        raw_props = match.group(1)
-        props = unescape(raw_props).replace("&quot;", '"')
+    for match in pattern.finditer(section):
+        href = unescape(match.group("href")).strip()
+        title_html = match.group("title")
+        date_value = unescape(match.group("date")).strip()
 
-        title_match = re.search(r'"title":"(.*?)"', props, flags=re.S)
-        url_match = re.search(r'"url":"(.*?)"', props, flags=re.S)
-        date_match = re.search(r'"date":"(.*?)"', props, flags=re.S)
+        title = re.sub(r"<[^>]+>", "", title_html)
+        title = re.sub(r"\s+", " ", unescape(title)).strip()
 
-        if not title_match or not url_match:
-            continue
+        url = strip_tracking(urljoin(base, href)).rstrip("/")
 
-        title = unescape(title_match.group(1)).strip()
-        rel_url = unescape(url_match.group(1)).strip()
-        date_value = unescape(date_match.group(1)).strip() if date_match else None
-
-        url = strip_tracking(urljoin(base, rel_url)).rstrip("/")
-
-        if url in seen:
+        if not title or url in seen:
             continue
         seen.add(url)
 
         items.append({
             "title": title,
             "url": url,
-            "publish_datetime": normalise_iso(date_value) if date_value else None,
+            "publish_datetime": normalise_iso(date_value),
         })
 
     return items
