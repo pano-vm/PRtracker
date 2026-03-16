@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-03-16T11:56:05.025841Z",
-  "summary": "Competitors are aggressively targeting the high-end mobile market through 5G+ deployments and flagship device bundles while expanding content partnerships to drive multi-service growth. Network performance remains a primary battleground, with rivals leveraging speed enhancements and third-party quality awards to challenge Virgin Media O2’s connectivity perception. Consumer price sensitivity is being amplified by affiliate commentary ahead of April increases, creating a risk of churn to more flexible or perk-heavy competitor plans.",
+  "generated_at": "2026-03-16T12:24:52.377808Z",
+  "summary": "Competitors are aggressively targeting the flagship device season with significant hardware discounts and performance-based marketing, exemplified by Vodafone’s speed enhancements and Sky’s pricing strategy. EE is strengthening its entertainment ecosystem through new sports partnerships like DAZN, creating a more formidable challenge to Virgin Media’s traditional quad-play dominance. Market sentiment is heavily focused on impending April price rises, increasing the risk of churn as consumer groups urge customers to switch providers to avoid higher bills.",
   "signals": [
     {
       "brand": "Vodafone",
-      "type": "Product launch",
+      "type": "Network investment",
       "headline": "Speed Boost offers Vodafone customers up to 2x faster speeds",
-      "impact": "This direct challenge to connectivity speeds could entice Virgin Media O2 customers who prioritize bandwidth for data-intensive activities like streaming and gaming."
+      "impact": "This performance enhancement directly challenges VMO2’s speed-led market positioning and could impact mobile retention among speed-conscious users."
     },
     {
       "brand": "EE",
-      "type": "Partnership",
+      "type": "Product launch",
       "headline": "Ee Tv Expands Its Sports Entertainment Access With Dazn Launch",
-      "impact": "Expanding sports content via DAZN strengthens EE's quad-play proposition, intensifying competition for Virgin Media O2’s high-value TV and broadband subscriber base."
+      "impact": "Broadening the EE TV sports portfolio creates a more competitive alternative to Virgin Media’s high-value entertainment and content bundles."
     },
     {
-      "brand": "Three",
+      "brand": "Sky",
       "type": "Pricing",
-      "headline": "Personalised phone plans and more perks from Three UK",
-      "impact": "Increased plan flexibility and added-value rewards from Three directly target the O2 Priority and flexible contract USPs, increasing the risk of price-driven churn."
+      "headline": "Save £144 on the new Samsung Galaxy S26 series which is now available to buy on Sky Mobile",
+      "impact": "Aggressive flagship discounting combined with Sky’s 'Best for Perks' award positioning directly threatens O2’s mobile hardware sales and the perceived value of O2 Priority."
     }
   ],
   "momentum": [
