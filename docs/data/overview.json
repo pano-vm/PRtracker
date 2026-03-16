@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-03-16T08:43:16.161616Z",
-  "summary": "Competitors are leveraging flagship hardware launches and performance-based value propositions to capture market share ahead of upcoming price adjustments. EE is aggressively expanding its content ecosystem through partnerships like DAZN, while Vodafone is directly challenging our speed credentials with its new 'Speed Boost' feature. Sky remains a significant threat in the mobile segment by pairing hardware discounts with highly-rated customer perks.",
+  "generated_at": "2026-03-16T09:06:01.764816Z",
+  "summary": "Competitors are intensifying pressure through aggressive network speed enhancements and expanded content partnerships to capture market share during the spring flagship launch window. EE's integration of DAZN into its TV platform and Vodafone’s complimentary speed upgrades directly challenge Virgin Media O2’s core value propositions in premium entertainment and connectivity. Additionally, BT’s report of record fiber growth indicates a rapidly closing infrastructure gap that threatens Virgin Media O2's traditional speed advantage.",
   "signals": [
     {
-      "brand": "Vodafone",
-      "type": "Product launch",
-      "headline": "Speed Boost offers Vodafone customers up to 2x faster speeds",
-      "impact": "This initiative directly challenges our network speed superiority and could appeal to high-usage customers looking for performance gains without upgrading plans."
-    },
-    {
       "brand": "EE",
-      "type": "Partnership",
+      "type": "Product launch",
       "headline": "Ee Tv Expands Its Sports Entertainment Access With Dazn Launch",
-      "impact": "The addition of premium sports content strengthens EE’s converged TV offering, increasing competition for our Virgin TV and Stream platforms."
+      "impact": "This move strengthens EE's content ecosystem, creating a more formidable alternative to Virgin Media O2's entertainment and sports packages for converged customers."
     },
     {
-      "brand": "Sky",
-      "type": "Pricing",
-      "headline": "Save £144 on the new Samsung Galaxy S26 series on Sky Mobile",
-      "impact": "Sky’s aggressive device discounting and 'Best for Perks' positioning pose a risk to our mobile acquisition and retention targets during a major flagship launch window."
+      "brand": "Vodafone",
+      "type": "Network investment",
+      "headline": "Speed Boost offers Vodafone customers up to 2x faster speeds",
+      "impact": "Providing complimentary speed upgrades at no extra cost directly challenges Virgin Media O2’s ability to charge a premium for higher-tier connectivity speeds."
+    },
+    {
+      "brand": "BT",
+      "type": "Network investment",
+      "headline": "BT is delivering, with record full fibre connections and further retail customer growth",
+      "impact": "The acceleration of Openreach's fiber footprint significantly erodes the geographic network advantage Virgin Media O2 has historically maintained over its primary competitor."
     }
   ],
   "momentum": [
