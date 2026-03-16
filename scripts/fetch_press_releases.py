@@ -397,8 +397,9 @@ def extract_moneysavingexpert_items_with_playwright(url: str) -> list[dict]:
             viewport={"width": 1440, "height": 2200},
         )
 
-        page.goto(url, wait_until="networkidle", timeout=60000)
-        page.wait_for_timeout(5000)
+        # Do not wait for networkidle - MSE appears to keep background requests open
+        page.goto(url, wait_until="domcontentloaded", timeout=60000)
+        page.wait_for_timeout(8000)
 
         print(f"[MSE] page title: {page.title()}")
 
@@ -413,7 +414,7 @@ def extract_moneysavingexpert_items_with_playwright(url: str) -> list[dict]:
             try:
                 if page.locator(selector).count() > 0:
                     page.locator(selector).first.click(timeout=3000)
-                    page.wait_for_timeout(2000)
+                    page.wait_for_timeout(3000)
                     print(f"[MSE] clicked cookie button: {selector}")
                     break
             except Exception:
@@ -423,6 +424,7 @@ def extract_moneysavingexpert_items_with_playwright(url: str) -> list[dict]:
         print(f"[MSE] HTML length after render: {len(html)}")
         print(f"[MSE] contains 'Press Office': {'Press Office' in html}")
         print(f"[MSE] contains 'Martin Lewis': {'Martin Lewis' in html}")
+        print(f"[MSE] contains '/pressoffice/202': {'/pressoffice/202' in html}")
 
         with open("docs/data/mse_debug.html", "w", encoding="utf-8") as f:
             f.write(html)
