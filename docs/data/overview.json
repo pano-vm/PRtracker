@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-03-16T11:33:34.901473Z",
-  "summary": "Competitors are intensifying pressure through network performance upgrades and aggressive hardware pricing to capture market share during the spring flagship launch window. Vodafone's speed enhancements and EE’s expansion of sports content via DAZN directly challenge Virgin Media O2’s converged entertainment and broadband leadership. Additionally, Sky’s significant discounting on new devices increases the risk of customer acquisition being diverted away from O2’s retail channels.",
+  "generated_at": "2026-03-16T11:44:03.645286Z",
+  "summary": "Competitors are aggressively leveraging flagship device launches with enhanced 5G+ network claims and new content partnerships like EE's DAZN integration. Vodafone's Speed Boost initiative poses a direct threat to our speed-based market positioning, while BT’s record full-fibre growth signals intensifying pressure in the fixed-line sector. These moves highlight a strategic shift toward performance-based competition and content bundling, requiring us to defend our premium network status during the spring flagship season.",
   "signals": [
     {
       "brand": "Vodafone",
-      "type": "Network investment",
+      "type": "Product launch",
       "headline": "Speed Boost offers Vodafone customers up to 2x faster speeds",
-      "impact": "This initiative directly erodes Virgin Media O2’s historical competitive advantage in broadband speed by offering performance parity to existing customers at no extra cost."
+      "impact": "This initiative directly challenges Virgin Media O2’s core competitive advantage of superior speed by providing a performance uplift to Vodafone's existing mobile customer base."
     },
     {
       "brand": "EE",
       "type": "Partnership",
       "headline": "Ee Tv Expands Its Sports Entertainment Access With Dazn Launch",
-      "impact": "The addition of DAZN content strengthens EE's entertainment bundle, posing a direct threat to Virgin Media O2’s TV market share and converged service appeal."
+      "impact": "The addition of DAZN strengthens EE’s content ecosystem, increasing the competitive pressure on Virgin Media’s TV and entertainment bundling strategy."
     },
     {
-      "brand": "Sky",
-      "type": "Pricing",
-      "headline": "Save £144 on the new Samsung Galaxy S26 series",
-      "impact": "Sky’s aggressive hardware discounting during a major flagship release window puts significant pressure on O2’s device margins and retail acquisition targets."
+      "brand": "BT",
+      "type": "Network investment",
+      "headline": "BT is delivering, with record full fibre connections and further retail customer growth",
+      "impact": "Continued momentum in Openreach’s fiber rollout and retail growth threatens Virgin Media's fixed-line market share and requires an accelerated response in our own network expansion."
     }
   ],
   "momentum": [
