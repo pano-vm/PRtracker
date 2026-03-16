@@ -395,6 +395,91 @@ def extract_bt_article_links(html: str, base: str) -> list[str]:
 
     return deduped
 
+def extract_moneysavingexpert_items_with_playwright(url: str) -> list[dict]:
+    items = []
+
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        page = browser.new_page(
+            user_agent=(
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/122.0.0.0 Safari/537.36"
+            ),
+            locale="en-GB",
+            viewport={"width": 1440, "height": 2200},
+        )
+
+        page.goto(url, wait_until="networkidle", timeout=60000)
+        page.wait_for_timeout(5000)
+
+        print(f"[MSE] page title: {page.title()}")
+
+        # Try cookie buttons if present
+        cookie_selectors = [
+            "button:has-text('Accept')",
+            "button:has-text('Accept all')",
+            "button:has-text('Allow all')",
+            "button:has-text('I agree')",
+        ]
+
+        for selector in cookie_selectors:
+            try:
+                if page.locator(selector).count() > 0:
+                    page.locator(selector).first.click(timeout=3000)
+                    page.wait_for_timeout(2000)
+                    print(f"[MSE] clicked cookie button: {selector}")
+                    break
+            except Exception:
+                pass
+
+        html = page.content()
+        print(f"[MSE] HTML length after render: {len(html)}")
+        print(f"[MSE] contains 'Press Office': {'Press Office' in html}")
+        print(f"[MSE] contains 'Martin Lewis': {'Martin Lewis' in html}")
+
+        # Save debug HTML temporarily so you can inspect it in the repo if needed
+        with open("docs/data/mse_debug.html", "w", encoding="utf-8") as f:
+            f.write(html)
+
+        anchors = page.locator("a")
+        count = anchors.count()
+        print(f"[MSE] total anchors found: {count}")
+
+        seen = set()
+
+        for i in range(count):
+            try:
+                anchor = anchors.nth(i)
+                href = anchor.get_attribute("href") or ""
+                title = anchor.inner_text().strip()
+
+                if not href or not title:
+                    continue
+
+                full_url = strip_tracking(urljoin(url, href)).rstrip("/")
+
+                if "/pressoffice/" not in full_url:
+                    continue
+                if not re.search(r"/pressoffice/\d{4}/", full_url):
+                    continue
+
+                if full_url in seen:
+                    continue
+                seen.add(full_url)
+
+                items.append({
+                    "title": re.sub(r"\s+", " ", title),
+                    "url": full_url,
+                    "publish_datetime": extract_mse_date_from_url(full_url),
+                })
+            except Exception:
+                continue
+
+        browser.close()
+
+    return items
+
 
 def extract_mse_date_from_url(url: str) -> str | None:
     match = re.search(r"/pressoffice/(\d{4})/", url)
@@ -1036,29 +1121,13 @@ def build_feed(key: str) -> dict:
             "items": final,
         }
 
-    if key == "moneysavingexpert":
+        if key == "moneysavingexpert":
         items = []
 
         for listing_url in cfg["listing_urls"]:
             try:
-                listing_html = fetch_with_playwright(listing_url)
-
                 print(f"\n[MSE] listing URL: {listing_url}")
-                print(f"[MSE] HTML length: {len(listing_html)}")
-                print(f"[MSE] contains 'Press Office': {'Press Office' in listing_html}")
-                print(f"[MSE] contains '/pressoffice/202': {'/pressoffice/202' in listing_html}")
-                print(f"[MSE] contains 'Telecoms Consumer Charter': {'Telecoms Consumer Charter' in listing_html}")
-                print(f"[MSE] contains 'O2 price rise': {'O2 price rise' in listing_html}")
-                print(f"[MSE] contains 'mid-contract price hikes': {'mid-contract price hikes' in listing_html}")
-
-                start = listing_html.find("Press Office")
-                if start != -1:
-                    print("[MSE] snippet around Press Office:")
-                    print(listing_html[start:start+2000])
-                else:
-                    print("[MSE] 'Press Office' not found in HTML")
-
-                listing_items = extract_moneysavingexpert_listing_items(listing_html, listing_url)
+                listing_items = extract_moneysavingexpert_items_with_playwright(listing_url)
 
                 print(f"[MSE] extracted count: {len(listing_items)}")
                 print("[MSE] sample extracted:", [
@@ -1086,8 +1155,10 @@ def build_feed(key: str) -> dict:
         print(f"[MSE] deduped before filter: {len(deduped)}")
         print("[MSE] deduped titles:", [item["title"] for item in deduped[:10]])
 
-        # TEMP DEBUG - bypass telecom filter for one run
-        kept = deduped
+        kept = [
+            item for item in deduped
+            if should_keep_item(key, item["title"], item["url"])
+        ]
 
         print(f"[MSE] kept after telecom filter: {len(kept)}")
         print("[MSE] kept titles:", [item["title"] for item in kept[:10]])
