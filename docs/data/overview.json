@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-03-16T10:59:24.160675Z",
-  "summary": "Competitors are intensifying their network quality claims, with EE securing top rankings in landmark studies and BT reporting record growth in full-fibre connections. Vodafone is aggressively targeting performance-driven users with its new Speed Boost offer, while Sky is leveraging deep hardware discounts to capture the flagship smartphone market. These developments highlight a growing risk to Virgin Media O2’s market share in both premium mobile and high-speed fixed-line segments.",
+  "generated_at": "2026-03-16T11:18:59.025745Z",
+  "summary": "Competitors are aggressively enhancing their service propositions through high-speed performance upgrades and strategic content partnerships to differentiate during the spring flagship device cycle. Vodafone's Speed Boost and EE's integration of DAZN into its TV platform represent direct challenges to Virgin Media O2’s speed and entertainment leadership. Meanwhile, BT’s record growth in full-fibre connections intensifies the pressure on VMO2 to accelerate its own network evolution and maintain market share.",
   "signals": [
-    {
-      "brand": "EE",
-      "type": "Network investment",
-      "headline": "EE Named The UK’S Number One Network In Two Landmark Studies – Official Results Revealed",
-      "impact": "EE's reinforced status as the UK's top network directly challenges O2’s network reputation and could lead to customer churn toward the perceived market leader."
-    },
     {
       "brand": "Vodafone",
       "type": "Product launch",
       "headline": "Speed Boost offers Vodafone customers up to 2x faster speeds",
-      "impact": "Offering a free performance upgrade forces O2 to either match the speed increase or risk losing high-data users who prioritize throughput over other perks."
+      "impact": "This initiative directly attacks VMO2's primary marketing differentiator of superior broadband speeds."
+    },
+    {
+      "brand": "EE",
+      "type": "Partnership",
+      "headline": "Ee Tv Expands Its Sports Entertainment Access With Dazn Launch",
+      "impact": "Expanding EE's sports content ecosystem reduces the distinctiveness of VMO2's premium entertainment bundles."
     },
     {
       "brand": "BT",
       "type": "Network investment",
       "headline": "BT is delivering, with record full fibre connections and further retail customer growth",
-      "impact": "The rapid expansion of BT’s full-fibre footprint reduces Virgin Media’s infrastructure advantage and creates more direct competition in high-speed broadband areas."
+      "impact": "Rapid FTTP expansion by BT Group increases infrastructure competition, potentially driving churn among VMO2’s high-value broadband base."
     }
   ],
   "momentum": [

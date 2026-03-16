@@ -2,8 +2,13 @@
   "status": "ok",
   "brand": "Sky",
   "group": "Telecoms",
-  "generated_at": "2026-03-16T10:59:12.290835Z",
+  "generated_at": "2026-03-16T11:18:43.213363Z",
   "items": [
+    {
+      "title": "Sky Commissions The 100 Day Split, A New Relationship Series Exploring What Time Apart Reveals About Lifelong Love",
+      "url": "https://www.skygroup.sky/article/sky-commissions-the-100day-split-a-new-relationship-series-exploring-what-time-apart-reveals-about-lifelong-love",
+      "publish_datetime": "2026-03-16T09:02:21Z"
+    },
     {
       "title": "Sky Adds Blood on Snow to Original Film Slate in Acquisition Headlined by Benedict Cumberbatch and Aaron Taylor‑Johnson",
       "url": "https://www.skygroup.sky/article/sky-adds-blood-on-snow-to-original-film-slate-in-acquisition-headlined-by-benedict-cumberbatch-and-aaron-taylor-johnson",
@@ -48,11 +53,6 @@
       "title": "Sky Sports unveils plans for 2026 Formula 1 coverage",
       "url": "https://www.skygroup.sky/article/skysports-unveils-plans-for-2026-formula-1-coverage",
       "publish_datetime": "2026-03-04T13:08:43Z"
-    },
-    {
-      "title": "The Dyers’ Caravan Park reopens for a second season after a hit launch on Sky",
-      "url": "https://www.skygroup.sky/article/the-dyers-caravan-park-reopens-for-a-second-season-after-a-hit-launch-on-sky",
-      "publish_datetime": "2026-03-03T15:13:23Z"
     }
   ]
 }
