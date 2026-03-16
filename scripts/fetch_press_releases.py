@@ -207,7 +207,7 @@ APPROVED = {
         "group": "Affiliates",
         "listing_urls": [
             "https://www.moneysavingexpert.com/pressoffice/",
-            "https://www.moneysavingexpert.com/pressoffice/?page=2",
+            "https://www.moneysavingexpert.com/pressoffice/page/2/",
         ],
         "allowed_domains": {"www.moneysavingexpert.com"},
     },
