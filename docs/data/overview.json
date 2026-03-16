@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-03-16T12:39:35.603333Z",
-  "summary": "Major competitors are currently leveraging flagship smartphone launches from Samsung and Apple to promote premium 5G+ network capabilities and value-added bundles. EE is aggressively expanding its entertainment ecosystem through new sports partnerships, while Vodafone is focusing on performance-driven incentives like speed boosts to attract high-value customers. BT continues to prioritize the B2B sector with enhanced 5G reliability partnerships, posing a direct threat to Virgin Media O2’s enterprise growth objectives.",
+  "generated_at": "2026-03-16T13:14:20.540188Z",
+  "summary": "Competitors are intensifying their value propositions through performance-driven mobile enhancements and expanded content partnerships, notably Vodafone's speed-doubling initiative and EE's integration of DAZN. BT continues to fortify its enterprise and infrastructure leadership through strategic 5G partnerships and claims of being the UK's top-rated network. While price hikes dominate consumer sentiment, Virgin Media O2 faces pressure to defend its speed and entertainment leadership against these targeted competitor moves.",
   "signals": [
     {
       "brand": "Vodafone",
       "type": "Product launch",
       "headline": "Speed Boost offers Vodafone customers up to 2x faster speeds",
-      "impact": "This speed-based incentive directly challenges Virgin Media O2’s performance leadership and may attract speed-conscious customers away from O2 mobile plans."
+      "impact": "This directly challenges Virgin Media O2’s network performance advantage and could disrupt customer acquisition during the spring flagship device season."
     },
     {
       "brand": "EE",
       "type": "Partnership",
       "headline": "Ee Tv Expands Its Sports Entertainment Access With Dazn Launch",
-      "impact": "The addition of DAZN strengthens EE’s TV proposition, creating a more formidable competitor to Virgin Media’s established sports and entertainment bundles."
+      "impact": "Broadening EE's sports portfolio increases the competitive pressure on Virgin Media O2’s TV and broadband bundles by reducing content differentiation."
     },
     {
       "brand": "BT",
       "type": "Network investment",
       "headline": "BT Group and Ericsson strengthen partnership to unlock smarter, more reliable 5G services for UK businesses",
-      "impact": "Enhanced 5G reliability for the enterprise sector threatens Virgin Media O2’s B2B market share and its appeal to high-value corporate clients."
+      "impact": "This collaboration threatens Virgin Media O2’s B2B market share by enhancing BT’s ability to deliver specialized 5G services to enterprise clients."
     }
   ],
   "momentum": [
