@@ -993,18 +993,42 @@ def build_feed(key: str) -> dict:
 
     if key == "moneysavingexpert":
         items = []
+
         for listing_url in cfg["listing_urls"]:
             try:
                 listing_html = fetch(listing_url)
+
+                print(f"\n[MSE] listing URL: {listing_url}")
+                print(f"[MSE] HTML length: {len(listing_html)}")
+                print(f"[MSE] contains 'Press Office': {'Press Office' in listing_html}")
+                print(f"[MSE] contains '/pressoffice/202': {'/pressoffice/202' in listing_html}")
+                print(f"[MSE] contains 'Telecoms Consumer Charter': {'Telecoms Consumer Charter' in listing_html}")
+                print(f"[MSE] contains 'O2 price rise': {'O2 price rise' in listing_html}")
+                print(f"[MSE] contains 'mid-contract price hikes': {'mid-contract price hikes' in listing_html}")
+
+                start = listing_html.find("Press Office")
+                if start != -1:
+                    print("[MSE] snippet around Press Office:")
+                    print(listing_html[start:start+2000])
+                else:
+                    print("[MSE] 'Press Office' not found in HTML")
+
                 listing_items = extract_moneysavingexpert_listing_items(listing_html, listing_url)
 
-                print(f"MSE listing URL: {listing_url}")
-                print(f"MSE extracted from page: {len(listing_items)}")
-                print("MSE sample extracted titles:", [item["title"] for item in listing_items[:5]])
+                print(f"[MSE] extracted count: {len(listing_items)}")
+                print("[MSE] sample extracted:", [
+                    {
+                        "title": item["title"],
+                        "url": item["url"],
+                        "publish_datetime": item["publish_datetime"],
+                    }
+                    for item in listing_items[:5]
+                ])
 
                 items.extend(listing_items)
+
             except Exception as e:
-                print("moneysavingexpert fetch error:", repr(e))
+                print("[MSE] fetch error:", repr(e))
                 continue
 
         seen = set()
@@ -1014,24 +1038,22 @@ def build_feed(key: str) -> dict:
                 seen.add(item["url"])
                 deduped.append(item)
 
-        print(f"MSE deduped before filter: {len(deduped)}")
-        print("MSE deduped sample:", [item["title"] for item in deduped[:10]])
+        print(f"[MSE] deduped before filter: {len(deduped)}")
+        print("[MSE] deduped titles:", [item["title"] for item in deduped[:10]])
 
-        deduped = [
-            item for item in deduped
-            if should_keep_item(key, item["title"], item["url"])
-        ]
+        # TEMP DEBUG - bypass telecom filter for one run
+        kept = deduped
 
-        print(f"MSE kept after telecom filter: {len(deduped)}")
-        print("MSE kept sample:", [item["title"] for item in deduped[:10]])
+        print(f"[MSE] kept after telecom filter: {len(kept)}")
+        print("[MSE] kept titles:", [item["title"] for item in kept[:10]])
 
-        dated = [item for item in deduped if item.get("publish_datetime")]
-        undated = [item for item in deduped if not item.get("publish_datetime")]
+        dated = [item for item in kept if item.get("publish_datetime")]
+        undated = [item for item in kept if not item.get("publish_datetime")]
 
         dated.sort(key=lambda item: item["publish_datetime"], reverse=True)
         final = (dated + undated)[:10]
 
-        print(f"MSE final items written: {len(final)}")
+        print(f"[MSE] final items written: {len(final)}")
 
         return {
             "status": "ok",
