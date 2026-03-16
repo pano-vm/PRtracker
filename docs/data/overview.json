@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-03-16T08:10:40.149444Z",
-  "summary": "Competitors are aggressively leveraging new flagship device launches and service upgrades to capture market share ahead of scheduled spring price adjustments. EE and BT are strengthening their market position through high-profile entertainment partnerships and enhanced B2B connectivity solutions, while Vodafone is directly challenging our speed advantage. These developments present a risk to customer retention, requiring Virgin Media O2 to highlight its own 5G+ value and sustainability credentials.",
+  "generated_at": "2026-03-16T08:43:16.161616Z",
+  "summary": "Competitors are leveraging flagship hardware launches and performance-based value propositions to capture market share ahead of upcoming price adjustments. EE is aggressively expanding its content ecosystem through partnerships like DAZN, while Vodafone is directly challenging our speed credentials with its new 'Speed Boost' feature. Sky remains a significant threat in the mobile segment by pairing hardware discounts with highly-rated customer perks.",
   "signals": [
     {
-      "brand": "EE",
-      "type": "Product launch",
-      "headline": "Ee Tv Expands Its Sports Entertainment Access With Dazn Launch",
-      "impact": "This integration strengthens EE’s entertainment bundle, posing a direct threat to Virgin Media’s traditional dominance in sports content distribution."
-    },
-    {
-      "brand": "BT",
-      "type": "Network investment",
-      "headline": "BT Group and Ericsson strengthen partnership to unlock smarter, more reliable 5G services for UK businesses",
-      "impact": "Enhanced B2B 5G reliability and the launch of Sovereign Voice products increase competition for Virgin Media O2’s high-value enterprise and public sector contracts."
-    },
-    {
       "brand": "Vodafone",
-      "type": "Pricing",
+      "type": "Product launch",
       "headline": "Speed Boost offers Vodafone customers up to 2x faster speeds",
-      "impact": "Vodafone’s move to provide free performance upgrades directly challenges our core brand proposition of being the UK’s fastest major provider."
+      "impact": "This initiative directly challenges our network speed superiority and could appeal to high-usage customers looking for performance gains without upgrading plans."
+    },
+    {
+      "brand": "EE",
+      "type": "Partnership",
+      "headline": "Ee Tv Expands Its Sports Entertainment Access With Dazn Launch",
+      "impact": "The addition of premium sports content strengthens EE’s converged TV offering, increasing competition for our Virgin TV and Stream platforms."
+    },
+    {
+      "brand": "Sky",
+      "type": "Pricing",
+      "headline": "Save £144 on the new Samsung Galaxy S26 series on Sky Mobile",
+      "impact": "Sky’s aggressive device discounting and 'Best for Perks' positioning pose a risk to our mobile acquisition and retention targets during a major flagship launch window."
     }
   ],
   "momentum": [
