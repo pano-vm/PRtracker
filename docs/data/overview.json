@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-03-16T11:18:59.025745Z",
-  "summary": "Competitors are aggressively enhancing their service propositions through high-speed performance upgrades and strategic content partnerships to differentiate during the spring flagship device cycle. Vodafone's Speed Boost and EE's integration of DAZN into its TV platform represent direct challenges to Virgin Media O2’s speed and entertainment leadership. Meanwhile, BT’s record growth in full-fibre connections intensifies the pressure on VMO2 to accelerate its own network evolution and maintain market share.",
+  "generated_at": "2026-03-16T11:33:34.901473Z",
+  "summary": "Competitors are intensifying pressure through network performance upgrades and aggressive hardware pricing to capture market share during the spring flagship launch window. Vodafone's speed enhancements and EE’s expansion of sports content via DAZN directly challenge Virgin Media O2’s converged entertainment and broadband leadership. Additionally, Sky’s significant discounting on new devices increases the risk of customer acquisition being diverted away from O2’s retail channels.",
   "signals": [
     {
       "brand": "Vodafone",
-      "type": "Product launch",
+      "type": "Network investment",
       "headline": "Speed Boost offers Vodafone customers up to 2x faster speeds",
-      "impact": "This initiative directly attacks VMO2's primary marketing differentiator of superior broadband speeds."
+      "impact": "This initiative directly erodes Virgin Media O2’s historical competitive advantage in broadband speed by offering performance parity to existing customers at no extra cost."
     },
     {
       "brand": "EE",
       "type": "Partnership",
       "headline": "Ee Tv Expands Its Sports Entertainment Access With Dazn Launch",
-      "impact": "Expanding EE's sports content ecosystem reduces the distinctiveness of VMO2's premium entertainment bundles."
+      "impact": "The addition of DAZN content strengthens EE's entertainment bundle, posing a direct threat to Virgin Media O2’s TV market share and converged service appeal."
     },
     {
-      "brand": "BT",
-      "type": "Network investment",
-      "headline": "BT is delivering, with record full fibre connections and further retail customer growth",
-      "impact": "Rapid FTTP expansion by BT Group increases infrastructure competition, potentially driving churn among VMO2’s high-value broadband base."
+      "brand": "Sky",
+      "type": "Pricing",
+      "headline": "Save £144 on the new Samsung Galaxy S26 series",
+      "impact": "Sky’s aggressive hardware discounting during a major flagship release window puts significant pressure on O2’s device margins and retail acquisition targets."
     }
   ],
   "momentum": [
