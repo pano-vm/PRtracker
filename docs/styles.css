@@ -316,9 +316,18 @@ body {
 }
 
 .momentum-card.vm02 {
-  padding: 8px 10px;
-  border: 1px solid rgba(0, 87, 255, 0.18);
-  background: rgba(0, 87, 255, 0.05);
+  position: relative;
+}
+
+.momentum-card.vm02::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 2px;
+  bottom: 2px;
+  width: 3px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--accent) 0%, var(--purple) 100%);
 }
 
 .momentum-head {
@@ -330,9 +339,31 @@ body {
 }
 
 .momentum-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
   font-size: 13px;
   font-weight: 800;
   color: var(--text-strong);
+}
+
+.momentum-brand-name {
+  display: inline-block;
+}
+
+.momentum-brand-tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 20px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: rgba(0, 87, 255, 0.08);
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 
 .momentum-count {
