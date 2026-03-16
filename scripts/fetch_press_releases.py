@@ -7,7 +7,6 @@ from html import unescape
 from urllib.parse import urljoin, urlparse, urlunparse, parse_qsl, urlencode
 
 import requests
-from playwright.sync_api import sync_playwright
 from google import genai
 
 TELECOM_KEYWORDS = [
@@ -199,8 +198,8 @@ APPROVED = {
         "brand": "MoneySavingExpert",
         "group": "Affiliates",
         "listing_urls": [
-            "https://www.moneysavingexpert.com/pressoffice/",
-            "https://www.moneysavingexpert.com/pressoffice/page/2/",
+            "https://www.moneysavingexpert.com/pressoffice/2026/",
+            "https://www.moneysavingexpert.com/pressoffice/2025/",
         ],
         "allowed_domains": {"www.moneysavingexpert.com"},
     },
@@ -382,88 +381,38 @@ def extract_mse_date_from_url(url: str) -> str | None:
         return None
 
 
-def extract_moneysavingexpert_items_with_playwright(url: str) -> list[dict]:
+def extract_mse_archive_items(html: str, base: str) -> list[dict]:
     items = []
 
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        page = browser.new_page(
-            user_agent=(
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                "AppleWebKit/537.36 (KHTML, like Gecko) "
-                "Chrome/122.0.0.0 Safari/537.36"
-            ),
-            locale="en-GB",
-            viewport={"width": 1440, "height": 2200},
-        )
+    matches = re.finditer(
+        r'<a[^>]+href=["\'](?P<href>/pressoffice/\d{4}/[^"\']+/?)["\'][^>]*>(?P<title>.*?)</a>',
+        html,
+        flags=re.I | re.S,
+    )
 
-        # Do not wait for networkidle - MSE appears to keep background requests open
-        page.goto(url, wait_until="domcontentloaded", timeout=60000)
-        page.wait_for_timeout(8000)
+    seen = set()
 
-        print(f"[MSE] page title: {page.title()}")
+    for match in matches:
+        href = unescape(match.group("href")).strip()
+        title_html = match.group("title")
 
-        cookie_selectors = [
-            "button:has-text('Accept')",
-            "button:has-text('Accept all')",
-            "button:has-text('Allow all')",
-            "button:has-text('I agree')",
-        ]
+        title = re.sub(r"<[^>]+>", "", title_html)
+        title = re.sub(r"\s+", " ", unescape(title)).strip()
 
-        for selector in cookie_selectors:
-            try:
-                if page.locator(selector).count() > 0:
-                    page.locator(selector).first.click(timeout=3000)
-                    page.wait_for_timeout(3000)
-                    print(f"[MSE] clicked cookie button: {selector}")
-                    break
-            except Exception:
-                pass
+        if not title:
+            continue
 
-        html = page.content()
-        print(f"[MSE] HTML length after render: {len(html)}")
-        print(f"[MSE] contains 'Press Office': {'Press Office' in html}")
-        print(f"[MSE] contains 'Martin Lewis': {'Martin Lewis' in html}")
-        print(f"[MSE] contains '/pressoffice/202': {'/pressoffice/202' in html}")
+        url = strip_tracking(urljoin(base, href)).rstrip("/")
 
-        with open("docs/data/mse_debug.html", "w", encoding="utf-8") as f:
-            f.write(html)
+        if url in seen:
+            continue
+        seen.add(url)
 
-        anchors = page.locator("a")
-        count = anchors.count()
-        print(f"[MSE] total anchors found: {count}")
-
-        seen = set()
-
-        for i in range(count):
-            try:
-                anchor = anchors.nth(i)
-                href = anchor.get_attribute("href") or ""
-                title = anchor.inner_text().strip()
-
-                if not href or not title:
-                    continue
-
-                full_url = strip_tracking(urljoin(url, href)).rstrip("/")
-
-                if "/pressoffice/" not in full_url:
-                    continue
-                if not re.search(r"/pressoffice/\d{4}/", full_url):
-                    continue
-
-                if full_url in seen:
-                    continue
-                seen.add(full_url)
-
-                items.append({
-                    "title": re.sub(r"\s+", " ", title),
-                    "url": full_url,
-                    "publish_datetime": extract_mse_date_from_url(full_url),
-                })
-            except Exception:
-                continue
-
-        browser.close()
+        items.append({
+            "title": title,
+            "url": url,
+            "publish_datetime": extract_mse_date_from_url(url),
+        })
 
     return items
 
@@ -1069,7 +1018,12 @@ def build_feed(key: str) -> dict:
         for listing_url in cfg["listing_urls"]:
             try:
                 print(f"\n[MSE] listing URL: {listing_url}")
-                listing_items = extract_moneysavingexpert_items_with_playwright(listing_url)
+                listing_html = fetch(listing_url)
+
+                print(f"[MSE] HTML length: {len(listing_html)}")
+                print(f"[MSE] contains '/pressoffice/202': {'/pressoffice/202' in listing_html}")
+
+                listing_items = extract_mse_archive_items(listing_html, listing_url)
 
                 print(f"[MSE] extracted count: {len(listing_items)}")
                 print("[MSE] sample extracted:", [
