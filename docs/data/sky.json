@@ -2,8 +2,13 @@
   "status": "ok",
   "brand": "Sky",
   "group": "Telecoms",
-  "generated_at": "2026-03-16T13:13:37.109712Z",
+  "generated_at": "2026-03-17T07:56:31.037893Z",
   "items": [
+    {
+      "title": "Tina Fey, Jamie Dornan and Riz Ahmed announced as first three hosts of Saturday Night Live UK",
+      "url": "https://www.skygroup.sky/article/tina-fey-jamie-dornan-and-riz-ahmed-confirmed-as-first-three-hosts-of-saturday-night-live-uk",
+      "publish_datetime": "2026-03-16T17:11:41Z"
+    },
     {
       "title": "Sky Commissions The 100 Day Split, A New Relationship Series Exploring What Time Apart Reveals About Lifelong Love",
       "url": "https://www.skygroup.sky/article/sky-commissions-the-100day-split-a-new-relationship-series-exploring-what-time-apart-reveals-about-lifelong-love",
@@ -48,11 +53,6 @@
       "title": "Sky News secures ninth News Channel of the Year award as Yalda Hakim, Yousra Elbagir and Mollie Malone honoured at RTS Awards",
       "url": "https://www.skygroup.sky/article/sky-news-secures-ninth-news-channel-of-the-year-award",
       "publish_datetime": "2026-03-05T08:40:18Z"
-    },
-    {
-      "title": "Sky Sports unveils plans for 2026 Formula 1 coverage",
-      "url": "https://www.skygroup.sky/article/skysports-unveils-plans-for-2026-formula-1-coverage",
-      "publish_datetime": "2026-03-04T13:08:43Z"
     }
   ]
 }

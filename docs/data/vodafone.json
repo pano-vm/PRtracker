@@ -2,8 +2,13 @@
   "status": "ok",
   "brand": "Vodafone",
   "group": "Telecoms",
-  "generated_at": "2026-03-16T13:11:58.165621Z",
+  "generated_at": "2026-03-17T07:54:53.150257Z",
   "items": [
+    {
+      "title": "Vodafone partners with six Live Nation UK festivals",
+      "url": "https://www.vodafone.co.uk/newscentre/press-release/partnership-six-live-nation-uk-festivals/",
+      "publish_datetime": "2026-03-16T15:06:23Z"
+    },
     {
       "title": "Speed Boost offers Vodafone customers up to 2x faster speeds",
       "url": "https://www.vodafone.co.uk/newscentre/press-release/speed-boost-up-to-2x-faster-mobile-data-speeds/",
@@ -48,11 +53,6 @@
       "title": "The Google Pixel 10a is now available to pre-order on Vodafone",
       "url": "https://www.vodafone.co.uk/newscentre/press-release/google-pixel-10a-pre-order/",
       "publish_datetime": "2026-02-18T15:06:31Z"
-    },
-    {
-      "title": "Safer Internet Day 2026: Almost a third of children who use AI chatbots see them as friends",
-      "url": "https://www.vodafone.co.uk/newscentre/press-release/ai-chatbots-safer-internet-day-2026/",
-      "publish_datetime": "2026-02-10T08:48:57Z"
     }
   ]
 }
