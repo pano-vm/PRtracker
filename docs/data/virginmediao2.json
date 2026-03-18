@@ -2,8 +2,13 @@
   "status": "ok",
   "brand": "Virgin Media O2",
   "group": "Telecoms",
-  "generated_at": "2026-03-17T07:54:42.573341Z",
+  "generated_at": "2026-03-18T07:54:10.697590Z",
   "items": [
+    {
+      "title": "O2 deploys Europe’s first pre-assembled mobile mast as part of £700m Mobile Transformation Plan - Virgin Media O2",
+      "url": "https://news.virginmediao2.co.uk/o2-deploys-europes-first-pre-assembled-mobile-mast-as-part-of-700m-mobile-transformation-plan/",
+      "publish_datetime": "2026-03-17T08:00:59Z"
+    },
     {
       "title": "O2 stores across Yorkshire and the Midlands get behind the Government’s new online safety campaign, ‘You Won’t Know Until You Ask’ - Virgin Media O2",
       "url": "https://news.virginmediao2.co.uk/o2-stores-across-yorkshire-and-the-midlands-get-behind-the-governments-new-online-safety-campaign-you-wont-know-until-you-ask/",
@@ -48,11 +53,6 @@
       "title": "How Virgin Media O2 is investing in the UK’s connectivity and committing to consumer fairness - Virgin Media O2",
       "url": "https://news.virginmediao2.co.uk/how-virgin-media-o2-is-investing-in-the-uks-connectivity-and-committing-to-consumer-fairness/",
       "publish_datetime": "2026-02-11T16:13:28Z"
-    },
-    {
-      "title": "Corporate statements - Virgin Media O2",
-      "url": "https://news.virginmediao2.co.uk/corporate-statements/",
-      "publish_datetime": "2024-08-02T12:49:23Z"
     }
   ]
 }
