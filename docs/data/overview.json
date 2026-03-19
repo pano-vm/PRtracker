@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-03-18T07:56:09.340116Z",
-  "summary": "Competitors are intensifying their value propositions through flagship device launches and premium content integrations, such as EE’s DAZN partnership and Sky’s Disney+ inclusion. BT and EE are leveraging recent network studies to assert dominance in connectivity, while Vodafone is testing tiered performance models like Speed Boost. These developments, coupled with heightened regulatory scrutiny on mid-contract price rises, necessitate a defensive focus on Virgin Media O2’s convergence and network transformation messaging.",
+  "generated_at": "2026-03-19T07:50:17.876233Z",
+  "summary": "Competitors are intensifying the race for premium connectivity leadership, with EE reinforcing its status as the UK's top-rated network and Vodafone introducing features to double customer speeds. The market is currently dominated by high-profile hardware cycles for new flagship devices alongside significant content expansions such as Sky’s Disney+ bundling. These developments represent a dual threat to Virgin Media O2’s market share through both technical performance claims and enhanced value-added entertainment ecosystems.",
   "signals": [
-    {
-      "brand": "EE",
-      "type": "Product launch",
-      "headline": "Ee Tv Expands Its Sports Entertainment Access With Dazn Launch",
-      "impact": "This move strengthens EE's converged entertainment portfolio and directly challenges Virgin Media’s historical advantage in sports content distribution."
-    },
-    {
-      "brand": "Sky",
-      "type": "Partnership",
-      "headline": "Disney+ included in the Sky TV subscription from today, bringing customers more of the best entertainment in one place",
-      "impact": "Sky is enhancing the perceived value of its TV bundles, which pressures Virgin Media O2 to offer similar premium streaming incentives to prevent customer churn."
-    },
     {
       "brand": "EE",
       "type": "Network investment",
       "headline": "Ee Named The Uk’S Number One Network In Two Landmark Studies – Official Results Revealed",
-      "impact": "Third-party validation of EE’s network superiority undermines Virgin Media O2’s marketing efforts for its own 5G and mobile transformation investments."
+      "impact": "This reinforces EE's leadership position in network quality, directly challenging Virgin Media O2’s ability to compete on reliability and coverage marketing."
+    },
+    {
+      "brand": "Vodafone",
+      "type": "Product launch",
+      "headline": "Speed Boost offers Vodafone customers up to 2x faster speeds",
+      "impact": "Vodafone is directly targeting Virgin Media O2's core speed-based USP by offering a performance-focused value add to its mobile customer base."
+    },
+    {
+      "brand": "Sky",
+      "type": "Partnership",
+      "headline": "Disney+ included in the Sky TV subscription from today",
+      "impact": "This significantly strengthens Sky’s entertainment value proposition, making their bundles more competitive against Virgin Media’s integrated TV and broadband offerings."
     }
   ],
   "momentum": [
@@ -44,21 +44,25 @@
     },
     {
       "brand": "BT",
-      "count": 4
+      "count": 5
     }
   ],
   "topic_trends": [
     {
       "topic": "mobile",
-      "count": 12
+      "count": 11
     },
     {
       "topic": "network",
-      "count": 12
+      "count": 11
     },
     {
       "topic": "partnerships",
-      "count": 4
+      "count": 3
+    },
+    {
+      "topic": "streaming and TV",
+      "count": 3
     },
     {
       "topic": "broadband",
@@ -66,10 +70,6 @@
     },
     {
       "topic": "pricing",
-      "count": 2
-    },
-    {
-      "topic": "infrastructure",
       "count": 2
     }
   ]
