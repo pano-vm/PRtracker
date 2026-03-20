@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-03-19T07:50:17.876233Z",
-  "summary": "Competitors are intensifying the race for premium connectivity leadership, with EE reinforcing its status as the UK's top-rated network and Vodafone introducing features to double customer speeds. The market is currently dominated by high-profile hardware cycles for new flagship devices alongside significant content expansions such as Sky’s Disney+ bundling. These developments represent a dual threat to Virgin Media O2’s market share through both technical performance claims and enhanced value-added entertainment ecosystems.",
+  "generated_at": "2026-03-20T07:50:10.587213Z",
+  "summary": "Competitors are aggressively expanding their content and B2B capabilities, evidenced by EE's sports additions and BT’s enhanced 5G enterprise partnership with Ericsson. Vodafone is directly challenging Virgin Media O2's speed advantage with new performance-boosting features for its mobile customers. These moves, combined with EE's consistent claims of network superiority, represent a significant threat to our premium subscriber base and business market share.",
   "signals": [
     {
+      "brand": "BT",
+      "type": "Partnership",
+      "headline": "BT Group and Ericsson strengthen partnership to unlock smarter, more reliable 5G services for UK businesses",
+      "impact": "This collaboration enhances BT’s B2B 5G capabilities, directly challenging Virgin Media O2’s enterprise segment and private network ambitions."
+    },
+    {
       "brand": "EE",
-      "type": "Network investment",
-      "headline": "Ee Named The Uk’S Number One Network In Two Landmark Studies – Official Results Revealed",
-      "impact": "This reinforces EE's leadership position in network quality, directly challenging Virgin Media O2’s ability to compete on reliability and coverage marketing."
+      "type": "Product launch",
+      "headline": "Ee Tv Expands Its Sports Entertainment Access With Dazn Launch",
+      "impact": "The addition of DAZN strengthens EE’s converged entertainment offering, increasing competition for Virgin Media O2’s premium TV and broadband bundles."
     },
     {
       "brand": "Vodafone",
       "type": "Product launch",
       "headline": "Speed Boost offers Vodafone customers up to 2x faster speeds",
-      "impact": "Vodafone is directly targeting Virgin Media O2's core speed-based USP by offering a performance-focused value add to its mobile customer base."
-    },
-    {
-      "brand": "Sky",
-      "type": "Partnership",
-      "headline": "Disney+ included in the Sky TV subscription from today",
-      "impact": "This significantly strengthens Sky’s entertainment value proposition, making their bundles more competitive against Virgin Media’s integrated TV and broadband offerings."
+      "impact": "This performance-focused feature directly targets Virgin Media O2’s core marketing advantage as the UK’s leading high-speed connectivity provider."
     }
   ],
   "momentum": [
@@ -31,12 +31,12 @@
       "count": 10
     },
     {
-      "brand": "Virgin Media O2",
-      "count": 9
-    },
-    {
       "brand": "EE",
       "count": 7
+    },
+    {
+      "brand": "Virgin Media O2",
+      "count": 6
     },
     {
       "brand": "Three",
@@ -49,28 +49,28 @@
   ],
   "topic_trends": [
     {
-      "topic": "mobile",
+      "topic": "network",
       "count": 11
     },
     {
-      "topic": "network",
-      "count": 11
+      "topic": "mobile",
+      "count": 10
+    },
+    {
+      "topic": "streaming and TV",
+      "count": 4
     },
     {
       "topic": "partnerships",
       "count": 3
     },
     {
-      "topic": "streaming and TV",
-      "count": 3
+      "topic": "regulation",
+      "count": 1
     },
     {
-      "topic": "broadband",
-      "count": 2
-    },
-    {
-      "topic": "pricing",
-      "count": 2
+      "topic": "infrastructure",
+      "count": 1
     }
   ]
 }

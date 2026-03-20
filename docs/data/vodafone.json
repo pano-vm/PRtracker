@@ -2,8 +2,13 @@
   "status": "ok",
   "brand": "Vodafone",
   "group": "Telecoms",
-  "generated_at": "2026-03-19T07:48:49.680388Z",
+  "generated_at": "2026-03-20T07:48:01.435235Z",
   "items": [
+    {
+      "title": "Vodafone and Google Pixel bring AI to Britain's pub quiz",
+      "url": "https://www.vodafone.co.uk/newscentre/press-release/google-pixel-ai-pub-quiz/",
+      "publish_datetime": "2026-03-19T08:03:34Z"
+    },
     {
       "title": "Vodafone partners with six Live Nation UK festivals",
       "url": "https://www.vodafone.co.uk/newscentre/press-release/partnership-six-live-nation-uk-festivals/",
@@ -48,11 +53,6 @@
       "title": "Improved mobile connectivity could unlock 49,000 new businesses",
       "url": "https://www.vodafone.co.uk/newscentre/press-release/improved-mobile-connectivity-unlock-49000-new-businesses-and-add-6-6bn-annually-to-the-uk-economy/",
       "publish_datetime": "2026-02-19T11:11:23Z"
-    },
-    {
-      "title": "The Google Pixel 10a is now available to pre-order on Vodafone",
-      "url": "https://www.vodafone.co.uk/newscentre/press-release/google-pixel-10a-pre-order/",
-      "publish_datetime": "2026-02-18T15:06:31Z"
     }
   ]
 }
