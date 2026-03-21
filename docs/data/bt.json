@@ -2,8 +2,18 @@
   "status": "ok",
   "brand": "BT",
   "group": "Telecoms",
-  "generated_at": "2026-03-20T07:49:55.444495Z",
+  "generated_at": "2026-03-21T07:36:35.738708Z",
   "items": [
+    {
+      "title": "How BT is supporting businesses with the PSTN switchover",
+      "url": "https://newsroom.bt.com/the-pstn-switch-over-how-bt-is-supporting-businesses-in-the-final-phase/",
+      "publish_datetime": "2026-03-20T14:53:37Z"
+    },
+    {
+      "title": "Over three million UK households now benefit from safer, more reliable digital landlines as BT invests to upgrade the nation",
+      "url": "https://newsroom.bt.com/over-three-million-uk-households-now-benefit-from-safer-more-reliable-digital-landlines-as-bt-invests-to-upgrade-the-nation/",
+      "publish_datetime": "2026-03-20T14:51:39Z"
+    },
     {
       "title": "BT Group brings generations together in Preston to help bridge the digital divide",
       "url": "https://newsroom.bt.com/bt-group-brings-generations-together-in-preston-to-help-bridge-the-digital-divide/",
@@ -43,16 +53,6 @@
       "title": "BT Group announces leadership succession within Openreach and BT International",
       "url": "https://newsroom.bt.com/bt-group-announces-leadership-succession-across-openreach-and-bt-international/",
       "publish_datetime": "2026-02-10T07:00:00Z"
-    },
-    {
-      "title": "BT is delivering, with record full fibre connections and further retail customer growth",
-      "url": "https://newsroom.bt.com/bt-is-delivering-with-record-full-fibre-connections-and-further-retail-customer-growth/",
-      "publish_datetime": "2026-02-05T07:00:00Z"
-    },
-    {
-      "title": "EE named the UK’s number one network in two landmark studies – official results revealed",
-      "url": "https://newsroom.bt.com/ee-named-the-uks-number-one-network-in-two-landmark-studies--official-results-revealed/",
-      "publish_datetime": "2026-02-04T08:01:00Z"
     }
   ]
 }

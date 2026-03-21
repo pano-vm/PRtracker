@@ -2,8 +2,13 @@
   "status": "ok",
   "brand": "Sky",
   "group": "Telecoms",
-  "generated_at": "2026-03-20T07:49:56.083555Z",
+  "generated_at": "2026-03-21T07:36:36.535632Z",
   "items": [
+    {
+      "title": "Sky Extends Saturday Night Live UK Run to Eight Shows",
+      "url": "https://www.skygroup.sky/article/sky-extends-saturday-night-live-uk-run-to-eight-shows",
+      "publish_datetime": "2026-03-20T08:53:40Z"
+    },
     {
       "title": "Sky TV customers can enjoy a taste of Hayu’s most popular reality shows from today",
       "url": "https://www.skygroup.sky/article/sky-tv-customers-can-enjoy-a-taste-of-hayu-s-most-popular-reality-shows-from-today",
@@ -48,11 +53,6 @@
       "title": "First look: Gugu Mbatha-Raw stars in Sky Original supernatural thriller Possession",
       "url": "https://www.skygroup.sky/article/first-look-gugu-mbatha-raw-stars-in-sky-original-supernatural-thriller-possession",
       "publish_datetime": "2026-03-17T11:27:31Z"
-    },
-    {
-      "title": "Disney+ included in the Sky TV subscription from today, bringing customers more of the best entertainment in one place",
-      "url": "https://www.skygroup.sky/article/disney-included-in-the-sky-tv-subscription-from-today-bringing-customers-more-of-the-best-entertainment-in-one-place",
-      "publish_datetime": "2026-03-17T09:04:39Z"
     }
   ]
 }
