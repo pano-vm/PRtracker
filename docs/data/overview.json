@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-03-23T08:04:32.822807Z",
-  "summary": "Competitors are intensifying efforts around network performance and premium entertainment bundles, with EE claiming top rankings in national studies and adding DAZN to its TV lineup. Vodafone is challenging the market with speed performance upgrades and aggressive hardware pre-orders for the latest flagship devices. Meanwhile, consumer commentary highlights significant risks regarding upcoming price hikes, creating a sensitive environment for Virgin Media O2’s retention and acquisition strategies.",
+  "generated_at": "2026-03-24T07:56:49.165266Z",
+  "summary": "Competitors are intensifying their network performance and content propositions ahead of major hardware launches and spring price adjustments. Vodafone is directly challenging speed leadership with new performance boosters, while EE continues to bolster its TV offering to compete with Virgin Media's entertainment bundles. BT is pivotally focusing on business-grade 5G reliability and the digital landline transition to secure enterprise market share.",
   "signals": [
-    {
-      "brand": "EE",
-      "type": "Network investment",
-      "headline": "Ee Named The Uk’S Number One Network In Two Landmark Studies – Official Results Revealed",
-      "impact": "This challenges Virgin Media O2’s network reputation and could shift consumer perception toward a primary rival during a key upgrade cycle."
-    },
     {
       "brand": "Vodafone",
       "type": "Product launch",
       "headline": "Speed Boost offers Vodafone customers up to 2x faster speeds",
-      "impact": "This creates a direct performance challenge to O2's mobile network, potentially forcing Virgin Media O2 to accelerate its own 5G+ rollout to maintain parity."
+      "impact": "This initiative directly challenges Virgin Media O2’s speed-based marketing and could lead to customer churn among performance-focused mobile users."
     },
     {
       "brand": "EE",
       "type": "Partnership",
       "headline": "Ee Tv Expands Its Sports Entertainment Access With Dazn Launch",
-      "impact": "EE is strengthening its entertainment ecosystem, directly competing with Virgin Media’s traditional strength in premium sports and content aggregation."
+      "impact": "EE’s growing sports content library increases the competitive pressure on Virgin Media’s premium TV bundles and multi-play value proposition."
+    },
+    {
+      "brand": "BT",
+      "type": "Network investment",
+      "headline": "BT Group and Ericsson strengthen partnership to unlock smarter, more reliable 5G services for UK businesses",
+      "impact": "Enhanced B2B 5G capabilities from BT threaten O2’s enterprise market share and its status as a leading provider of dedicated business connectivity."
     }
   ],
   "momentum": [
@@ -69,7 +69,7 @@
       "count": 2
     },
     {
-      "topic": "regulation",
+      "topic": "broadband",
       "count": 1
     }
   ]

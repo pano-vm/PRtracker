@@ -2,8 +2,13 @@
   "status": "ok",
   "brand": "Sky",
   "group": "Telecoms",
-  "generated_at": "2026-03-23T08:04:21.862369Z",
+  "generated_at": "2026-03-24T07:56:38.952373Z",
   "items": [
+    {
+      "title": "Hacks, the multi-Emmy®-winning Sky Exclusive comedy, returns to the UK for its final season this April",
+      "url": "https://www.skygroup.sky/article/hacks-the-multi-emmy--winning-sky-exclusive-comedy-returns-to-the-uk-for-its-final-season-this-april",
+      "publish_datetime": "2026-03-23T15:40:41Z"
+    },
     {
       "title": "Sky Extends Saturday Night Live UK Run to Eight Shows",
       "url": "https://www.skygroup.sky/article/sky-extends-saturday-night-live-uk-run-to-eight-shows",
@@ -48,11 +53,6 @@
       "title": "Sky Arts welcomes Fearne Cotton as co-host of Landscape Artist of the Year",
       "url": "https://www.skygroup.sky/article/sky-arts-welcomes-fearne-cotton-as-co-host-of-landscape-artist-of-the-year",
       "publish_datetime": "2026-03-17T11:36:24Z"
-    },
-    {
-      "title": "First look: Gugu Mbatha-Raw stars in Sky Original supernatural thriller Possession",
-      "url": "https://www.skygroup.sky/article/first-look-gugu-mbatha-raw-stars-in-sky-original-supernatural-thriller-possession",
-      "publish_datetime": "2026-03-17T11:27:31Z"
     }
   ]
 }
