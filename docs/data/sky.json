@@ -2,8 +2,18 @@
   "status": "ok",
   "brand": "Sky",
   "group": "Telecoms",
-  "generated_at": "2026-03-24T07:56:38.952373Z",
+  "generated_at": "2026-03-25T07:55:33.519940Z",
   "items": [
+    {
+      "title": "Sky celebrates 28 nominations at the 2026 BAFTA TV & Craft Awards",
+      "url": "https://www.skygroup.sky/article/sky-celebrates-28-nominations-at-the-2026-bafta-tv-and-craft-awards",
+      "publish_datetime": "2026-03-24T15:54:48Z"
+    },
+    {
+      "title": "Netflix partners with Sky Business to bring boxing night to pubs and bars across the UK and Ireland",
+      "url": "https://www.skygroup.sky/article/netflix-partners-with-sky-business-to-bring-boxing-night-to-pubs-and-bars-across-the-uk-and-ireland",
+      "publish_datetime": "2026-03-24T10:21:54Z"
+    },
     {
       "title": "Hacks, the multi-Emmy®-winning Sky Exclusive comedy, returns to the UK for its final season this April",
       "url": "https://www.skygroup.sky/article/hacks-the-multi-emmy--winning-sky-exclusive-comedy-returns-to-the-uk-for-its-final-season-this-april",
@@ -43,16 +53,6 @@
       "title": "BAFTA winner James McAvoy to star in Sky Original series Meantime, based on the novel by Frankie Boyle",
       "url": "https://www.skygroup.sky/article/bafta-winner-james-mcavoy-to-star-in-sky-original-series-meantime-based-on-the-novel-by-frankie-boyle",
       "publish_datetime": "2026-03-18T11:01:40Z"
-    },
-    {
-      "title": "Ella Purnell returns as wallflower-turned-killer in Sky Original Sweetpea",
-      "url": "https://www.skygroup.sky/article/ella-purnell-returns-as-wallflower-turned-killer-in-sky-original-sweetpea",
-      "publish_datetime": "2026-03-17T16:04:20Z"
-    },
-    {
-      "title": "Sky Arts welcomes Fearne Cotton as co-host of Landscape Artist of the Year",
-      "url": "https://www.skygroup.sky/article/sky-arts-welcomes-fearne-cotton-as-co-host-of-landscape-artist-of-the-year",
-      "publish_datetime": "2026-03-17T11:36:24Z"
     }
   ]
 }

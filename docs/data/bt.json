@@ -2,8 +2,13 @@
   "status": "ok",
   "brand": "BT",
   "group": "Telecoms",
-  "generated_at": "2026-03-24T07:56:38.210358Z",
+  "generated_at": "2026-03-25T07:55:32.549720Z",
   "items": [
+    {
+      "title": "BT signs new deal worth up to £200 million with NIE Networks",
+      "url": "https://newsroom.bt.com/bt-signs-deal-worth-up-to-200-million-to-deliver-enhanced-connectivity-and-security-for-northern-ireland-electricity-networks/",
+      "publish_datetime": "2026-03-24T10:09:56Z"
+    },
     {
       "title": "How BT is supporting businesses with the PSTN switchover",
       "url": "https://newsroom.bt.com/the-pstn-switch-over-how-bt-is-supporting-businesses-in-the-final-phase/",
@@ -48,11 +53,6 @@
       "title": "Upskilling Business for an AI future",
       "url": "https://newsroom.bt.com/upskilling-business-for-an-ai-future/",
       "publish_datetime": "2026-02-11T13:00:05Z"
-    },
-    {
-      "title": "BT Group announces leadership succession within Openreach and BT International",
-      "url": "https://newsroom.bt.com/bt-group-announces-leadership-succession-across-openreach-and-bt-international/",
-      "publish_datetime": "2026-02-10T07:00:00Z"
     }
   ]
 }
