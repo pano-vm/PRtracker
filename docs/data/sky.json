@@ -2,8 +2,18 @@
   "status": "ok",
   "brand": "Sky",
   "group": "Telecoms",
-  "generated_at": "2026-03-26T08:04:11.136039Z",
+  "generated_at": "2026-03-27T08:02:52.811544Z",
   "items": [
+    {
+      "title": "Sky Sets Iconic Costumes Dancing ‘Together Like Never Before’ in Brand Campaign",
+      "url": "https://www.skygroup.sky/article/-sky-sets-iconic-costumes-dancing-together-like-never-before-in-brand-campaign-",
+      "publish_datetime": "2026-03-26T11:46:50Z"
+    },
+    {
+      "title": "HBO Max included for Sky and NOW customers from 26 March, bringing more world-class entertainment in one subscription",
+      "url": "https://www.skygroup.sky/article/hbo-max-included-for-sky-and-now-customers-from-26-march-bringing-more-world-class-entertainment-in-one-subscription",
+      "publish_datetime": "2026-03-26T10:54:48Z"
+    },
     {
       "title": "Sky celebrates 28 nominations at the 2026 BAFTA TV & Craft Awards",
       "url": "https://www.skygroup.sky/article/sky-celebrates-28-nominations-at-the-2026-bafta-tv-and-craft-awards",
@@ -43,16 +53,6 @@
       "title": "Sky Unveils Poster and Trailer for Original Feature Film Shaun the Sheep: The Beast of Mossy Bottom",
       "url": "https://www.skygroup.sky/article/sky-unveils-poster-and-trailer-for-original-feature-film-shaun-the-sheep-the-beast-of-mossy-bottom",
       "publish_datetime": "2026-03-18T17:10:52Z"
-    },
-    {
-      "title": "Sky Sports and Zuffa Boxing announce multi-year agreement for the UK and Ireland",
-      "url": "https://www.skygroup.sky/article/sky-sports-and-zuffa-boxing-announce-multi-year-agreement-for-the-uk-and-ireland",
-      "publish_datetime": "2026-03-18T17:04:11Z"
-    },
-    {
-      "title": "BAFTA winner James McAvoy to star in Sky Original series Meantime, based on the novel by Frankie Boyle",
-      "url": "https://www.skygroup.sky/article/bafta-winner-james-mcavoy-to-star-in-sky-original-series-meantime-based-on-the-novel-by-frankie-boyle",
-      "publish_datetime": "2026-03-18T11:01:40Z"
     }
   ]
 }
