@@ -2,7 +2,7 @@
   "status": "ok",
   "brand": "uSwitch",
   "group": "Affiliates",
-  "generated_at": "2026-03-27T08:02:55.251529Z",
+  "generated_at": "2026-03-28T07:45:39.200415Z",
   "items": [
     {
       "title": "18 million broadband and mobile customers could beat the April price hikes by acting now",
@@ -17,6 +17,11 @@
     {
       "title": "RPI confirms April price rise for Virgin Media and Onestream customers on older contracts",
       "url": "https://www.uswitch.com/media-centre/2026/02/rpi-confirms-april-price-rise-for-virgin-media-and-onestream-customers-on-older-contracts/",
+      "publish_datetime": "2026-02-01T00:00:00Z"
+    },
+    {
+      "title": "Half-term warning: Smart TVs and doorbells revealed as ‘phantom devices’ draining home WiFi speeds",
+      "url": "https://www.uswitch.com/media-centre/2026/02/half-term-warning-smart-t-vs-and-doorbells-revealed-as-phantom-devices-draining-home-wi-fi-speeds/",
       "publish_datetime": "2026-02-01T00:00:00Z"
     },
     {
@@ -35,6 +40,11 @@
       "publish_datetime": "2026-01-01T00:00:00Z"
     },
     {
+      "title": "The lion peeps tonight: Leos most likely to accidentally like an old Instagram photo while scrolling",
+      "url": "https://www.uswitch.com/media-centre/2026/01/the-lion-peeps-tonight-leos-most-likely-to-accidentally-like-an-old-instagram-photo-while-scrolling/",
+      "publish_datetime": "2026-01-01T00:00:00Z"
+    },
+    {
       "title": "Camera-off day: Almost two million WFH Brits to skive after Christmas bashes - and blame Wi-Fi woes",
       "url": "https://www.uswitch.com/media-centre/2025/12/camera-off-day-almost-two-million-wfh-brits-to-skive-after-christmas-bashes-and-blame-wi-fi-woes/",
       "publish_datetime": "2025-12-01T00:00:00Z"
@@ -43,16 +53,6 @@
       "title": "December phone theft surge: warning as over one in five phone theft victims targeted at Christmas events",
       "url": "https://www.uswitch.com/media-centre/2025/12/december-phone-theft-surge-warning-as-over-one-in-five-phone-theft-victims-targeted-at-christmas-events/",
       "publish_datetime": "2025-12-01T00:00:00Z"
-    },
-    {
-      "title": "Uswitch comments on TalkTalk’s new mid-contract price rises, coming into effect from April 2026:",
-      "url": "https://www.uswitch.com/media-centre/2025/11/uswitch-comments-on-talk-talks-new-mid-contract-price-rises-for-new-and-re-contracting-broadband-customers-from-16-november-coming-into-effect-from-april-2026/",
-      "publish_datetime": "2025-11-01T00:00:00Z"
-    },
-    {
-      "title": "Network nightmare: 22.4m Brits hit by broadband outages in the last year",
-      "url": "https://www.uswitch.com/media-centre/2025/11/22-4-m-brits-hit-by-broadband-outages-in-the-last-year/",
-      "publish_datetime": "2025-11-01T00:00:00Z"
     }
   ]
 }

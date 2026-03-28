@@ -2,8 +2,18 @@
   "status": "ok",
   "brand": "Virgin Media O2",
   "group": "Telecoms",
-  "generated_at": "2026-03-27T08:00:22.093402Z",
+  "generated_at": "2026-03-28T07:44:15.642631Z",
   "items": [
+    {
+      "title": "Murray Mackenzie, Director of Fraud Prevention, on the importance of collaboration to tackle fraud. - Virgin Media O2",
+      "url": "https://news.virginmediao2.co.uk/murray-mackenzie-director-of-fraud-prevention-on-the-importance-of-collaboration-to-tackle-fraud/",
+      "publish_datetime": "2026-03-27T10:32:17Z"
+    },
+    {
+      "title": "Virgin Media O2 hits digital inclusion milestone with 1 million people connected - Virgin Media O2",
+      "url": "https://news.virginmediao2.co.uk/virgin-media-o2-hits-digital-inclusion-milestone-with-1-million-people-connected/",
+      "publish_datetime": "2026-03-27T08:16:19Z"
+    },
     {
       "title": "Virgin Media rolls out 24/7 broadband support to all customers at no extra cost - Virgin Media O2",
       "url": "https://news.virginmediao2.co.uk/virgin-media-rolls-out-24-7-broadband-support-to-all-customers-at-no-extra-cost/",
@@ -25,21 +35,6 @@
       "publish_datetime": "2026-03-18T09:23:30Z"
     },
     {
-      "title": "O2 deploys Europe’s first pre-assembled mobile mast as part of £700m Mobile Transformation Plan - Virgin Media O2",
-      "url": "https://news.virginmediao2.co.uk/o2-deploys-europes-first-pre-assembled-mobile-mast-as-part-of-700m-mobile-transformation-plan/",
-      "publish_datetime": "2026-03-17T08:00:59Z"
-    },
-    {
-      "title": "O2 stores across Yorkshire and the Midlands get behind the Government’s new online safety campaign, ‘You Won’t Know Until You Ask’ - Virgin Media O2",
-      "url": "https://news.virginmediao2.co.uk/o2-stores-across-yorkshire-and-the-midlands-get-behind-the-governments-new-online-safety-campaign-you-wont-know-until-you-ask/",
-      "publish_datetime": "2026-03-16T09:56:57Z"
-    },
-    {
-      "title": "How Virgin Media O2 is investing in the UK’s connectivity and committing to consumer fairness - Virgin Media O2",
-      "url": "https://news.virginmediao2.co.uk/how-virgin-media-o2-is-investing-in-the-uks-connectivity-and-committing-to-consumer-fairness/",
-      "publish_datetime": "2026-02-11T16:13:28Z"
-    },
-    {
       "title": "https://news.virginmediao2.co.uk/site.webmanifest",
       "url": "https://news.virginmediao2.co.uk/site.webmanifest",
       "publish_datetime": null
@@ -52,6 +47,11 @@
     {
       "title": "We’re Virgin Media O2 and we’re upgrading the UK",
       "url": "https://news.virginmediao2.co.uk",
+      "publish_datetime": null
+    },
+    {
+      "title": "About Virgin Media O2 | We're upgrading the UK",
+      "url": "https://news.virginmediao2.co.uk/about-us/",
       "publish_datetime": null
     }
   ]

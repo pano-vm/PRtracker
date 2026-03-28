@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-03-27T08:03:03.105123Z",
-  "summary": "Major competitors are leveraging high-profile hardware launches and premium content integrations, such as Sky’s HBO Max inclusion and EE’s DAZN partnership, to enhance their ecosystem value. Vodafone is introducing tiered speed performance incentives to defend its market share against Virgin Media O2’s recent 5G+ and support-focused service upgrades. These developments highlight a shift toward value-added services as the industry prepares for significant consumer scrutiny regarding upcoming annual price adjustments.",
+  "generated_at": "2026-03-28T07:46:00.857569Z",
+  "summary": "Competitors are aggressively leveraging flagship device launches and next-generation 5G+ claims to challenge Virgin Media O2’s network leadership. Sky and EE are significantly enhancing their entertainment bundles through high-profile partnerships with HBO Max and DAZN, increasing the pressure on VMO2's TV and content propositions. Additionally, Vodafone’s introduction of speed-doubling technology poses a direct threat to Virgin Media’s traditional advantage in the high-speed broadband and mobile data markets.",
   "signals": [
     {
       "brand": "Sky",
-      "type": "Partnership",
-      "headline": "HBO Max included for Sky and NOW customers from 26 March, bringing more world-class entertainment in one subscription",
-      "impact": "This significantly strengthens Sky’s entertainment value proposition, potentially increasing churn risk for Virgin Media O2 customers who value premium content bundles."
-    },
-    {
-      "brand": "Vodafone",
       "type": "Product launch",
-      "headline": "Speed Boost offers Vodafone customers up to 2x faster speeds",
-      "impact": "By offering performance upgrades at no specified cost, Vodafone is directly challenging Virgin Media O2’s speed leadership and incentivising customer retention."
+      "headline": "HBO Max included for Sky and NOW customers from 26 March, bringing more world-class entertainment in one subscription",
+      "impact": "The inclusion of a major global streaming service at no extra cost significantly strengthens Sky’s content value proposition against Virgin Media’s entertainment tiers."
     },
     {
       "brand": "EE",
       "type": "Partnership",
       "headline": "Ee Tv Expands Its Sports Entertainment Access With Dazn Launch",
-      "impact": "The expansion of EE’s sports portfolio targets the Virgin Media TV customer base by consolidating fragmented sports rights into a single rival ecosystem."
+      "impact": "EE is diversifying its sports offering to rival Virgin Media’s broadcast dominance, targeting high-value sports fans through deeper platform integration."
+    },
+    {
+      "brand": "Vodafone",
+      "type": "Network investment",
+      "headline": "Speed Boost offers Vodafone customers up to 2x faster speeds",
+      "impact": "This technical enhancement directly challenges Virgin Media O2’s reputation as the UK's fastest major provider by neutralizing a primary marketing differentiator."
     }
   ],
   "momentum": [
@@ -50,15 +50,15 @@
   "topic_trends": [
     {
       "topic": "network",
-      "count": 10
-    },
-    {
-      "topic": "mobile",
       "count": 9
     },
     {
+      "topic": "mobile",
+      "count": 8
+    },
+    {
       "topic": "partnerships",
-      "count": 4
+      "count": 5
     },
     {
       "topic": "streaming and TV",
