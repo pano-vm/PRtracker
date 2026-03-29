@@ -1,26 +1,7 @@
 {
-  "generated_at": "2026-03-28T07:46:00.857569Z",
-  "summary": "Competitors are aggressively leveraging flagship device launches and next-generation 5G+ claims to challenge Virgin Media O2’s network leadership. Sky and EE are significantly enhancing their entertainment bundles through high-profile partnerships with HBO Max and DAZN, increasing the pressure on VMO2's TV and content propositions. Additionally, Vodafone’s introduction of speed-doubling technology poses a direct threat to Virgin Media’s traditional advantage in the high-speed broadband and mobile data markets.",
-  "signals": [
-    {
-      "brand": "Sky",
-      "type": "Product launch",
-      "headline": "HBO Max included for Sky and NOW customers from 26 March, bringing more world-class entertainment in one subscription",
-      "impact": "The inclusion of a major global streaming service at no extra cost significantly strengthens Sky’s content value proposition against Virgin Media’s entertainment tiers."
-    },
-    {
-      "brand": "EE",
-      "type": "Partnership",
-      "headline": "Ee Tv Expands Its Sports Entertainment Access With Dazn Launch",
-      "impact": "EE is diversifying its sports offering to rival Virgin Media’s broadcast dominance, targeting high-value sports fans through deeper platform integration."
-    },
-    {
-      "brand": "Vodafone",
-      "type": "Network investment",
-      "headline": "Speed Boost offers Vodafone customers up to 2x faster speeds",
-      "impact": "This technical enhancement directly challenges Virgin Media O2’s reputation as the UK's fastest major provider by neutralizing a primary marketing differentiator."
-    }
-  ],
+  "generated_at": "2026-03-29T07:54:10.733558Z",
+  "summary": "Recent telecom news is focused on mobile, network and pricing. BT and Sky are leading mobile and consumer offer announcements. Affiliate coverage is also highlighting mobile.",
+  "signals": [],
   "momentum": [
     {
       "brand": "Sky",
@@ -28,7 +9,7 @@
     },
     {
       "brand": "Vodafone",
-      "count": 9
+      "count": 8
     },
     {
       "brand": "BT",
@@ -39,11 +20,11 @@
       "count": 6
     },
     {
-      "brand": "Three",
-      "count": 5
+      "brand": "EE",
+      "count": 4
     },
     {
-      "brand": "EE",
+      "brand": "Three",
       "count": 4
     }
   ],
