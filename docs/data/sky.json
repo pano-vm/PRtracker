@@ -2,8 +2,13 @@
   "status": "ok",
   "brand": "Sky",
   "group": "Telecoms",
-  "generated_at": "2026-03-29T07:54:08.078809Z",
+  "generated_at": "2026-03-30T08:23:29.269615Z",
   "items": [
+    {
+      "title": "Sky announces changes to its Diversity Advisory Council",
+      "url": "https://www.skygroup.sky/article/sky-announces-changes-to-its-diversity-advisory-council",
+      "publish_datetime": "2026-03-30T08:07:50Z"
+    },
     {
       "title": "Sky Sets Iconic Costumes Dancing ‘Together Like Never Before’ in Brand Campaign",
       "url": "https://www.skygroup.sky/article/-sky-sets-iconic-costumes-dancing-together-like-never-before-in-brand-campaign-",
@@ -48,11 +53,6 @@
       "title": "UP NEXT: Sky presents a bold slate of new, premium acquired content",
       "url": "https://www.skygroup.sky/article/up-next-sky-presents-a-bold-slate-of-new-premium-acquired-content",
       "publish_datetime": "2026-03-18T19:01:15Z"
-    },
-    {
-      "title": "Sky Unveils Poster and Trailer for Original Feature Film Shaun the Sheep: The Beast of Mossy Bottom",
-      "url": "https://www.skygroup.sky/article/sky-unveils-poster-and-trailer-for-original-feature-film-shaun-the-sheep-the-beast-of-mossy-bottom",
-      "publish_datetime": "2026-03-18T17:10:52Z"
     }
   ]
 }

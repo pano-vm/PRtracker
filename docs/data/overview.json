@@ -1,7 +1,26 @@
 {
-  "generated_at": "2026-03-29T07:54:10.733558Z",
-  "summary": "Recent telecom news is focused on mobile, network and pricing. BT and Sky are leading mobile and consumer offer announcements. Affiliate coverage is also highlighting mobile.",
-  "signals": [],
+  "generated_at": "2026-03-30T08:24:24.602112Z",
+  "summary": "Competitors are aggressively expanding their content ecosystems, with Sky integrating HBO Max and EE adding DAZN to bolster their entertainment value propositions. Vodafone is challenging traditional speed advantages through its new Speed Boost offering, while BT strengthens its 5G business services through key infrastructure partnerships. These developments require Virgin Media O2 to defend its premium positioning in both the connectivity and content aggregation markets.",
+  "signals": [
+    {
+      "brand": "Sky",
+      "type": "Product launch",
+      "headline": "HBO Max included for Sky and NOW customers from 26 March, bringing more world-class entertainment in one subscription",
+      "impact": "This significantly strengthens Sky's content aggregation lead, challenging Virgin Media’s entertainment bundles by offering premium US content at no extra cost."
+    },
+    {
+      "brand": "Vodafone",
+      "type": "Network investment",
+      "headline": "Speed Boost offers Vodafone customers up to 2x faster speeds",
+      "impact": "This initiative directly targets Virgin Media O2’s speed leadership by providing a tangible performance upgrade to existing mobile customers."
+    },
+    {
+      "brand": "EE",
+      "type": "Product launch",
+      "headline": "Ee Tv Expands Its Sports Entertainment Access With Dazn Launch",
+      "impact": "The addition of DAZN increases EE's competitiveness in the sports market, threatening Virgin Media's position as a primary destination for comprehensive sports broadcasting."
+    }
+  ],
   "momentum": [
     {
       "brand": "Sky",
@@ -13,19 +32,19 @@
     },
     {
       "brand": "BT",
-      "count": 8
+      "count": 7
     },
     {
       "brand": "Virgin Media O2",
       "count": 6
     },
     {
-      "brand": "EE",
+      "brand": "Three",
       "count": 4
     },
     {
-      "brand": "Three",
-      "count": 4
+      "brand": "EE",
+      "count": 3
     }
   ],
   "topic_trends": [
