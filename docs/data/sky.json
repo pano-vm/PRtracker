@@ -2,8 +2,13 @@
   "status": "ok",
   "brand": "Sky",
   "group": "Telecoms",
-  "generated_at": "2026-03-30T08:23:29.269615Z",
+  "generated_at": "2026-03-31T08:11:35.616601Z",
   "items": [
+    {
+      "title": "Jack Whitehall announced as next host of Saturday Night Live UK",
+      "url": "https://www.skygroup.sky/article/jack-whitehall-announced-as-next-host-of-saturday-night-live-uk-",
+      "publish_datetime": "2026-03-31T07:00:14Z"
+    },
     {
       "title": "Sky announces changes to its Diversity Advisory Council",
       "url": "https://www.skygroup.sky/article/sky-announces-changes-to-its-diversity-advisory-council",
@@ -48,11 +53,6 @@
       "title": "UP NEXT: Sky unveils an unmissable genre-spanning slate of new shows, exclusive previews and first looks for 2026 and beyond",
       "url": "https://www.skygroup.sky/article/up-next-sky-unveils-an-unmissable-genre-spanning-slate-of-new-shows-exclusive-previews-and-first-looks-for-2026-and-beyond",
       "publish_datetime": "2026-03-18T19:29:18Z"
-    },
-    {
-      "title": "UP NEXT: Sky presents a bold slate of new, premium acquired content",
-      "url": "https://www.skygroup.sky/article/up-next-sky-presents-a-bold-slate-of-new-premium-acquired-content",
-      "publish_datetime": "2026-03-18T19:01:15Z"
     }
   ]
 }

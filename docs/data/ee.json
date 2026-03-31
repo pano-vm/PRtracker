@@ -2,8 +2,13 @@
   "status": "ok",
   "brand": "EE",
   "group": "Telecoms",
-  "generated_at": "2026-03-30T08:22:36.473794Z",
+  "generated_at": "2026-03-31T08:10:28.984457Z",
   "items": [
+    {
+      "title": "EE TV Transforms the TV Experience by Becoming the UK’s First Pay-TV Service to Introduce Conversational, AI-Powered Search",
+      "url": "https://newsroom.ee.co.uk/ee-tv-transforms-the-tv-experience-by-becoming-the-uks-first-pay-tv-service-to-introduce-conversational-ai-powered-search/",
+      "publish_datetime": "2026-03-31T07:00:00Z"
+    },
     {
       "title": "Whisky, Waves And Wildlife: Ee Breaks New Ground To Connect Communities On Islay",
       "url": "https://newsroom.ee.co.uk/whisky-waves-and-wildlife-ee-breaks-new-ground-to-connect-communities-on-islay/",
@@ -48,11 +53,6 @@
       "title": "Ee Named The Uk’S Number One Network In Two Landmark Studies – Official Results Revealed",
       "url": "https://newsroom.ee.co.uk/ee-named-the-uks-number-one-network-in-three-landmark-studies--official-results-revealed/",
       "publish_datetime": "2026-02-04T08:00:00Z"
-    },
-    {
-      "title": "Ee Launches First Experience Store Of 2026 In Lakeside With Former England Lioness Rachel Yankey Obe",
-      "url": "https://newsroom.ee.co.uk/ee-launches-first-experience-store-of-2026-in-lakeside-with-former-england-lioness-rachel-yankey-obe/",
-      "publish_datetime": "2026-01-29T11:34:49Z"
     }
   ]
 }

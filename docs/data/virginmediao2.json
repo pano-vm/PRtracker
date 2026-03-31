@@ -2,8 +2,18 @@
   "status": "ok",
   "brand": "Virgin Media O2",
   "group": "Telecoms",
-  "generated_at": "2026-03-30T08:22:08.511108Z",
+  "generated_at": "2026-03-31T08:09:49.656709Z",
   "items": [
+    {
+      "title": "Virgin Media O2 accelerates its Mobile Transformation Plan with major network modernisation deals - Virgin Media O2",
+      "url": "https://news.virginmediao2.co.uk/virgin-media-o2-accelerates-its-mobile-transformation-plan-with-major-network-modernisation-deals/",
+      "publish_datetime": "2026-03-31T08:51:00Z"
+    },
+    {
+      "title": "O2 is giving away 50,000 free Greggs breakfasts, £10k cash prizes, VIP theatre tickets and more - Virgin Media O2",
+      "url": "https://news.virginmediao2.co.uk/o2-is-giving-away-50000-free-greggs-breakfasts-10k-cash-prizes-vip-theatre-tickets-and-more/",
+      "publish_datetime": "2026-03-30T10:36:24Z"
+    },
     {
       "title": "Murray Mackenzie, Director of Fraud Prevention, on the importance of collaboration to tackle fraud. - Virgin Media O2",
       "url": "https://news.virginmediao2.co.uk/murray-mackenzie-director-of-fraud-prevention-on-the-importance-of-collaboration-to-tackle-fraud/",
@@ -30,11 +40,6 @@
       "publish_datetime": "2026-03-19T08:18:45Z"
     },
     {
-      "title": "Virgin Media O2 gives 85,000 devices a second life as it drives the UK’s tech circular economy - Virgin Media O2",
-      "url": "https://news.virginmediao2.co.uk/virgin-media-o2-gives-85000-devices-a-second-life-as-it-drives-the-uks-tech-circular-economy/",
-      "publish_datetime": "2026-03-18T09:23:30Z"
-    },
-    {
       "title": "https://news.virginmediao2.co.uk/site.webmanifest",
       "url": "https://news.virginmediao2.co.uk/site.webmanifest",
       "publish_datetime": null
@@ -47,11 +52,6 @@
     {
       "title": "We’re Virgin Media O2 and we’re upgrading the UK",
       "url": "https://news.virginmediao2.co.uk",
-      "publish_datetime": null
-    },
-    {
-      "title": "About Virgin Media O2 | We're upgrading the UK",
-      "url": "https://news.virginmediao2.co.uk/about-us/",
       "publish_datetime": null
     }
   ]
