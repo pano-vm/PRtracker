@@ -1,26 +1,7 @@
 {
-  "generated_at": "2026-03-31T08:11:47.953299Z",
-  "summary": "Competitors are aggressively leveraging AI and premium content partnerships to differentiate their offerings ahead of industry-wide spring price adjustments. EE has secured a first-mover advantage in user experience with AI-powered conversational TV search, while Sky is significantly enhancing its value proposition by integrating HBO Max into existing tiers. Additionally, Vodafone is focusing on performance-based retention through its new Speed Boost feature and a heavy emphasis on flagship device launches.",
-  "signals": [
-    {
-      "brand": "Sky",
-      "type": "Product launch",
-      "headline": "HBO Max included for Sky and NOW customers from 26 March, bringing more world-class entertainment in one subscription",
-      "impact": "This major content addition increases competitive pressure on Virgin Media’s entertainment bundles by offering high-value US content at no additional cost to the consumer."
-    },
-    {
-      "brand": "EE",
-      "type": "Product launch",
-      "headline": "EE TV Transforms the TV Experience by Becoming the UK’s First Pay-TV Service to Introduce Conversational, AI-Powered Search",
-      "impact": "EE is positioning itself as a technological leader in the living room, potentially making Virgin Media’s TV interface appear less intuitive to premium segment users."
-    },
-    {
-      "brand": "Vodafone",
-      "type": "Network investment",
-      "headline": "Speed Boost offers Vodafone customers up to 2x faster speeds",
-      "impact": "A direct challenge to our speed leadership narrative, this feature targets customer retention by offering immediate performance upgrades without immediate plan migrations."
-    }
-  ],
+  "generated_at": "2026-04-01T08:19:19.001779Z",
+  "summary": "Recent telecom news is focused on mobile, network and pricing. Sky and Virgin Media O2 are leading mobile and consumer offer announcements. Affiliate coverage is focused on pricing, deals and consumer-facing changes.",
+  "signals": [],
   "momentum": [
     {
       "brand": "Sky",
@@ -57,16 +38,16 @@
       "count": 9
     },
     {
-      "topic": "partnerships",
-      "count": 5
-    },
-    {
       "topic": "streaming and TV",
-      "count": 5
+      "count": 7
     },
     {
       "topic": "pricing",
-      "count": 4
+      "count": 6
+    },
+    {
+      "topic": "partnerships",
+      "count": 5
     },
     {
       "topic": "infrastructure",

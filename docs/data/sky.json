@@ -2,8 +2,13 @@
   "status": "ok",
   "brand": "Sky",
   "group": "Telecoms",
-  "generated_at": "2026-03-31T08:11:35.616601Z",
+  "generated_at": "2026-04-01T08:18:36.488316Z",
   "items": [
+    {
+      "title": "Sky Sports announces major women’s boxing deal with Most Valuable Promotions",
+      "url": "https://www.skygroup.sky/article/sky-sports-announces-major-women-s-boxing-deal-with-most-valuable-promotions",
+      "publish_datetime": "2026-03-31T08:39:40Z"
+    },
     {
       "title": "Jack Whitehall announced as next host of Saturday Night Live UK",
       "url": "https://www.skygroup.sky/article/jack-whitehall-announced-as-next-host-of-saturday-night-live-uk-",
@@ -48,11 +53,6 @@
       "title": "Sky TV customers can enjoy a taste of Hayu’s most popular reality shows from today",
       "url": "https://www.skygroup.sky/article/sky-tv-customers-can-enjoy-a-taste-of-hayu-s-most-popular-reality-shows-from-today",
       "publish_datetime": "2026-03-19T15:01:40Z"
-    },
-    {
-      "title": "UP NEXT: Sky unveils an unmissable genre-spanning slate of new shows, exclusive previews and first looks for 2026 and beyond",
-      "url": "https://www.skygroup.sky/article/up-next-sky-unveils-an-unmissable-genre-spanning-slate-of-new-shows-exclusive-previews-and-first-looks-for-2026-and-beyond",
-      "publish_datetime": "2026-03-18T19:29:18Z"
     }
   ]
 }
