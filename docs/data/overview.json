@@ -1,7 +1,26 @@
 {
-  "generated_at": "2026-04-01T08:19:19.001779Z",
-  "summary": "Recent telecom news is focused on mobile, network and pricing. Sky and Virgin Media O2 are leading mobile and consumer offer announcements. Affiliate coverage is focused on pricing, deals and consumer-facing changes.",
-  "signals": [],
+  "generated_at": "2026-04-02T08:09:55.716900Z",
+  "summary": "Competitors are aggressively enhancing their content and technology offerings, most notably with Sky's integration of HBO Max and EE's deployment of AI-powered TV search capabilities. Vodafone's introduction of performance-based speed boosts and BT's rapid migration of millions to digital landlines indicate a shift toward high-reliability and high-speed service as key differentiators. These developments present a risk to Virgin Media O2's premium TV and connectivity leadership, requiring a response in both user experience innovation and value-added services.",
+  "signals": [
+    {
+      "brand": "Sky",
+      "type": "Product launch",
+      "headline": "HBO Max included for Sky and NOW customers from 26 March, bringing more world-class entertainment in one subscription",
+      "impact": "This significantly strengthens Sky’s content value proposition against Virgin Media’s TV packages by offering premium US programming at no additional cost."
+    },
+    {
+      "brand": "EE",
+      "type": "Product launch",
+      "headline": "EE TV Transforms the TV Experience by Becoming the UK’s First Pay-TV Service to Introduce Conversational, AI-Powered Search",
+      "impact": "This sets a new benchmark for user interface sophistication, potentially making Virgin Media’s current TV navigation feel outdated to tech-savvy consumers."
+    },
+    {
+      "brand": "Vodafone",
+      "type": "Network investment",
+      "headline": "Speed Boost offers Vodafone customers up to 2x faster speeds",
+      "impact": "This challenges the perception of Virgin Media as the primary provider of superior speeds by offering a tangible mobile performance upgrade to existing customers."
+    }
+  ],
   "momentum": [
     {
       "brand": "Sky",
@@ -17,7 +36,7 @@
     },
     {
       "brand": "BT",
-      "count": 7
+      "count": 6
     },
     {
       "brand": "EE",
