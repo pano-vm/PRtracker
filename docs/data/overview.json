@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-04-02T08:09:55.716900Z",
-  "summary": "Competitors are aggressively enhancing their content and technology offerings, most notably with Sky's integration of HBO Max and EE's deployment of AI-powered TV search capabilities. Vodafone's introduction of performance-based speed boosts and BT's rapid migration of millions to digital landlines indicate a shift toward high-reliability and high-speed service as key differentiators. These developments present a risk to Virgin Media O2's premium TV and connectivity leadership, requiring a response in both user experience innovation and value-added services.",
+  "generated_at": "2026-04-03T08:05:18.474970Z",
+  "summary": "Competitors are aggressively enhancing their converged offerings through high-value content bundles and AI-driven user experience improvements, most notably Sky’s integration of HBO Max and EE’s launch of conversational TV search. Infrastructure competition is intensifying as Vodafone introduces software-led speed enhancements to challenge traditional broadband performance leads, while BT prioritizes large-scale digital voice upgrades. These developments highlight a market shift toward value-added services and automated technology to justify premium pricing during high-inflation periods.",
   "signals": [
     {
       "brand": "Sky",
       "type": "Product launch",
       "headline": "HBO Max included for Sky and NOW customers from 26 March, bringing more world-class entertainment in one subscription",
-      "impact": "This significantly strengthens Sky’s content value proposition against Virgin Media’s TV packages by offering premium US programming at no additional cost."
+      "impact": "This significantly strengthens Sky’s entertainment leadership and creates a competitive content gap for Virgin Media’s TV proposition."
     },
     {
       "brand": "EE",
       "type": "Product launch",
       "headline": "EE TV Transforms the TV Experience by Becoming the UK’s First Pay-TV Service to Introduce Conversational, AI-Powered Search",
-      "impact": "This sets a new benchmark for user interface sophistication, potentially making Virgin Media’s current TV navigation feel outdated to tech-savvy consumers."
+      "impact": "The use of generative AI for discovery raises the technological benchmark for TV interfaces, potentially making Virgin’s current platform feel dated."
     },
     {
       "brand": "Vodafone",
       "type": "Network investment",
       "headline": "Speed Boost offers Vodafone customers up to 2x faster speeds",
-      "impact": "This challenges the perception of Virgin Media as the primary provider of superior speeds by offering a tangible mobile performance upgrade to existing customers."
+      "impact": "This directly attacks Virgin Media's primary differentiator of speed leadership by offering performance upgrades to existing Vodafone broadband customers."
     }
   ],
   "momentum": [
@@ -39,11 +39,11 @@
       "count": 6
     },
     {
-      "brand": "EE",
-      "count": 4
+      "brand": "Three",
+      "count": 5
     },
     {
-      "brand": "Three",
+      "brand": "EE",
       "count": 4
     }
   ],
@@ -62,7 +62,7 @@
     },
     {
       "topic": "pricing",
-      "count": 6
+      "count": 5
     },
     {
       "topic": "partnerships",

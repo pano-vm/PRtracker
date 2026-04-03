@@ -2,8 +2,13 @@
   "status": "ok",
   "brand": "Three",
   "group": "Telecoms",
-  "generated_at": "2026-04-02T08:09:16.118224Z",
+  "generated_at": "2026-04-03T08:03:59.714381Z",
   "items": [
+    {
+      "title": "Tear & share: Three UK reveals Britain’s bizarre public pizza habits",
+      "url": "https://www.threemediacentre.co.uk/content/three-plus-britains-bizarre-public-pizza-habits/",
+      "publish_datetime": "2026-04-02T08:44:52Z"
+    },
     {
       "title": "Are you ready for Gladiators Live Tour pre-sale with Three UK?",
       "url": "https://www.threemediacentre.co.uk/content/gladiators-live-tour-pre-sale/",
@@ -48,11 +53,6 @@
       "title": "Three UK Offers Pre-Sale Tickets to ZAYN - Three Media Centre",
       "url": "https://www.threemediacentre.co.uk/content/three-uk-offers-pre-sale-tickets-to-zayn/",
       "publish_datetime": "2026-02-05T20:01:02Z"
-    },
-    {
-      "title": "Closer… to pre-sale tickets with Ne-Yo and Akon - Three Media Centre",
-      "url": "https://www.threemediacentre.co.uk/content/closer-to-pre-sale-tickets-with-ne-yo-and-akon/",
-      "publish_datetime": "2026-01-27T15:51:33Z"
     }
   ]
 }
