@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-04-03T08:05:18.474970Z",
-  "summary": "Competitors are aggressively enhancing their converged offerings through high-value content bundles and AI-driven user experience improvements, most notably Sky’s integration of HBO Max and EE’s launch of conversational TV search. Infrastructure competition is intensifying as Vodafone introduces software-led speed enhancements to challenge traditional broadband performance leads, while BT prioritizes large-scale digital voice upgrades. These developments highlight a market shift toward value-added services and automated technology to justify premium pricing during high-inflation periods.",
+  "generated_at": "2026-04-04T07:52:29.902019Z",
+  "summary": "Competitors are aggressively leveraging AI and high-value content partnerships to differentiate their offerings, notably with EE introducing conversational TV search and Sky integrating HBO Max into standard subscriptions. Network competition is also pivoting toward performance-based incentives and enterprise reliability, evidenced by BT’s strengthened 5G partnership with Ericsson for the business sector. These developments challenge Virgin Media O2’s dominance in entertainment bundling and broadband speed through technological and value-added service innovation.",
   "signals": [
-    {
-      "brand": "Sky",
-      "type": "Product launch",
-      "headline": "HBO Max included for Sky and NOW customers from 26 March, bringing more world-class entertainment in one subscription",
-      "impact": "This significantly strengthens Sky’s entertainment leadership and creates a competitive content gap for Virgin Media’s TV proposition."
-    },
     {
       "brand": "EE",
       "type": "Product launch",
       "headline": "EE TV Transforms the TV Experience by Becoming the UK’s First Pay-TV Service to Introduce Conversational, AI-Powered Search",
-      "impact": "The use of generative AI for discovery raises the technological benchmark for TV interfaces, potentially making Virgin’s current platform feel dated."
+      "impact": "This advances the standard for user experience in the UK market, potentially making Virgin Media’s traditional TV navigation feel less intuitive by comparison."
     },
     {
-      "brand": "Vodafone",
+      "brand": "Sky",
+      "type": "Partnership",
+      "headline": "HBO Max included for Sky and NOW customers from 26 March, bringing more world-class entertainment in one subscription",
+      "impact": "The inclusion of high-demand premium content at no extra cost enhances Sky's retention capability and presents a significant value-gap for Virgin Media's current content bundles."
+    },
+    {
+      "brand": "BT",
       "type": "Network investment",
-      "headline": "Speed Boost offers Vodafone customers up to 2x faster speeds",
-      "impact": "This directly attacks Virgin Media's primary differentiator of speed leadership by offering performance upgrades to existing Vodafone broadband customers."
+      "headline": "BT Group and Ericsson strengthen partnership to unlock smarter, more reliable 5G services for UK businesses",
+      "impact": "Enhanced 5G infrastructure for enterprise clients directly competes with Virgin Media O2’s strategic focus on private networks and professional connectivity growth."
     }
   ],
   "momentum": [
@@ -27,11 +27,11 @@
       "count": 10
     },
     {
-      "brand": "Vodafone",
-      "count": 8
+      "brand": "Virgin Media O2",
+      "count": 7
     },
     {
-      "brand": "Virgin Media O2",
+      "brand": "Vodafone",
       "count": 7
     },
     {
@@ -44,7 +44,7 @@
     },
     {
       "brand": "EE",
-      "count": 4
+      "count": 3
     }
   ],
   "topic_trends": [
